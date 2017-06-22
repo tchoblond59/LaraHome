@@ -18,8 +18,8 @@ class SSRelay extends Sensor
         return ucfirst("julien");
     }
 
-    public function getWidget()
+    public function getWidget(\App\Widget $widget)
     {
-        return view('sensors.ssrelay.widget')->with(['test' => 123]);
+        return view('sensors.ssrelay.widget')->with(['widget' => $widget]);
     }
 }

@@ -12,8 +12,4 @@ class Sensor extends Model
 
     protected $fillable = ['id'];
 
-    public function getWidget()
-    {
-    }
-
 }
