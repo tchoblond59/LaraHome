@@ -8,12 +8,20 @@ use App\Sensors\SSRelay\SSRelay;
 use App\Sensor;
 use App\Mqtt\MSMessage;
 use App\Mqtt\MqttSender;
-
+use App\Message;
 class SSRelayController extends Controller
 {
     public function configureWidget($id)
     {
-        return view('sensors.ssrelay.configwidget');
+        $widget = Widget::findOrFail($id);
+        $sensor = $widget->sensor;
+        $messages = Message::where('node_address', '=', '69')
+            ->where('sensor_address', '=', '1')
+            ->where('command', '=', '1')
+            //->orderBy('created_at', 'desc')
+            ->get();
+        return view('sensors.ssrelay.configwidget')->with(['widget' => $widget,
+        'messages' => $messages]);
     }
 
     public function toggle(Request $request)
