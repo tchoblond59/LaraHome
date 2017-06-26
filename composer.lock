@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9708076dee934ceff9b44adfee7f16f",
+    "content-hash": "7f1ba7da2ef5755cba4a2e1307c0b745",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -504,6 +504,47 @@
                 "storage"
             ],
             "time": "2017-04-28T10:15:08+00:00"
+        },
+        {
+            "name": "luzhuqun/laravel-mqtt-publish",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luzhuqun/laravel-mqtt-publish.git",
+                "reference": "05597071d0c64cc7fc8f25f0b6b704bd17b37866"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luzhuqun/laravel-mqtt-publish/zipball/05597071d0c64cc7fc8f25f0b6b704bd17b37866",
+                "reference": "05597071d0c64cc7fc8f25f0b6b704bd17b37866",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lzq\\Mqtt\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "luzhuqun",
+                    "email": "595500783@qq.com"
+                }
+            ],
+            "description": "A simple Laravel 5 mqtt publisher",
+            "keywords": [
+                "laravel",
+                "mqtt",
+                "publish"
+            ],
+            "time": "2017-05-22 08:02:59"
         },
         {
             "name": "monolog/monolog",
@@ -3510,7 +3551,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -1,9 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    @foreach($widgets as $widget)
-        <div class="col-md-3">
-            {!!$widget!!}
+    <div class="container">
+    @foreach($dashboards->chunk(3) as $items)
+        <div class="row">
+            @foreach($items as $dashboard)
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">{{$dashboard->name}}</div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>Nombre de widgets: {{$dashboard->widgets->count()}}</li>
+                            </ul>
+                            <a href="{{url('/dashboard/show/'.$dashboard->id)}}" class="btn btn-default pull-right"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrer</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     @endforeach
+    </div>
 @endsection

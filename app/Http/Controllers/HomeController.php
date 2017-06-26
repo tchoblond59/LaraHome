@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Sensor;
 use App\Dashboard;
 use App\Widget;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -27,15 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        foreach (Sensor::all() as $sensor)
-        {
-            $classname = 'App\\Sensors\\'.$sensor->classname.'\\'.$sensor->classname;
-            $sensor = new $classname();
-            $widgets[] = $sensor->getWidget();
-        }
-
-
-        return view('home')->with(['widgets' => $widgets]);
+        $dashboards = Dashboard::where('user_id', '=', Auth::id())->get();
+        return view('home')->with(['dashboards' => $dashboards]);
     }
 
     public function dashboard($id)

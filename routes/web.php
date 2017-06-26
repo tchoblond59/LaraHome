@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/dashboard/show/{id}', 'HomeController@dashboard')->name('dashboard');
+Route::get('/dashboard/show/{id}', 'DashboardController@show')->name('dashboard');
 Route::get('/dashboard/create', 'DashboardController@create');
-Route::get('/dashboard/post', 'DashboardController@store');
+Route::post('/dashboard/create', 'DashboardController@store');
+Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
+Route::post('/dashboard/addwidget/{id}', 'DashboardController@addWidget');
+
+Route::get('/widget/SSRelay/{id}', 'SSRelayController@configureWidget');
+
+Route::post('/SSRelay/action/toggle','SSRelayController@toggle');

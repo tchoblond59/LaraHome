@@ -4,7 +4,7 @@
     <div class="container">
         <form class="form-horizontal" method="post" action="{{url('/dashboard/create')}}">
             <fieldset>
-
+                {{csrf_field()}}
                 <!-- Form Name -->
                 <legend>Nouveau tableau de bord</legend>
 
