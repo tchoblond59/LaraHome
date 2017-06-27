@@ -48,7 +48,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if (!Auth::guest())
-                            <li><a href="{{url('/sensor/add')}}">Ajouter un capteur</a> </li>
+                            <li><a href="{{url('/sensor/add')}}">Ajouter un capteur</a></li>
+                            <li><a href="{{url('/config')}}">Configuration</a></li>
                         @endif
                     </ul>
 

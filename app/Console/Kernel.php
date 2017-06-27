@@ -2,9 +2,10 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SendMSCommands;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use App\ScheduledMSCommands;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\SendMSCommands::class
     ];
 
     /**
@@ -24,8 +25,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        foreach (ScheduledMSCommands::all() as $command) {
+            $schedule->command(SendMSCommands::class, [$command->mscommand->id])->cron($command->cron);
+        }
     }
 
     /**

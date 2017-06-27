@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ScheduledMSCommands;
 use App\Widget;
 use Illuminate\Http\Request;
 use App\Sensors\SSRelay\SSRelay;
@@ -9,6 +10,8 @@ use App\Sensor;
 use App\Mqtt\MSMessage;
 use App\Mqtt\MqttSender;
 use App\Message;
+use App\MSCommand;
+
 class SSRelayController extends Controller
 {
     public function configureWidget($id)
@@ -40,5 +43,28 @@ class SSRelayController extends Controller
         $reponse['message'] = "Challenge accepted";
         $reponse['type'] = "success";
         return json_encode($reponse);
+    }
+
+    public function store($id, Request $request)
+    {
+        $widget = Widget::findOrFail($id);
+        $sensor = Sensor::findOrFail($widget->sensor_id);
+        $this->validate($request, [
+            'name' => 'required',
+            'command' => 'required'
+        ]);
+        $command = new MSCommand();
+        $command->sensor_id = $sensor->id;
+        $command->name = $request->name;
+        $command->command = 1; //SET
+        $command->ack = 0; //No Ack
+        $command->type = 2;//V_STATUS Binary
+        $command->payload = $request->command;
+        $command->save();
+        return redirect()->back();
+
+
+
+        
     }
 }

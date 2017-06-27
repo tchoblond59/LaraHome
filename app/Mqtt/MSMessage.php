@@ -227,6 +227,15 @@ class MSMessage
 
         return $this;
     }
+
+    public function fromScratch($node_id,$child_id,$command,$ack,$sub_type)
+    {
+        $this->node_id = $node_id;
+        $this->child_id = $child_id;
+        $this->command = $command;
+        $this->type = $sub_type;
+        $this->ack = $ack;
+    }
     // ---------------------------------------------------------
     public function internal($node_id,$child_id,$sub_type,$ack=0,$return_answer=false){
 
