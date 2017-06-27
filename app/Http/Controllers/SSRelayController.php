@@ -14,6 +14,11 @@ use App\MSCommand;
 
 class SSRelayController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['triggerShortcut']);
+    }
+    
     public function configureWidget($id)
     {
         $widget = Widget::findOrFail($id);
@@ -31,10 +36,10 @@ class SSRelayController extends Controller
     {
         $widget = Widget::findOrFail($request->id);
         $sensor = Sensor::findOrFail($widget->sensor_id);
-        $val=0;
+        $val='0';
         if($request->has('state'))
         {
-            $val=1;
+            $val='1';
         }
         $message = new MSMessage();
         $message->set($sensor->node_address, $sensor->sensor_address, 'V_STATUS');

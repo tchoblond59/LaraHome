@@ -30,4 +30,16 @@ class ConfigController extends Controller
         $scheduled->save();
         return redirect()->back();
     }
+
+    public function CreateMSCommandShortcut(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required'
+        ]);
+        $command = MSCommand::findOrFail($request->id);
+        $command->url = str_random(50);
+        $command->save();
+        return redirect()->back();
+
+    }
 }

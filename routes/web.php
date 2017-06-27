@@ -27,7 +27,9 @@ Route::post('/SSRelay/action/create/{id}','SSRelayController@store');
 Route::post('/SSRelay/action/toggle','SSRelayController@toggle');
 
 Route::get('/sensor/add', 'SensorController@create');
+Route::get('/sensor/mscommands/shortcut/{random}', 'SensorController@triggerShortcut');
 Route::post('/sensor/add', 'SensorController@store');
 
 Route::get('/config', 'ConfigController@show');
 Route::post('/config/scheduled_task/create', 'ConfigController@createScheduledTask');
+Route::post('/config//mscommands/shortcut/create', 'ConfigController@CreateMSCommandShortcut');

@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\MSCommand;
 use Illuminate\Http\Request;
 use App\Sensor;
 class SensorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['triggerShortcut']);
+    }
     public function create()
     {
         $plugins = Sensor::getSensorsName();
@@ -21,5 +26,15 @@ class SensorController extends Controller
         ]);
         Sensor::create($request->all());
         return redirect()->back();
+    }
+
+    public function triggerShortcut($random)
+    {
+        $command = MSCommand::where('url', '=', $random)->first();
+        if($command!=null)
+        {
+            $command->send();
+        }
+        return ('ok');
     }
 }

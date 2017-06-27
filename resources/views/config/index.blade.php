@@ -4,6 +4,35 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <h1>Liste des actions disponible</h1><hr>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Capteur</th>
+                        <th>Commande</th>
+                        <th>Raccourci</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($mscommands as $command)
+                        <tr>
+                            <td>{{$command->sensor->name}}</td>
+                            <td>{{$command->name}}</td>
+                            @if($command->url)
+                                <td><a class="btn btn-default btn-sm" href="{{url('/sensor/mscommands/shortcut/'.$command->url)}}">Actionner</a></td>
+                            @else
+                                <td>
+                                    <form method="post" action="{{url('/config//mscommands/shortcut/create')}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="id" value="{{$command->id}}">
+                                        <button class="btn btn-primary btn-sm" type="submit">Créer raccourci</button>
+                                    </form>
+                                </td>
+                            @endif
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
                 <h1>Liste des actions programmées</h1><hr>
                 <table class="table">
                     <thead>
