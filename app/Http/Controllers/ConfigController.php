@@ -8,6 +8,11 @@ use App\ScheduledMSCommands;
 
 class ConfigController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show()
     {
         $commands = ScheduledMSCommands::join('mscommands', 'scheduled_mscommands.mscommands_id', '=', 'mscommands.id')

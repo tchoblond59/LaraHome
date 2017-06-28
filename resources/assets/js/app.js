@@ -7,16 +7,41 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Echo from 'laravel-echo'
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+let e = new Echo({
+    broadcaster: 'socket.io',
+    host: window.location.hostname + ':6001'
+})
 
-Vue.component('example', require('./components/Example.vue'));
+e.channel('chan-relay')
+    .listen('SSRelayEvent', function (e) {
+        console.log('SSRelayEvent', e)
+        $('input.SSRelayWidget').unbind();
+        if(e.state == 1)
+            $('input.SSRelayWidget').bootstrapToggle('on');
+        else
+            $('input.SSRelayWidget').bootstrapToggle('off');
+        bindSSRelay();
+    })
 
-const app = new Vue({
-    el: '#app'
-});
+function bindSSRelay() {
+
+    $('input.SSRelayWidget').change(function() {
+        var form = $(this).closest("form");
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: form.serialize(),
+            dataType: 'json', // JSON
+            success: function(reponse) {
+                console.log(reponse);
+                $.notify(reponse);
+            }
+        });
+    })
+}
+
+$(function() {
+    bindSSRelay();
+})

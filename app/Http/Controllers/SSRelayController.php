@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SSRelayEvent;
 use App\ScheduledMSCommands;
 use App\Widget;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class SSRelayController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['triggerShortcut']);
+        $this->middleware('auth')->except(['triggerShortcut', 'realTimeTest']);
     }
     
     public function configureWidget($id)
@@ -44,9 +45,11 @@ class SSRelayController extends Controller
         $message = new MSMessage();
         $message->set($sensor->node_address, $sensor->sensor_address, 'V_STATUS');
         $message->setMessage($val);
-        MqttSender::sendMessage($message);
+        //MqttSender::sendMessage($message);
         $reponse['message'] = "Challenge accepted";
         $reponse['type'] = "success";
+        $event = new SSRelayEvent($val);
+        event($event);
         return json_encode($reponse);
     }
 
@@ -66,10 +69,13 @@ class SSRelayController extends Controller
         $command->type = 2;//V_STATUS Binary
         $command->payload = $request->command;
         $command->save();
-        return redirect()->back();
-
-
-
-        
+        return redirect()->back();        
+    }
+    
+    public function realTimeTest()
+    {
+        $event = new SSRelayEvent();
+        event($event);
+        return 'Evennement envoyé SSRelais';
     }
 }
