@@ -22,11 +22,16 @@
             </div>
             <div class="col-md-6">
                 <div class="row well">
-                    <h3>{{$widget->name}}</h3><br>
+                    <h3>{{$widget->name}} <span class="label label-info">{{ucfirst($ssrelay_config->type)}}</span>
+                        <a class="pull-right" href="{{url('/SSRelay/update/'.$widget->id)}}"><i class="fa fa-cogs"></i></a>
+                    </h3><br>
                     <h5><strong>Plugin:</strong> {{$widget->sensor->classname}}</h5>
                     <h5><strong>Capteur:</strong> {{$widget->sensor->name}}</h5>
                     <h5><strong>Adresse du noeud:</strong> {{$widget->sensor->node_address}}</h5>
                     <h5><strong>Adresse secondaire:</strong> {{$widget->sensor->sensor_address}}</h5>
+                    @if($ssrelay_config->type=='temporisé')
+                        <h5><strong>Délai tempo:</strong> {{$ssrelay_config->delay}} ms</h5>
+                    @endif
                 </div>
             </div>
         </div>

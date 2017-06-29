@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Sensor;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -21,9 +22,11 @@ class SSRelayEvent implements ShouldBroadcast
      */
 
     public $state=0;
+    public $sensor;
 
-    public function __construct($state)
+    public function __construct(Sensor $sensor, $state)
     {
+        $this->sensor = $sensor;
         $this->state = $state;
     }
 

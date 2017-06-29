@@ -8,6 +8,7 @@ use App\Widget;
 use Illuminate\Http\Request;
 use App\Sensors\SSRelay\SSRelay;
 use App\Sensor;
+use App\Sensors\SSRelay\SSRelayConfig;
 use App\Mqtt\MSMessage;
 use App\Mqtt\MqttSender;
 use App\Message;
@@ -29,27 +30,47 @@ class SSRelayController extends Controller
             ->where('command', '=', '1')
             //->orderBy('created_at', 'desc')
             ->get();
+        $ssrelay_config = SSRelayConfig::where('sensor_id', '=', $sensor->id)->first();
         return view('sensors.ssrelay.configwidget')->with(['widget' => $widget,
-        'messages' => $messages]);
+        'messages' => $messages,
+        'ssrelay_config' => $ssrelay_config]);
     }
 
     public function toggle(Request $request)
     {
         $widget = Widget::findOrFail($request->id);
         $sensor = Sensor::findOrFail($widget->sensor_id);
-        $val='0';
-        if($request->has('state'))
-        {
-            $val='1';
-        }
+
         $message = new MSMessage();
         $message->set($sensor->node_address, $sensor->sensor_address, 'V_STATUS');
-        $message->setMessage($val);
-        //MqttSender::sendMessage($message);
-        $reponse['message'] = "Challenge accepted";
+
+        $relay = SSRelayConfig::where('node');
+
+        $ssrelay_config = SSRelayConfig::where('sensor_id', '=', $sensor->id)->first();
+        if($ssrelay_config->type=="temporisé")
+        {
+            $message->setMessage('1');
+            MqttSender::sendMessage($message);
+            usleep($ssrelay_config->delay * 1000);
+            $message->setMessage('0');
+            MqttSender::sendMessage($message);
+        }
+        else
+        {
+            $val='0';
+            if($request->has('state'))
+            {
+                $val='1';
+            }
+            $message->setMessage($val);
+            MqttSender::sendMessage($message);
+            $event = new SSRelayEvent($sensor, $val);
+            event($event);
+        }
+
+        $reponse['message'] = "Done";
         $reponse['type'] = "success";
-        $event = new SSRelayEvent($val);
-        event($event);
+
         return json_encode($reponse);
     }
 
