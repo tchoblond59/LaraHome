@@ -99,4 +99,34 @@ class SSRelayController extends Controller
         event($event);
         return 'Evennement envoyé SSRelais';
     }
+
+    public function update($id)//Widget id
+    {
+        $widget = Widget::findOrFail($id);
+        $sensor = Sensor::findOrFail($widget->sensor_id);
+        $ssrelay_config = SSRelayConfig::getFromSensor($sensor->id);
+        return view('sensors.ssrelay.update')->with(['widget' => $widget,
+        'sensor' => $sensor,
+        'ssrelay_config' => $ssrelay_config]);
+    }
+    
+    public function upgrade($id, Request $request)
+    {
+        $this->validate($request, ['type' => 'required']);
+        $ssrelay_config = SSRelayConfig::findOrFail($id);
+        $ssrelay_config->type = $request->type;
+        if($request->type == 'temporisé')
+        {
+            if($request->has('delay') && is_numeric($request->delay))
+            {
+                $ssrelay_config->delay = $request->delay;
+            }
+            else
+            {
+                return redirect()->back()->withErrors(['Le champs délai doit être rempli et de type numerique']);
+            }
+        }
+        $ssrelay_config->save();
+        return redirect()->back();
+    }
 }

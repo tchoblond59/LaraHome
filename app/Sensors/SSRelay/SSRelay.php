@@ -12,6 +12,7 @@ namespace App\Sensors\SSRelay;
 use App\Sensor;
 use App\Sensors\SSRelay\SSRelayConfig;
 use App\Message;
+use DB;
 class SSRelay extends Sensor
 {
     public function getWidget(\App\Widget $widget)
@@ -44,5 +45,10 @@ class SSRelay extends Sensor
     public function getWidgetList()
     {
         return [1 => 'Relay NONC'];
+    }
+
+    public function onDelete()
+    {
+        DB::table('ssrelay_config')->where('sensor_id', '=', $this->id)->delete();
     }
 }

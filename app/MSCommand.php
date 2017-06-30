@@ -20,4 +20,9 @@ class MSCommand extends Model
     {
         Artisan::call('mscommand:send', ['id' => $this->id]);
     }
+
+    public function scheduledMSCommands()
+    {
+        return $this->hasMany('App\ScheduledMSCommands', 'mscommands_id');
+    }
 }

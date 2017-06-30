@@ -25,13 +25,19 @@ Route::get('/widget/SSRelay/{id}', 'SSRelayController@configureWidget');
 
 Route::post('/SSRelay/action/create/{id}','SSRelayController@store');
 Route::post('/SSRelay/action/toggle','SSRelayController@toggle');
+Route::get('/SSRelay/update/{id}','SSRelayController@update');
+Route::post('/SSRelay/update/{id}','SSRelayController@upgrade');
+
 
 Route::get('/real-time/test', 'SSRelayController@realTimeTest');
 
-
+Route::get('/sensors', 'SensorController@index');
 Route::get('/sensor/add', 'SensorController@create');
 Route::get('/sensor/mscommands/shortcut/{random}', 'SensorController@triggerShortcut');
 Route::post('/sensor/add', 'SensorController@store');
+Route::get('/sensor/update/{id}', 'SensorController@update');
+Route::post('/sensor/update/{id}', 'SensorController@upgrade');
+Route::post('/sensor/delete/{id}', 'SensorController@delete');
 
 Route::get('/config', 'ConfigController@show');
 Route::post('/config/scheduled_task/create', 'ConfigController@createScheduledTask');
