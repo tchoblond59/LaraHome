@@ -10,11 +10,20 @@
             @if($ssrelay_config->type=="temporisé")
                 <button type="submit" class="btn btn-primary SSRelayTemp">Actionner</button>
             @else
+                <div class="text-center">
+                    @if($state == 0)
+                        <i class="fa fa-lightbulb-o fa-5x"></i>
+                    @else
+                        <i class="fa fa-lightbulb-o fa-5x yellow-bulb"></i>
+                    @endif
+                </div>
+                <div class="text-center">
                 @if($state == 0)
-                    <input type="checkbox" name="state" data-toggle="toggle" data-sensor_id="{{$sensor->id}}" class="SSRelayWidget"> Relay
+                    <input type="checkbox" name="state" data-toggle="toggle" data-sensor_id="{{$sensor->id}}" class="SSRelayWidget">
                 @else
-                    <input type="checkbox" name="state" data-toggle="toggle" data-sensor_id="{{$sensor->id}}" class="SSRelayWidget" checked> Relay
+                    <input type="checkbox" name="state" data-toggle="toggle" data-sensor_id="{{$sensor->id}}" class="SSRelayWidget" checked>
                 @endif
+                </div>
             @endif
         </form>
     </div>

@@ -766,7 +766,13 @@ e.channel('chan-relay').listen('SSRelayEvent', function (e) {
     console.log('SSRelayEvent', e);
     $('input.SSRelayWidget').unbind();
     $('button.SSRelayTemp').closest('form').unbind();
-    if (e.state == 1) $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').bootstrapToggle('on');else $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').bootstrapToggle('off');
+    if (e.state == 1) {
+        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').bootstrapToggle('on');
+        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').closest('form').find('i').addClass('yellow-bulb');
+    } else {
+        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').bootstrapToggle('off');
+        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').closest('form').find('i').removeClass('yellow-bulb');
+    }
     bindSSRelay();
 });
 
@@ -784,6 +790,12 @@ function bindSSRelay() {
 }
 
 function submitSSrelayFormWidget(form) {
+    var is_checked = form.find('input[type=checkbox]').is(':checked');
+    if (is_checked) {
+        form.find('i').addClass('yellow-bulb');
+    } else {
+        form.find('i').removeClass('yellow-bulb');
+    }
     $.ajax({
         url: form.attr('action'),
         type: form.attr('method'),

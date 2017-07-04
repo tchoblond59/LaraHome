@@ -21,13 +21,13 @@ class SSTemp extends Sensor
         $last_message = Message::where('node_address', '=', $sensor->node_address)
             ->where('sensor_address', '=', $sensor->sensor_address)
             ->orderBy('created_at', 'desc')->first();
-        if($last_message!=null)
+        if($last_message==null)
         {
             return view('sensors.sstemp.widget_empty')->with(['widget' => $widget,
                 'last_message' => $last_message]);
         }
         return view('sensors.sstemp.widget')->with(['widget' => $widget,
-            'last_message' => $last_message]);  
+            'last_message' => $last_message]);
     }
 
     public function onDelete()
