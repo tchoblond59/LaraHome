@@ -17,7 +17,7 @@ class MqttSender
     {
         $message->setTopicPrefix("mysensors-in");
         $mqtt = new SamConnection();
-        $mqtt->connect('mqtt', array('SAM_HOST' => '192.168.105.97', 'SAM_PORT' => '1883'));//start initialise the connection
+        $mqtt->connect('mqtt', array('SAM_HOST' => '192.168.105.80', 'SAM_PORT' => '1883'));//start initialise the connection
         $mqtt->send($message->getTopic(), new SamMessage($message->getMessage()));
         $mqtt->disconnect();
     }

@@ -22,6 +22,7 @@ Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
 Route::post('/dashboard/addwidget/{id}', 'DashboardController@addWidget');
 
 Route::get('/widget/SSRelay/{id}', 'SSRelayController@configureWidget');
+Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');
 
 Route::post('/SSRelay/action/create/{id}','SSRelayController@store');
 Route::post('/SSRelay/action/toggle','SSRelayController@toggle');

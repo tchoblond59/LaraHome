@@ -761,6 +761,7 @@ var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     host: window.location.hostname + ':6001'
 });
 
+/****************SSRelay JS Plugin****************/
 e.channel('chan-relay').listen('SSRelayEvent', function (e) {
     console.log('SSRelayEvent', e);
     $('input.SSRelayWidget').unbind();
@@ -794,6 +795,18 @@ function submitSSrelayFormWidget(form) {
         }
     });
 }
+/*************************************************/
+
+/****************SSTemp JS Plugin****************/
+e.channel('chan-temp').listen('SSTempEvent', function (e) {
+    console.log('SSTempEvent', e);
+    if (e.type == "temp") $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').animate({ 'opacity': 0 }, 1000, function () {
+        $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').text(e.value + '°');
+    }).animate({ 'opacity': 1 }, 1000);else if (e.type == "hum") $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').animate({ 'opacity': 0 }, 1000, function () {
+        $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').text(e.value);
+    }).animate({ 'opacity': 1 }, 1000);
+});
+/*************************************************/
 
 $(function () {
     bindSSRelay();
