@@ -92,13 +92,6 @@ class SSRelayController extends Controller
         $command->save();
         return redirect()->back();        
     }
-    
-    public function realTimeTest()
-    {
-        $event = new SSRelayEvent();
-        event($event);
-        return 'Evennement envoyé SSRelais';
-    }
 
     public function update($id)//Widget id
     {

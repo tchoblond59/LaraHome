@@ -29,9 +29,6 @@ Route::post('/SSRelay/action/toggle','SSRelayController@toggle');
 Route::get('/SSRelay/update/{id}','SSRelayController@update');
 Route::post('/SSRelay/update/{id}','SSRelayController@upgrade');
 
-
-Route::get('/real-time/test', 'SSRelayController@realTimeTest');
-
 Route::get('/sensors', 'SensorController@index');
 Route::get('/sensor/add', 'SensorController@create');
 Route::get('/sensor/mscommands/shortcut/{random}', 'SensorController@triggerShortcut');
@@ -43,3 +40,13 @@ Route::post('/sensor/delete/{id}', 'SensorController@delete');
 Route::get('/config', 'ConfigController@show');
 Route::post('/config/scheduled_task/create', 'ConfigController@createScheduledTask');
 Route::post('/config//mscommands/shortcut/create', 'ConfigController@CreateMSCommandShortcut');
+
+Route::get('/scenario', 'ScenarioController@index');
+Route::get('/scenario/update/{id}', 'ScenarioController@edit');
+Route::post('/scenario/create', 'ScenarioController@create');
+Route::post('/scenario/mscommand/add/{id}', 'ScenarioController@addCommand');
+Route::post('/scenario/mscommand/delete/{id}', 'ScenarioController@deleteCommand');
+Route::post('/scenario/delete/{id}', 'ScenarioController@delete');
+Route::post('/scenario/play/{id}', 'ScenarioController@play');
+Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
+Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
