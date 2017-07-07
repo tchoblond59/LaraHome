@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Dashboard;
+use App\Scenario;
+use App\ScenarioWidget;
 use App\Sensor;
 use App\Widget;
 use Illuminate\Http\Request;
@@ -32,10 +34,11 @@ class DashboardController extends Controller
             $widgets[] = $sensor->getWidget($widget);
         }
         $sensors = Sensor::all();
-
+        $scenarios = Scenario::all();
         return view('dashboards.show')->with(['widgets' => $widgets,
         'dashboard' => $dashboard,
-        'sensors' => $sensors]);
+        'sensors' => $sensors,
+        'scenarios' => $scenarios]);
 
     }
 
@@ -60,7 +63,7 @@ class DashboardController extends Controller
     public function addWidget($id, Request $request)
     {
         $this->validate($request, [
-            'sensor' => 'required|exists:sensors,id',
+        'sensor' => 'required|exists:sensors,id',
         'name' => 'required']);
 
         $widget = new Widget();
@@ -69,6 +72,16 @@ class DashboardController extends Controller
         $widget->name = $request->name;
         $widget->save();
         return redirect()->back();
+    }
 
+    public function addScenario($id, Request $request)
+    {
+        $this->validate($request, ['scenario' => 'required|exists:scenarios,id']);
+        $widget = new ScenarioWidget();
+        $widget->scenario_id = $request->scenario;
+        $widget->dashboard_id = $id;
+        $widget->save();
+
+        return redirect()->back();
     }
 }

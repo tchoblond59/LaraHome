@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MSCommand;
 use App\ScenarioMSCommand;
+use App\ScenarioWidget;
 use Illuminate\Http\Request;
 use App\Scenario;
 
@@ -21,7 +22,7 @@ class ScenarioController extends Controller
         $scenario = new Scenario();
         $scenario->name = $request->name;
         $scenario->save();
-        return redirect('/scenario/edit/'.$scenario->id);
+        return redirect('/scenario/update/'.$scenario->id);
     }
 
     public function edit($id)
@@ -57,6 +58,7 @@ class ScenarioController extends Controller
     {
         $scenario = Scenario::findOrFail($id);
         ScenarioMSCommand::where('scenario_id', '=', $id)->delete();
+        ScenarioWidget::where('scenario_id', '=', $id)->delete();
         $scenario->delete();
         return redirect()->back();
     }

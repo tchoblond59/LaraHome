@@ -20,6 +20,7 @@ Route::get('/dashboard/create', 'DashboardController@create');
 Route::post('/dashboard/create', 'DashboardController@store');
 Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
 Route::post('/dashboard/addwidget/{id}', 'DashboardController@addWidget');
+Route::post('/dashboard/addScenario/{id}', 'DashboardController@addScenario');
 
 Route::get('/widget/SSRelay/{id}', 'SSRelayController@configureWidget');
 Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');

@@ -19,11 +19,16 @@
     background-color: #A6C659;
 }
 
+.card-container .card-grey
+{
+    background-color: #8e8e8e;
+}
+
 .card-container .card-blue
 {
     background-color: #2a88bd;
 }
-.card-container .card-title a
+.card-container .card-title a, .card-container .card-title button
 {
     margin-top: -25px;
 }
