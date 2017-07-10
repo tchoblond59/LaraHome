@@ -21,7 +21,7 @@
           rel="stylesheet">
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js" integrity="sha256-wMQrtOX6Wcd+W3fOZ8JG6NGYqoZfAKZ6yH+DHd+yGwg=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </head>

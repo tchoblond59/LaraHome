@@ -820,8 +820,15 @@ e.channel('chan-temp').listen('SSTempEvent', function (e) {
 });
 /*************************************************/
 
+function greyCard() {
+    $.each($('div.card-grey'), function (index) {
+        $(this).css('background-color', randomColor());
+    });
+}
+
 $(function () {
     bindSSRelay();
+    greyCard();
 });
 
 /***/ }),

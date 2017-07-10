@@ -37,6 +37,7 @@
                     @endif
                     <div class="col-md-3">
                         <form method="post" action="{{url('/scenario/play/'.$widget->id)}}">
+                            {{csrf_field()}}
                             <div class="card-container">
                                 <div class="card-icon card-grey"><i class="fa fa-4x fa-play-circle-o text-center"></i></div>
                                 <div class="card-title text-center">

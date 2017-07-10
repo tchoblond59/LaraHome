@@ -85,6 +85,15 @@ e.channel('chan-temp')
     })
 /*************************************************/
 
+function greyCard()
+{
+    $.each($('div.card-grey'), function (index) {
+        $(this).css('background-color', randomColor());
+    })
+}
+
+
 $(function() {
     bindSSRelay();
+    greyCard();
 })
