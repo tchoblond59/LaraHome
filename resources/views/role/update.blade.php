@@ -4,12 +4,34 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Gestion des roles</h1><br>
+                <h1>Gestion du role {{$role->name}}</h1><br>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Permission</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($role->permissions as $permission)
+                        <tr>
+                            <td>{{ucfirst($permission->name)}}</td>
+                            <td>
+                                <form style="display:inline-block" method="post" action="{{url('/role/deletePermission/'.$role->id)}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="permission_id" value="{{$permission->id}}">
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
                 <form class="form-horizontal" method="post" action="{{url('/role/update/'.$role->id)}}">
                     <fieldset>
                         {{csrf_field()}}
                         <!-- Form Name -->
-                        <legend>Modifier un role</legend>
+                        <legend>Modifier le role</legend>
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -30,8 +52,8 @@
                         <div class="col-md-8"><button type="submit" class="btn btn-default pull-right">Editer</button></div>
                     </fieldset>
                 </form>
-
             </div>
+            @include('role.addPermission')
         </div>
     </div>
 @endsection

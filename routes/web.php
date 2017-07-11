@@ -39,7 +39,7 @@ Route::post('/sensor/update/{id}', 'SensorController@upgrade');
 Route::post('/sensor/delete/{id}', 'SensorController@delete');
 
 Route::get('/config', 'ConfigController@show');
-Route::post('/config/scheduled_task/create', 'ConfigController@createScheduledTask');
+Route::post('/config/scheduler_task/create', 'ConfigController@createScheduledTask');
 Route::post('/config//mscommands/shortcut/create', 'ConfigController@CreateMSCommandShortcut');
 
 Route::get('/scenario', 'ScenarioController@index');
@@ -58,6 +58,8 @@ Route::post('/role/store', 'RoleController@store');
 Route::post('/role/delete/{id}', 'RoleController@delete');
 Route::get('/role/edit/{id}', 'RoleController@edit');
 Route::post('/role/update/{id}', 'RoleController@update');
+Route::post('/role/addPermission/{id}', 'RoleController@addPermission');
+Route::post('/role/deletePermission/{id}', 'RoleController@deletePermission');
 
 Route::get('/permission', 'PermissionController@index');
 Route::get('/permission/create', 'PermissionController@create');
@@ -65,3 +67,8 @@ Route::post('/permission/store', 'PermissionController@store');
 Route::post('/permission/delete/{id}', 'PermissionController@delete');
 Route::get('/permission/edit/{id}', 'PermissionController@edit');
 Route::post('/permission/update/{id}', 'PermissionController@update');
+
+Route::get('/user', 'UserController@index');
+Route::get('/user/edit/{id}', 'UserController@edit');
+Route::post('/user/addRole/{id}', 'UserController@addRole');
+Route::post('/user/deleteRole/{id}', 'UserController@deleteRole');

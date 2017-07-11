@@ -30,7 +30,6 @@
                         <div class="col-md-8"><button type="submit" class="btn btn-default pull-right">Editer</button></div>
                     </fieldset>
                 </form>
-
             </div>
         </div>
     </div>
