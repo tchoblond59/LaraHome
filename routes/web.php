@@ -51,3 +51,10 @@ Route::post('/scenario/delete/{id}', 'ScenarioController@delete');
 Route::post('/scenario/play/{id}', 'ScenarioController@play');
 Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
 Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
+
+Route::get('/role', 'RoleController@index');
+Route::get('/role/create', 'RoleController@create');
+Route::post('/role/store', 'RoleController@store');
+Route::post('/role/delete/{id}', 'RoleController@delete');
+Route::get('/role/edit/{id}', 'RoleController@edit');
+Route::post('/role/update/{id}', 'RoleController@update');
