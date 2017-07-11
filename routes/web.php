@@ -58,3 +58,10 @@ Route::post('/role/store', 'RoleController@store');
 Route::post('/role/delete/{id}', 'RoleController@delete');
 Route::get('/role/edit/{id}', 'RoleController@edit');
 Route::post('/role/update/{id}', 'RoleController@update');
+
+Route::get('/permission', 'PermissionController@index');
+Route::get('/permission/create', 'PermissionController@create');
+Route::post('/permission/store', 'PermissionController@store');
+Route::post('/permission/delete/{id}', 'PermissionController@delete');
+Route::get('/permission/edit/{id}', 'PermissionController@edit');
+Route::post('/permission/update/{id}', 'PermissionController@update');
