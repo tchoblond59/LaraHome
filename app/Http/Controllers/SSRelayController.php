@@ -18,7 +18,7 @@ class SSRelayController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['triggerShortcut', 'realTimeTest']);
+        $this->middleware('auth');
     }
     
     public function configureWidget($id)

@@ -10,6 +10,11 @@ use App\Scenario;
 
 class ScenarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['playShortcut']);
+    }
+
     public function index()
     {
         $scenarios = Scenario::all();

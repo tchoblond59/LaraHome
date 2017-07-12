@@ -31,7 +31,7 @@ Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');
 
 Route::post('/SSRelay/action/create/{id}','SSRelayController@store');
 Route::post('/SSRelay/action/toggle','SSRelayController@toggle');
-Route::get('/SSRelay/update/{id}','SSRelayController@update');
+Route::get('/SSRelay/update/{id}','SSRelayController@update')->middleware('role:tech,update sensor');
 Route::post('/SSRelay/update/{id}','SSRelayController@upgrade');
 
 Route::get('/sensors', 'SensorController@index');
@@ -56,7 +56,7 @@ Route::post('/scenario/play/{id}', 'ScenarioController@play');
 Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
 Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 
-Route::middleware(['role:admin'])->group(function () {
+Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::get('/role', 'RoleController@index');
     Route::get('/role/create', 'RoleController@create');
     Route::post('/role/store', 'RoleController@store');
@@ -72,7 +72,8 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/permission/delete/{id}', 'PermissionController@delete');
     Route::get('/permission/edit/{id}', 'PermissionController@edit');
     Route::post('/permission/update/{id}', 'PermissionController@update');
-
+});
+Route::middleware(['role:admin'])->group(function () {
     Route::get('/user', 'UserController@index');
     Route::get('/user/edit/{id}', 'UserController@edit');
     Route::post('/user/addRole/{id}', 'UserController@addRole');

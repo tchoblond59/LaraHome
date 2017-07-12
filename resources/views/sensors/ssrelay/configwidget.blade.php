@@ -23,7 +23,9 @@
             <div class="col-md-6">
                 <div class="row well">
                     <h3>{{$widget->name}} <span class="label label-info">{{ucfirst($ssrelay_config->type)}}</span>
+                        @can('update sensor')
                         <a class="pull-right" href="{{url('/SSRelay/update/'.$widget->id)}}"><i class="fa fa-cogs"></i></a>
+                        @endcan
                     </h3><br>
                     <h5><strong>Plugin:</strong> {{$widget->sensor->classname}}</h5>
                     <h5><strong>Capteur:</strong> {{$widget->sensor->name}}</h5>
