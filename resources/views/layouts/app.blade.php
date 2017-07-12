@@ -49,9 +49,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if (!Auth::guest())
+                            @can('list sensor')
                             <li><a href="{{url('/sensors')}}">Mes capteurs</a></li>
+                            @endcan
                             <li><a href="{{url('/dashboard/create')}}">Ajouter un Tableau de bord</a></li>
+                            @can('create sensor')
                             <li><a href="{{url('/sensor/add')}}">Ajouter un capteur</a></li>
+                            @endcan
                             <li><a href="{{url('/config')}}">Configuration</a></li>
                         @endif
                     </ul>

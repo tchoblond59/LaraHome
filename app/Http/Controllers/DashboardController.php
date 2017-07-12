@@ -27,6 +27,7 @@ class DashboardController extends Controller
     public function show($id)
     {
         $dashboard = Dashboard::findOrFail($id);
+        $this->authorize('show', $dashboard);
         $widgets = [];
         foreach ($dashboard->widgets as $widget)
         {

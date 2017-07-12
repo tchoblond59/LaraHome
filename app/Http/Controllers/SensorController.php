@@ -9,6 +9,7 @@ use App\Widget;
 use Illuminate\Http\Request;
 use App\Sensor;
 use DB;
+use Auth;
 class SensorController extends Controller
 {
     public function __construct()
@@ -17,12 +18,14 @@ class SensorController extends Controller
     }
     public function create()
     {
+        $this->authorize('create', Sensor::class);
         $plugins = Sensor::getSensorsName();
         return view('sensors.add')->with(['plugins' => $plugins]);
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', Sensor::class);
         $this->validate($request, ['name' => 'required',
             'node_address' => 'required',
             'sensor_address' => 'required',
@@ -44,6 +47,7 @@ class SensorController extends Controller
     
     public function index()
     {
+        $this->authorize('index', Sensor::class);
         $sensors = Sensor::all();
         return view('sensors.index')->with(['sensors' => $sensors]);
     }
@@ -51,6 +55,7 @@ class SensorController extends Controller
     public function update($id)
     {
         $sensor= Sensor::findOrFail($id);
+        $this->authorize('update', $sensor);
         return view('sensors.update')->with(['sensor' => $sensor]);
     }
 
@@ -60,6 +65,9 @@ class SensorController extends Controller
             'node_address' => 'required|numeric',
             'sensor_address' => 'required|numeric']);
         $sensor = Sensor::findOrFail($id);
+
+        $this->authorize('update', $sensor);
+
         $sensor->name = $request->name;
         $sensor->node_address = $request->node_address;
         $sensor->sensor_address = $request->sensor_address;
@@ -70,6 +78,7 @@ class SensorController extends Controller
     public function delete($id)
     {
         $sensor = Sensor::findOrFail($id);
+        $this->authorize('delete', $sensor);
         $ms_commands = MSCommand::where('sensor_id', '=', $id)->get();
         foreach ($ms_commands as $command)
         {

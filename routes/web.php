@@ -13,6 +13,10 @@
 
 Auth::routes();
 
+Route::get('/error/{code}', function($code){
+    return view('errors.'.$code);
+});
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/dashboard/show/{id}', 'DashboardController@show')->name('dashboard');
@@ -52,23 +56,25 @@ Route::post('/scenario/play/{id}', 'ScenarioController@play');
 Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
 Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 
-Route::get('/role', 'RoleController@index');
-Route::get('/role/create', 'RoleController@create');
-Route::post('/role/store', 'RoleController@store');
-Route::post('/role/delete/{id}', 'RoleController@delete');
-Route::get('/role/edit/{id}', 'RoleController@edit');
-Route::post('/role/update/{id}', 'RoleController@update');
-Route::post('/role/addPermission/{id}', 'RoleController@addPermission');
-Route::post('/role/deletePermission/{id}', 'RoleController@deletePermission');
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('/role', 'RoleController@index');
+    Route::get('/role/create', 'RoleController@create');
+    Route::post('/role/store', 'RoleController@store');
+    Route::post('/role/delete/{id}', 'RoleController@delete');
+    Route::get('/role/edit/{id}', 'RoleController@edit');
+    Route::post('/role/update/{id}', 'RoleController@update');
+    Route::post('/role/addPermission/{id}', 'RoleController@addPermission');
+    Route::post('/role/deletePermission/{id}', 'RoleController@deletePermission');
 
-Route::get('/permission', 'PermissionController@index');
-Route::get('/permission/create', 'PermissionController@create');
-Route::post('/permission/store', 'PermissionController@store');
-Route::post('/permission/delete/{id}', 'PermissionController@delete');
-Route::get('/permission/edit/{id}', 'PermissionController@edit');
-Route::post('/permission/update/{id}', 'PermissionController@update');
+    Route::get('/permission', 'PermissionController@index');
+    Route::get('/permission/create', 'PermissionController@create');
+    Route::post('/permission/store', 'PermissionController@store');
+    Route::post('/permission/delete/{id}', 'PermissionController@delete');
+    Route::get('/permission/edit/{id}', 'PermissionController@edit');
+    Route::post('/permission/update/{id}', 'PermissionController@update');
 
-Route::get('/user', 'UserController@index');
-Route::get('/user/edit/{id}', 'UserController@edit');
-Route::post('/user/addRole/{id}', 'UserController@addRole');
-Route::post('/user/deleteRole/{id}', 'UserController@deleteRole');
+    Route::get('/user', 'UserController@index');
+    Route::get('/user/edit/{id}', 'UserController@edit');
+    Route::post('/user/addRole/{id}', 'UserController@addRole');
+    Route::post('/user/deleteRole/{id}', 'UserController@deleteRole');
+});
