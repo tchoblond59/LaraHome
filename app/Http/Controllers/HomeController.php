@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MSMessageEvent;
+use App\Mqtt\MSMessage;
 use App\SensorFactory;
 use Illuminate\Http\Request;
 use App\Sensor;
@@ -40,6 +42,22 @@ class HomeController extends Controller
             $widgets[] = $sensor->getWidget($widget);
         }
         return view('dashboards.show')->with(['widgets' => $widgets]);
+    }
+
+    public function api($api_id)
+    {
+        if($api_id==env('EVENT_API_ID'))
+        {
+            $message = new MSMessage();
+            $message->set(69,1,'V_TEMP');
+            $message->setMessage("21.2");
+            event(new MSMessageEvent($message));
+            return 'ok';
+        }
+        else
+        {
+            return view('errors.403');
+        }
 
     }
 }

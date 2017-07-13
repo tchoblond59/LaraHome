@@ -8,7 +8,6 @@
 
 namespace App\Mqtt;
 
-
 class MSMessage
 {
     protected $message_types=array(
@@ -161,6 +160,46 @@ class MSMessage
 
     protected $child_id;
 
+    /**
+     * @return mixed
+     */
+    public function getNodeId()
+    {
+        return $this->node_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildId()
+    {
+        return $this->child_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommand()
+    {
+        return $this->command;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAck()
+    {
+        return $this->ack;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
     protected $command;
 
     protected $ack;
@@ -247,6 +286,5 @@ class MSMessage
 
         return $this;
     }
-
 
 }
