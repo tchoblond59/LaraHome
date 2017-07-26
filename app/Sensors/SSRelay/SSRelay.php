@@ -13,6 +13,7 @@ use App\Sensor;
 use App\Sensors\SSRelay\SSRelayConfig;
 use App\Message;
 use DB;
+
 class SSRelay extends Sensor
 {
     public function getWidget(\App\Widget $widget)

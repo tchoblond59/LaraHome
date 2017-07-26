@@ -28,6 +28,12 @@
 {
     background-color: #2a88bd;
 }
+
+.card-container .card-power
+{
+    background-color: #e2dd32;
+}
+
 .card-container .card-title a, .card-container .card-title button
 {
     margin-top: -25px;

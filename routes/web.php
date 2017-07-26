@@ -29,11 +29,14 @@ Route::post('/dashboard/addScenario/{id}', 'DashboardController@addScenario');
 
 Route::get('/widget/SSRelay/{id}', 'SSRelayController@configureWidget');
 Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');
+Route::get('/widget/SSCompteur/{id}', 'SSCompteurController@configureWidget');
 
 Route::post('/SSRelay/action/create/{id}','SSRelayController@store');
 Route::post('/SSRelay/action/toggle','SSRelayController@toggle');
 Route::get('/SSRelay/update/{id}','SSRelayController@update')->middleware('role:tech,update sensor');
 Route::post('/SSRelay/update/{id}','SSRelayController@upgrade');
+
+Route::get('/SSCompteur/{id}', 'SSCompteurController@show');
 
 Route::get('/sensors', 'SensorController@index');
 Route::get('/sensor/add', 'SensorController@create');

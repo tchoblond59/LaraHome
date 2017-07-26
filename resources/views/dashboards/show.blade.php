@@ -22,7 +22,7 @@
         <div class="col-md-3">
             {!!$widget!!}
         </div>
-        @if($loop->iteration%3==0 || $loop->last)
+        @if($loop->iteration%4==0 || $loop->last)
             </div>
         @endif
     @endforeach
