@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\MSMessageEvent' => [
             'App\Listeners\MSMessageEventListener',
+            'App\Listeners\SSCompteurEventListener',
             ],
     ];
 

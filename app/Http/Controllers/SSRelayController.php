@@ -41,7 +41,7 @@ class SSRelayController extends Controller
         $widget = Widget::findOrFail($request->id);
         $sensor = Sensor::findOrFail($widget->sensor_id);
 
-        $message = new MSMessage();
+        $message = new MSMessage($sensor->id);
         $message->set($sensor->node_address, $sensor->sensor_address, 'V_STATUS');
 
         $relay = SSRelayConfig::where('node');

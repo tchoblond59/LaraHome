@@ -18,7 +18,8 @@ Route::get('/error/{code}', function($code){
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/api/{api_id}', 'HomeController@api');
+//Route::get('/api/{api_id}', 'HomeController@api');
+Route::post('/api/{api_id}', 'HomeController@api');
 
 Route::get('/dashboard/show/{id}', 'DashboardController@show')->name('dashboard');
 Route::get('/dashboard/create', 'DashboardController@create');

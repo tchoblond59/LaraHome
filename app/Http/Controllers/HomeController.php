@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\MSMessageEvent;
+use App\Message;
 use App\Mqtt\MSMessage;
 use App\SensorFactory;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('api');
     }
 
     /**
@@ -44,20 +45,29 @@ class HomeController extends Controller
         return view('dashboards.show')->with(['widgets' => $widgets]);
     }
 
-    public function api($api_id)
+    public function api($api_id, Request $request)
     {
+        $reponse = ["status" => "nok"];
         if($api_id==env('EVENT_API_ID'))
         {
-            $message = new MSMessage();
-            $message->set(69,1,'V_TEMP');
-            $message->setMessage("21.2");
-            event(new MSMessageEvent($message));
-            return 'ok';
+            if($request->has('api_key') && $request->api_key=env('EVENT_API_KEY')) {
+                $message = new Message();
+                $message->node_address = $request->node_id;
+                $message->sensor_address = $request->child_sensor_id;
+                $message->command = $request->command;
+                $message->ack = $request->ack;
+                $message->type = $request->type;
+                $message->value = $request->payload;
+                $message->save();
+                $reponse = ["status" => "ok"];
+
+                //Dispatch the event to the subscribers
+                $MsMessage = new MSMessage($message->id);
+                event(new MSMessageEvent($MsMessage));
+
+            }
         }
-        else
-        {
-            return view('errors.403');
-        }
+        return json_encode($reponse);
 
     }
 }

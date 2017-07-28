@@ -8,6 +8,8 @@
 
 namespace App\Mqtt;
 
+use App\Message;
+
 class MSMessage
 {
     protected $message_types=array(
@@ -160,6 +162,32 @@ class MSMessage
 
     protected $child_id;
 
+    protected $command;
+
+    protected $ack;
+
+    protected $type;
+
+    protected $topic;
+
+    protected $message;
+
+    protected $topic_prefix;
+
+    public function __construct($id)
+    {
+        $mess = Message::find($id);
+        if($mess != null)
+        {
+            $this->node_id = $mess->node_address;
+            $this->child_id = $mess->sensor_address;
+            $this->command = $mess->command;
+            $this->ack = $mess->ack;
+            $this->type = $mess->type;
+            $this->message = $mess->value;
+        }
+    }
+
     /**
      * @return mixed
      */
@@ -199,18 +227,6 @@ class MSMessage
     {
         return $this->type;
     }
-
-    protected $command;
-
-    protected $ack;
-
-    protected $type;
-
-    protected $topic;
-
-    protected $message;
-
-    protected $topic_prefix;
 
     public function getMessage()
     {
