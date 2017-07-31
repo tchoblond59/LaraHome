@@ -16,6 +16,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\MSMessageEvent' => [
             'App\Listeners\MSMessageEventListener',
             'App\Listeners\SSCompteurEventListener',
+            'App\Listeners\SSRelayEventListener',
             ],
     ];
 

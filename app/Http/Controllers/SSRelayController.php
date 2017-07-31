@@ -28,7 +28,6 @@ class SSRelayController extends Controller
         $messages = Message::where('node_address', '=', '69')
             ->where('sensor_address', '=', '1')
             ->where('command', '=', '1')
-            //->orderBy('created_at', 'desc')
             ->get();
         $ssrelay_config = SSRelayConfig::where('sensor_id', '=', $sensor->id)->first();
         return view('sensors.ssrelay.configwidget')->with(['widget' => $widget,
@@ -42,9 +41,7 @@ class SSRelayController extends Controller
         $sensor = Sensor::findOrFail($widget->sensor_id);
 
         $message = new MSMessage($sensor->id);
-        $message->set($sensor->node_address, $sensor->sensor_address, 'V_STATUS');
-
-        $relay = SSRelayConfig::where('node');
+        $message->set($sensor->node_address, $sensor->sensor_address, 'V_STATUS',1);
 
         $ssrelay_config = SSRelayConfig::where('sensor_id', '=', $sensor->id)->first();
         if($ssrelay_config->type=="temporisé")
@@ -86,7 +83,7 @@ class SSRelayController extends Controller
         $command->sensor_id = $sensor->id;
         $command->name = $request->name;
         $command->command = 1; //SET
-        $command->ack = 0; //No Ack
+        $command->ack = 1; //No Ack
         $command->type = 2;//V_STATUS Binary
         $command->payload = $request->command;
         $command->save();

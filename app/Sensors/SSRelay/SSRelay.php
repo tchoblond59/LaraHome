@@ -23,6 +23,7 @@ class SSRelay extends Sensor
         $last_message = Message::where('node_address', '=', $sensor->node_address)
             ->where('sensor_address', '=', $sensor->sensor_address)
             ->orderBy('created_at', 'desc')->first();
+
         if($last_message!=null)
         {
             $state = $last_message->value;

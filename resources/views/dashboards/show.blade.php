@@ -16,7 +16,7 @@
             @endif
         </div>
     @foreach($widgets as $widget)
-        @if($loop->first)
+        @if($loop->first || $loop->iteration%4==0)
             <div class="row">
         @endif
         <div class="col-md-3">

@@ -19,7 +19,7 @@
                 </div>
                 <div class="text-center">
                 @if($state == 0)
-                    <input type="checkbox" name="state" data-toggle="toggle" data-sensor_id="{{$sensor->id}}" class="SSRelayWidget">
+                    <input type="checkbox" name="state" data-toggle="toggle"  data-sensor_id="{{$sensor->id}}" class="SSRelayWidget">
                 @else
                     <input type="checkbox" name="state" data-toggle="toggle" data-sensor_id="{{$sensor->id}}" class="SSRelayWidget" checked>
                 @endif

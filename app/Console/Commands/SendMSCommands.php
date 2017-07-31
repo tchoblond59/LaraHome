@@ -42,7 +42,7 @@ class SendMSCommands extends Command
         $command_id = $this->argument('id');
         $ms_command = MSCommand::findOrFail($command_id);
         
-        $message = new Mqtt\MSMessage();
+        $message = new Mqtt\MSMessage(0);
 
         $message->fromScratch($ms_command->sensor->node_address,
             $ms_command->sensor->sensor_address,
