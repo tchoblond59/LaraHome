@@ -20,6 +20,7 @@ class SSTemp extends Sensor
         $sensor = Sensor::findOrFail($widget->sensor_id);
         $last_message = Message::where('node_address', '=', $sensor->node_address)
             ->where('sensor_address', '=', $sensor->sensor_address)
+            ->where('command', '=', 1)
             ->orderBy('created_at', 'desc')->first();
         if($last_message==null)
         {

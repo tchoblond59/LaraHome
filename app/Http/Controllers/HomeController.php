@@ -58,12 +58,13 @@ class HomeController extends Controller
                 $message->ack = $request->ack;
                 $message->type = $request->type;
                 $message->value = $request->payload;
-                $message->save();
-                $reponse = ["status" => "ok"];
 
-                //Dispatch the event to the subscribers
-                $MsMessage = new MSMessage($message->id);
-                event(new MSMessageEvent($MsMessage));
+                    $message->save();
+                    $reponse = ["status" => "ok"];
+
+                    //Dispatch the event to the subscribers
+                    $MsMessage = new MSMessage($message->id);
+                    event(new MSMessageEvent($MsMessage));
 
             }
         }

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Sensor;
+use App\SensorFactory;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -14,9 +16,9 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\MSMessageEvent' => [
-            'App\Listeners\MSMessageEventListener',
             'App\Listeners\SSCompteurEventListener',
             'App\Listeners\SSRelayEventListener',
+            'App\Listeners\SSTempEventListener',
             ],
     ];
 
@@ -28,7 +30,5 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        //
     }
 }

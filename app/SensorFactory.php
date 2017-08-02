@@ -25,7 +25,6 @@ class SensorFactory
         $factory = [];
         foreach ($sensors as $sensor)
         {
-            var_dump($sensor->classname);
             $factory[] = SensorFactory::create($sensor->classname);
         }
         return $factory;

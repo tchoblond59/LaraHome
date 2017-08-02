@@ -22,5 +22,4 @@ class Sensor extends Model
         }
         return $base_dirs;
     }
-
 }

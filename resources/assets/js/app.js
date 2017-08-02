@@ -71,7 +71,7 @@ function submitSSrelayFormWidget(form)
 /*************************************************/
 
 /****************SSTemp JS Plugin****************/
-e.channel('chan-temp')
+e.channel('SSTemp-channel')
     .listen('SSTempEvent', function (e) {
         console.log('SSTempEvent', e)
         if(e.type=="temp")
