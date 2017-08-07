@@ -34,17 +34,6 @@ class HomeController extends Controller
         return view('home')->with(['dashboards' => $dashboards]);
     }
 
-    public function dashboard($id)
-    {
-        $dashboard = Dashboard::findOrFail($id);
-        foreach ($dashboard->widgets as $widget)
-        {
-            $sensor = SensorFactory::create($widget->sensor->classname);
-            $widgets[] = $sensor->getWidget($widget);
-        }
-        return view('dashboards.show')->with(['widgets' => $widgets]);
-    }
-
     public function api($api_id, Request $request)
     {
         $reponse = ["status" => "nok"];
@@ -65,10 +54,8 @@ class HomeController extends Controller
                     //Dispatch the event to the subscribers
                     $MsMessage = new MSMessage($message->id);
                     event(new MSMessageEvent($MsMessage));
-
             }
         }
         return json_encode($reponse);
-
     }
 }

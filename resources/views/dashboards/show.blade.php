@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('css')
+    @foreach($css as $cs)
+        <link href="{{ asset($cs) }}" rel="stylesheet">
+    @endforeach
+@endsection
+
+@section('js')
+    @foreach($js as $j)
+        <script src="{{ asset($j) }}"></script>
+    @endforeach
+@endsection
 @section('content')
     <div class="container">
         <div class="row">

@@ -10,24 +10,20 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class SSTempEvent implements ShouldBroadcast
+class PluginsEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+
+    public $result;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-
-    public $value;
-    public $sensor;
-    public $type;
-    public function __construct($sensor, $type, $value)
+    public function __construct($result)
     {
-        $this->sensor = $sensor;
-        $this->type = $type;
-        $this->value = $value;
+        $this->result = $result;
     }
 
     /**
@@ -37,6 +33,6 @@ class SSTempEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('SSTemp-channel');
+        return new Channel('plugin-channel');
     }
 }

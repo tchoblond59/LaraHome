@@ -14,12 +14,17 @@ class Sensor extends Model
 
     public static function getSensorsName()
     {
-        $dirs = File::directories(__DIR__.'/Sensors');
-        $base_dirs;
-        foreach ($dirs as $dir)
-        {
-            $base_dirs[] = basename($dir);
-        }
-        return $base_dirs;
+        $plugins = Plugin::where('enable', '=', '1')->get();
+        return $plugins;
+    }
+
+    public function getJs()
+    {
+        return [];
+    }
+
+    public function getCss()
+    {
+        return [];
     }
 }

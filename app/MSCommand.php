@@ -23,6 +23,6 @@ class MSCommand extends Model
 
     public function scheduledMSCommands()
     {
-        return $this->hasMany('App\ScheduledMSCommands', 'mscommands_id');
+        return $this->hasMany('App\ScheduledMSCommands', 'mscommand_id');
     }
 }

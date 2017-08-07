@@ -28,16 +28,8 @@ Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
 Route::post('/dashboard/addwidget/{id}', 'DashboardController@addWidget');
 Route::post('/dashboard/addScenario/{id}', 'DashboardController@addScenario');
 
-Route::get('/widget/SSRelay/{id}', 'SSRelayController@configureWidget');
+
 Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');
-Route::get('/widget/SSCompteur/{id}', 'SSCompteurController@configureWidget');
-
-Route::post('/SSRelay/action/create/{id}','SSRelayController@store');
-Route::post('/SSRelay/action/toggle','SSRelayController@toggle');
-Route::get('/SSRelay/update/{id}','SSRelayController@update')->middleware('role:tech,update sensor');
-Route::post('/SSRelay/update/{id}','SSRelayController@upgrade');
-
-Route::get('/SSCompteur/{id}', 'SSCompteurController@show');
 
 Route::get('/sensors', 'SensorController@index');
 Route::get('/sensor/add', 'SensorController@create');
@@ -60,6 +52,9 @@ Route::post('/scenario/delete/{id}', 'ScenarioController@delete');
 Route::post('/scenario/play/{id}', 'ScenarioController@play');
 Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
 Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
+
+Route::get('/plugins', 'PluginController@index');
+Route::post('/plugins/install', 'PluginController@install');
 
 Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::get('/role', 'RoleController@index');

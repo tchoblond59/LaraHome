@@ -13,7 +13,7 @@ class SensorFactory
 {
     public static function create($sensorstring, $id=0)
     {
-        $classname = 'App\\Sensors\\'.$sensorstring.'\\'.$sensorstring;
+        $classname = $sensorstring;
         $sensor = new $classname();
         if($id!=0)
             $sensor->find($id);

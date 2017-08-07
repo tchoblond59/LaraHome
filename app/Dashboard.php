@@ -17,6 +17,6 @@ class Dashboard extends Model
 
     public function scenarios()
     {
-        return $this->belongsToMany('App\Scenario', 'scenario_widget', 'dashboard_id','scenario_id');
+        return $this->belongsToMany('App\Scenario', 'scenario_widgets', 'dashboard_id','scenario_id');
     }
 }

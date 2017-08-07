@@ -183,6 +183,9 @@ return [
 	*Laravel IDE Helper
 	*/
 	Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+    /*Dev plugin*/
+    //Tchoblond59\SSCompteur\SSCompteurServiceProvider::class,
+    //Tchoblond59\SSRelay\SSRelayServiceProvider::class,
     ],
 
     /*

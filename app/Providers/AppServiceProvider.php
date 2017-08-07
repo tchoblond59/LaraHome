@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Plugin;
+use App\Widget;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 }

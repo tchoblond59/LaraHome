@@ -12,7 +12,7 @@ class Scenario extends Model
     
     public function mscommands()
     {
-        return $this->belongsToMany('App\MSCommand', 'scenarios_mscommands', 'scenario_id','mscommands_id');
+        return $this->belongsToMany('App\MSCommand', 'scenarios_mscommands', 'scenario_id','mscommand_id');
     }
 
     public function scenarioMSCommand()

@@ -19,6 +19,9 @@ class DashboardController extends Controller
      *
      * @return void
      */
+    private $css_links = [];
+    private $js_links = [];
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -29,17 +32,27 @@ class DashboardController extends Controller
         $dashboard = Dashboard::findOrFail($id);
         $this->authorize('show', $dashboard);
         $widgets = [];
+        //Loading view with assets
         foreach ($dashboard->widgets as $widget)
         {
             $sensor = SensorFactory::create($widget->sensor->classname);
             $widgets[] = $sensor->getWidget($widget);
+            foreach ($sensor->getCss() as $cs) {
+                $this->addCss($cs);
+            }
+            foreach ($sensor->getJs() as $js) {
+                $this->addJs($js);
+            }
         }
+
         $sensors = Sensor::all();
         $scenarios = Scenario::all();
         return view('dashboards.show')->with(['widgets' => $widgets,
         'dashboard' => $dashboard,
         'sensors' => $sensors,
-        'scenarios' => $scenarios]);
+        'scenarios' => $scenarios,
+        'css' => $this->css_links,
+        'js' => $this->js_links]);
 
     }
 
@@ -55,7 +68,6 @@ class DashboardController extends Controller
         ]);
         $dashboard = new Dashboard();
         $dashboard->name = $request->name;
-        $dashboard->position = 0;
         $dashboard->user_id = Auth::id();
         $dashboard->save();
         return redirect('/dashboard/show/'.$dashboard->id);
@@ -84,5 +96,21 @@ class DashboardController extends Controller
         $widget->save();
 
         return redirect()->back();
+    }
+
+    private function addCss($css)
+    {
+        if(!in_array($css, $this->css_links) && !empty($css))
+        {
+            $this->css_links[] = $css;
+        }
+    }
+
+    private function addJs($js)
+    {
+        if(!in_array($js, $this->js_links) && !empty($js))
+        {
+            $this->js_links[] = $js;
+        }
     }
 }

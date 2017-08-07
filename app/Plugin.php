@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ScenarioWidget extends Model
+class Plugin extends Model
 {
-    protected $table = 'scenario_widgets';
+    protected $table = 'plugins';
 
     public $timestamps = false;
 }

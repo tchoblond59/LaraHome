@@ -15,7 +15,7 @@ class ConfigController extends Controller
 
     public function show()
     {
-        $commands = ScheduledMSCommands::join('mscommands', 'scheduled_mscommands.mscommands_id', '=', 'mscommands.id')
+        $commands = ScheduledMSCommands::join('mscommands', 'scheduled_mscommands.mscommand_id', '=', 'mscommands.id')
             ->join('sensors', 'mscommands.sensor_id', '=', 'sensors.id')
             ->select('sensors.name as sensor_name', 'mscommands.name', 'scheduled_mscommands.cron')->get();
         //dd($commands);
@@ -31,7 +31,7 @@ class ConfigController extends Controller
         $command = MSCommand::findOrFail($request->action);
         $scheduled = new ScheduledMSCommands();
         $scheduled->cron = $request->cron;
-        $scheduled->mscommands_id = $request->action;
+        $scheduled->mscommand_id = $request->action;
         $scheduled->save();
         return redirect()->back();
     }

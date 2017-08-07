@@ -756,57 +756,21 @@ __webpack_require__(27);
 
 
 
-var e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
+window.e = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     broadcaster: 'socket.io',
     host: window.location.hostname + ':6001'
 });
 
-/****************SSRelay JS Plugin****************/
-e.channel('chan-relay').listen('SSRelayEvent', function (e) {
-    console.log('SSRelayEvent', e);
-    $('input.SSRelayWidget').unbind();
-    $('button.SSRelayTemp').closest('form').unbind();
-    if (e.state == 1) {
-        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').bootstrapToggle('on');
-        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').closest('form').find('i').addClass('yellow-bulb');
-    } else {
-        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').bootstrapToggle('off');
-        $('input.SSRelayWidget[data-sensor_id=' + e.sensor.id + ']').closest('form').find('i').removeClass('yellow-bulb');
-    }
-    bindSSRelay();
+/****************Plugin****************/
+e.channel('plugin-channel').listen('PluginsEvent', function (e) {
+    console.log('PluginsEvent', e);
 });
+/*************************************************/
 
-function bindSSRelay() {
-    $('input.SSRelayWidget').change(function () {
-        var form = $(this).closest("form");
-        submitSSrelayFormWidget(form);
-    });
-
-    var tempform = $('button.SSRelayTemp').closest('form');
-    tempform.submit(function (e) {
-        e.preventDefault();
-        submitSSrelayFormWidget(tempform);
-    });
-}
-
-function submitSSrelayFormWidget(form) {
-    var is_checked = form.find('input[type=checkbox]').is(':checked');
-    if (is_checked) {
-        form.find('i').addClass('yellow-bulb');
-    } else {
-        form.find('i').removeClass('yellow-bulb');
-    }
-    $.ajax({
-        url: form.attr('action'),
-        type: form.attr('method'),
-        data: form.serialize(),
-        dataType: 'json', // JSON
-        success: function success(reponse) {
-            console.log(reponse);
-            $.notify(reponse);
-        }
-    });
-}
+/****************SSTemp JS Plugin****************/
+e.channel('msmessage-out').listen('MSMessageEvent', function (e) {
+    console.log('MSMessageEvent', e);
+});
 /*************************************************/
 
 /****************SSTemp JS Plugin****************/
@@ -839,8 +803,22 @@ function greyCard() {
 }
 
 $(function () {
-    bindSSRelay();
     greyCard();
+    $('.plugin-submit').click(function (e) {
+        bootbox.alert("Installation <br>");
+        $('#myModal').modal('show');
+        var form = $(this).closest('form');
+        console.log(form);
+        $.ajax({
+            type: "POST",
+            url: form.attr('action'),
+            data: form.serialize(), // serializes the form's elements.
+            success: function success(data) {
+                //console.log(data); // show response from the php script.
+                $('.bootbox-body').html($.parseHTML(data));
+            }
+        });
+    });
 });
 
 /***/ }),

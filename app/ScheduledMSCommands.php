@@ -12,6 +12,6 @@ class ScheduledMSCommands extends Model
 
     public function mscommand()
     {
-        return $this->belongsTo('App\MSCommand', 'mscommands_id');
+        return $this->belongsTo('App\MSCommand', 'mscommand_id');
     }
 }

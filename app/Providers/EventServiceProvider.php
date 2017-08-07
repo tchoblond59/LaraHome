@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Sensor;
+use App\Plugin;
 use App\SensorFactory;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,11 +15,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\MSMessageEvent' => [
-            'App\Listeners\SSCompteurEventListener',
-            'App\Listeners\SSRelayEventListener',
-            'App\Listeners\SSTempEventListener',
-            ],
+        'App\Events\PluginsEvent' => [
+            'App\Listeners\PluginsListenerEvent'
+        ]
     ];
 
     /**
@@ -29,6 +27,14 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(\Schema::hasTable('plugins'))
+        {
+            foreach (Plugin::where('enable', '=', '1')->get() as $plugin) {
+                $this->app->register($plugin->provider);
+            }
+        }
+
         parent::boot();
+
     }
 }

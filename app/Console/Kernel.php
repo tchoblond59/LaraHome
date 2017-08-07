@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\SendMSCommands::class
+        Commands\SendMSCommands::class,
+        Commands\PostPackageInstall::class
     ];
 
     /**
@@ -25,9 +26,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        foreach (ScheduledMSCommands::all() as $command) {
-            $schedule->command(SendMSCommands::class, [$command->mscommand->id])->cron($command->cron);
+        if(\Schema::hasTable('scheduled_mscommands') && \Schema::hasTable('scenario_mscommands') && \Schema::hasTable('plugins'))
+        {
+            foreach (ScheduledMSCommands::all() as $command) {
+                $schedule->command(SendMSCommands::class, [$command->mscommand->id])->cron($command->cron);
+            }
         }
+
     }
 
     /**
