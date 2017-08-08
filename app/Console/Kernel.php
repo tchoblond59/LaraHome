@@ -27,13 +27,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        /*if(\Schema::hasTable('scheduled_mscommands') && \Schema::hasTable('scenario_mscommands') && \Schema::hasTable('plugins'))
+        if(\Schema::hasTable('scheduled_mscommands') && \Schema::hasTable('scenario_mscommands') && \Schema::hasTable('plugins'))
         {
             foreach (ScheduledMSCommands::all() as $command) {
                 $schedule->command(SendMSCommands::class, [$command->mscommand->id])->cron($command->cron);
             }
-        }*/
-
+        }
     }
 
     /**
