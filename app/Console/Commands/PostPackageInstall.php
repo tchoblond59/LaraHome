@@ -45,6 +45,6 @@ class PostPackageInstall extends Command
         exec('composer dump-autoload -o');
         $this->info('Composer dump-autoload -o completed');
         \Artisan::call('migrate');
-        \Artisan::call('vendor:publish --tag=larahome-package');
+        \Artisan::call('vendor:publish',['--tag' => 'larahome-package']);
     }
 }
