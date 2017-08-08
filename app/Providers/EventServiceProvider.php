@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use App\Plugin;
-use App\SensorFactory;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
