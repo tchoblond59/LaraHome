@@ -7,6 +7,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.4",
+        "barryvdh/laravel-debugbar": "^2.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "luzhuqun/laravel-mqtt-publish": "*",
@@ -46,6 +47,15 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "pre-package-install": [
+            "composer dump-autoload -o"
+        ],
+        "post-package-install": [
+            "php artisan package_event:install",
+            "composer dump-autoload -o",
+            "php artisan migrate",
+            "php artisan vendor:publish --tag=larahome-package"
         ]
     },
     "config": {

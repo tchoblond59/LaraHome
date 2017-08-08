@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use App\Events\MSMessageEvent;
 use App\Message;
 use App\Mqtt\MSMessage;
-use App\SensorFactory;
 use Illuminate\Http\Request;
-use App\Sensor;
 use App\Dashboard;
-use App\Widget;
 use Auth;
 class HomeController extends Controller
 {

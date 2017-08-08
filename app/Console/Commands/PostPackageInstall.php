@@ -19,7 +19,7 @@ class PostPackageInstall extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Post install event package';
 
     /**
      * Create a new command instance.
@@ -38,7 +38,7 @@ class PostPackageInstall extends Command
      */
     public function handle()
     {
-        $plugin = Plugin::find(4);
+        $plugin = Plugin::orderBy('updated_at', 'DESC')->first();
         $plugin->enable = 1;
         $plugin->save();
     }

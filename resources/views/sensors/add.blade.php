@@ -24,7 +24,7 @@
                 <div class="col-md-4">
                     <select id="classname" name="classname" class="form-control">
                         @foreach($plugins as $plugin)
-                        <option value="{{$plugin->provider.$plugin->name}}">{{$plugin->name}}</option>
+                        <option value="{{$plugin->widget_class_name}}">{{$plugin->name}}</option>
                         @endforeach
                     </select>
                 </div>

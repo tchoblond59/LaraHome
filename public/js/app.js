@@ -767,32 +767,9 @@ e.channel('plugin-channel').listen('PluginsEvent', function (e) {
 });
 /*************************************************/
 
-/****************SSTemp JS Plugin****************/
+/********************************/
 e.channel('msmessage-out').listen('MSMessageEvent', function (e) {
     console.log('MSMessageEvent', e);
-});
-/*************************************************/
-
-/****************SSTemp JS Plugin****************/
-e.channel('SSTemp-channel').listen('SSTempEvent', function (e) {
-    console.log('SSTempEvent', e);
-    if (e.type == "temp") $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').animate({ 'opacity': 0 }, 1000, function () {
-        $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').text(e.value + '°');
-    }).animate({ 'opacity': 1 }, 1000);else if (e.type == "hum") $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').animate({ 'opacity': 0 }, 1000, function () {
-        $('.card-figures .figures[data-sensorid=' + e.sensor.id + ']').text(e.value);
-    }).animate({ 'opacity': 1 }, 1000);
-});
-/*************************************************/
-
-/****************SSCompteur JS Plugin****************/
-e.channel('sscompteur-channel').listen('SSCompteurEvent', function (e) {
-    console.log('SSCompteurEvent', e);
-    $('span.figures[data-sscompteur=kwh][data-sensorid=' + e.sensor.id + ']').animate({ 'opacity': 0 }, 500, function () {
-        $('span.figures[data-sscompteur=kwh][data-sensorid=' + e.sensor.id + ']').text(e.conso[0].kwh);
-    }).animate({ 'opacity': 1 }, 500);
-    $('span.figures[data-sscompteur=prix][data-sensorid=' + e.sensor.id + ']').animate({ 'opacity': 0 }, 500, function () {
-        $('span.figures[data-sscompteur=prix][data-sensorid=' + e.sensor.id + ']').text(e.conso[0].prix);
-    }).animate({ 'opacity': 1 }, 500);
 });
 /*************************************************/
 

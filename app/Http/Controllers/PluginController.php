@@ -19,6 +19,7 @@ class PluginController extends Controller
     public function install(Request $request)
     {
         $plugin = Plugin::findOrFail($request->id);
+        $plugin->touch();
         //$plugin->enable = 1;
         //$plugin->save();
 
