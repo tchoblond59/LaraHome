@@ -50,12 +50,6 @@
         ],
         "pre-package-install": [
             "composer dump-autoload -o"
-        ],
-        "post-package-install": [
-            "php artisan package_event:install",
-            "composer dump-autoload -o",
-            "php artisan migrate",
-            "php artisan vendor:publish --tag=larahome-package"
         ]
     },
     "config": {
