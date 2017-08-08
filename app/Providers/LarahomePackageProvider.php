@@ -14,7 +14,12 @@ class LarahomePackageProvider extends ServiceProvider
     public function boot()
     {
         $schema =$this->app->make('Schema');
-        $schema::hasTable('plugins');
+        if($schema::hasTable('plugins'))
+        {
+            foreach (\App\Plugin::where('enable', '=', '1')->get() as $plugin) {
+                $this->app->register($plugin->provider);
+            }
+        }
     }
 
     /**
