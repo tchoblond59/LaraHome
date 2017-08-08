@@ -48,11 +48,12 @@ class LarahomeCommand extends Command
 
         $role = Role::create(['name' => 'admin']);
 
-        $perms = ['list sensor', 'create sensor', 'update sensor'];
+        $perms = ['list sensor', 'create sensor', 'update sensor', 'create user'];
         foreach ($perms as $perm)
         {
             Permission::create(['name' => $perm]);
             $role->givePermissionTo($perm);
         }
+        $user->assignRole('admin');
     }
 }
