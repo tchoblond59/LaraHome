@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\SendMSCommands::class,
-        Commands\PostPackageInstall::class
+        Commands\PostPackageInstall::class,
+        Commands\LarahomeCommand::class
     ];
 
     /**
