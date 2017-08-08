@@ -41,5 +41,10 @@ class PostPackageInstall extends Command
         $plugin = Plugin::orderBy('updated_at', 'DESC')->first();
         $plugin->enable = 1;
         $plugin->save();
+        $this->info('Activating plugin '.$plugin->name);
+        exec('composer dump-autoload -o');
+        $this->info('Composer dump-autoload -o completed');
+        \Artisan::call('migrate');
+        \Artisan::call('vendor:publish --tag=larahome-package');
     }
 }

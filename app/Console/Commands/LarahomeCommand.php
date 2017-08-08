@@ -40,20 +40,28 @@ class LarahomeCommand extends Command
      */
     public function handle()
     {
-        $user = new User();
-        $user->name = "admin";
-        $user->email = "admin@admin.com";
-        $user->password = \Hash::make("admin");
-        $user->save();
-
-        $role = Role::create(['name' => 'admin']);
-
-        $perms = ['list sensor', 'create sensor', 'update sensor', 'create user'];
-        foreach ($perms as $perm)
+        if(User::all()->count()==0)
         {
-            Permission::create(['name' => $perm]);
-            $role->givePermissionTo($perm);
+            $user = new User();
+            $user->name = "admin";
+            $user->email = "admin@admin.com";
+            $user->password = \Hash::make("admin");
+            $user->save();
+
+            $role = Role::create(['name' => 'admin']);
+
+            $perms = ['list sensor', 'create sensor', 'update sensor', 'create user'];
+            foreach ($perms as $perm)
+            {
+                Permission::create(['name' => $perm]);
+                $role->givePermissionTo($perm);
+            }
+            $user->assignRole('admin');
+            $this->info('User admin@admin.com with admin password created');
         }
-        $user->assignRole('admin');
+        else
+        {
+            $this->info('Nothing to do, there is already a user in database');
+        }
     }
 }
