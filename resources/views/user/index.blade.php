@@ -15,20 +15,35 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @role('admin')
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{ucfirst($user->name)}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>
+                                        <a href="{{url('/user/edit/'.$user->id)}}" class="btn btn-default">Editer</a>
+                                        <form style="display:inline-block" method="post" action="{{url('/user/delete/'.$user->id)}}">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="role_id" value="{{$user->id}}">
+                                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td>{{ucfirst($user->name)}}</td>
-                                <td>{{$user->email}}</td>
+                                <td>{{ucfirst(Auth::user()->name)}}</td>
+                                <td>{{Auth::user()->email}}</td>
                                 <td>
-                                    <a href="{{url('/user/edit/'.$user->id)}}" class="btn btn-default">Editer</a>
-                                    <form style="display:inline-block" method="post" action="{{url('/user/delete/'.$user->id)}}">
+                                    <a href="{{url('/user/edit/'.Auth::user()->id)}}" class="btn btn-default">Editer</a>
+                                    <form style="display:inline-block" method="post" action="{{url('/user/delete/'.Auth::user()->id)}}">
                                         {{csrf_field()}}
-                                        <input type="hidden" name="role_id" value="{{$user->id}}">
+                                        <input type="hidden" name="role_id" value="{{Auth::user()->id}}">
                                         <button type="submit" class="btn btn-danger">Supprimer</button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endrole
                         </tbody>
                     </table>
                 </div>

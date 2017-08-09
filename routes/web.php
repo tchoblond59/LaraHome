@@ -73,9 +73,12 @@ Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::get('/permission/edit/{id}', 'PermissionController@edit');
     Route::post('/permission/update/{id}', 'PermissionController@update');
 });
-Route::middleware(['role:admin'])->group(function () {
+Route::middleware([])->group(function () {
     Route::get('/user', 'UserController@index');
+    Route::get('/user/create', 'UserController@create');
+    Route::post('/user/create', 'UserController@store');
     Route::get('/user/edit/{id}', 'UserController@edit');
+    Route::post('/user/delete/{id}', 'UserController@delete');
     Route::post('/user/addRole/{id}', 'UserController@addRole');
     Route::post('/user/deleteRole/{id}', 'UserController@deleteRole');
 });

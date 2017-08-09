@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\User;
 use App\Dashboard;
+use App\Policies\UserPolicy;
 use App\Sensor;
 use App\Policies\DashboardPolicy;
 use App\Policies\SensorPolicy;
@@ -20,6 +22,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
         Dashboard::class => DashboardPolicy::class,
         Sensor::class => SensorPolicy::class,
+        User::class => UserPolicy::class
+
     ];
 
     /**

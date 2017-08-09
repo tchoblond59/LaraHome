@@ -84,6 +84,11 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{url('/user')}}">Paramètres utilisateur</a></li>
+                                    @hasrole('admin')
+                                    <li><a href="{{url('/role')}}">Roles utilisateur</a></li>
+                                    <li><a href="{{url('/permission')}}">Permissions utilisateur</a></li>
+                                    @endrole
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
