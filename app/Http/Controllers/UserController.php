@@ -48,6 +48,21 @@ class UserController extends Controller
         'roles' => $roles]);
     }
 
+    public function update($id, Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->has('password') && !empty($request->password))
+            $user->password = \Hash::make($request->password);
+        $user->save();
+        return redirect()->back();
+    }
+
     public function delete($id, Request $request)
     {
         $user = User::findOrFail($id);

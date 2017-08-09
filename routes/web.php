@@ -78,6 +78,7 @@ Route::middleware([])->group(function () {
     Route::get('/user/create', 'UserController@create');
     Route::post('/user/create', 'UserController@store');
     Route::get('/user/edit/{id}', 'UserController@edit');
+    Route::post('/user/update/{id}', 'UserController@update');
     Route::post('/user/delete/{id}', 'UserController@delete');
     Route::post('/user/addRole/{id}', 'UserController@addRole');
     Route::post('/user/deleteRole/{id}', 'UserController@deleteRole');
