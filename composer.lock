@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d29e4f13c110aa074ae666855968b9e1",
-    "content-hash": "beb8c71c6768d8f0bbfd4d50201853b8",
+    "hash": "be4cbe0502044aa0d275272cff70df99",
+    "content-hash": "7bb3ce9a2fff6e6c1a6c981414abcb8b",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2059,6 +2059,39 @@
             "time": "2017-08-03 09:34:20"
         },
         {
+            "name": "tchoblond59/ssrelay",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tchoblond59/SSRelay.git",
+                "reference": "c5e4a4a5a8374159684ab4dc9753ca84c1b85ddf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tchoblond59/SSRelay/zipball/c5e4a4a5a8374159684ab4dc9753ca84c1b85ddf",
+                "reference": "c5e4a4a5a8374159684ab4dc9753ca84c1b85ddf",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tchoblond59\\SSRelay\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Julien Lamandin",
+                    "email": "julien.lamandin@gmail.com"
+                }
+            ],
+            "description": "Relay Plugin for LaraHome",
+            "time": "2017-08-08 14:27:42"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.0",
             "source": {
@@ -3817,7 +3850,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "tchoblond59/ssrelay": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
