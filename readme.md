@@ -5,6 +5,17 @@ The main goal is to built my own controller for my new house so i can easily cus
 
 ![LaraHome Dashboard](https://github.com/tchoblond59/LaraHome/raw/master/screenshots/dashboard_screen.png)
 
+## How does it work
+
+![LaraHome WorkFlow](https://github.com/tchoblond59/LaraHome/raw/master/screenshots/WorkFlow.png)
+
+The mysensors node send their payload to the MySensors MQTT Gateway. The gateway publish the payload to the MQTT Broker
+on the mysensors-out topic. The M2L (MQTT To Larahome) service had subscribe to the topic and send the payload with a post request
+to LaraHome which store it into the database and dispatch the event to the plugin and the final UI to make it real time.
+
+On the other side when LaraHome has to send something to the node it simply send a message to the broker on the mysensors-in topic.
+The gateway will handle it and dipatch to the nodes.
+
 ## Pre Requisite
 
 You need to have a MySensors MQTT gateway running. I use a raspberry to do this. MySensors provide a good tutorial [here](https://www.mysensors.org/build/raspberry)
