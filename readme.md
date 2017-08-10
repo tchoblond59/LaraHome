@@ -161,7 +161,9 @@ and add the translation in the lang directory in `ressources/lang/en/messages.ph
 
 
 [Laravel Documentation](https://laravel.com/docs/5.4/packages)
+
 [Tutorial i use to do it](http://laraveldaily.com/how-to-create-a-laravel-5-package-in-10-easy-steps/)
+
 [A plugin who works](https://github.com/tchoblond59/SSRelay)
 
 
