@@ -134,8 +134,25 @@ Here's my vhost conf
 
 ```
 
+## Features
+
+For the moment you can create scenarios and schedule them using the Laravel cron scheduler.
+LaraHome can react to MySensors incomming message and do some stuff.
+You can define permissions of each user.
+You can create many dashboard with different widgets.
+
 ## Dev
 
-For the moment the plugins are *hardcoded*. They are not **yet** encapsulate in a laravel package.
+Documentation is not finished yet but if you want to make a plugin you can already look some ressources.
+The only thing you have to do is a Laravel Package.
+
+[Laravel Documentation](https://laravel.com/docs/5.4/packages)
+[Tutorial i use to do it](http://laraveldaily.com/how-to-create-a-laravel-5-package-in-10-easy-steps/)
+[A plugin who works](https://github.com/tchoblond59/SSRelay)
+
+
+
+
+
 
 **This is still under heavy development**
