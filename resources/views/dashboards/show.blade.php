@@ -14,7 +14,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>Tableau de bord <a data-toggle="modal" data-target="#addWidgetModal" href="#addWidgetModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a></h2>
+            <h2>{{__('dashboard.dashboard')}}<a data-toggle="modal" data-target="#addWidgetModal" href="#addWidgetModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a></h2>
             <hr>
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -39,7 +39,7 @@
     @endforeach
         <div class="row">
             <div class="col-md-12">
-                <h4>Scénario <a data-toggle="modal" data-target="#addScenarioModal" href="#addScenarioModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a></h4><hr>
+                <h4>{{__('dashboard.scenarios')}} <a data-toggle="modal" data-target="#addScenarioModal" href="#addScenarioModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a></h4><hr>
             </div>
         </div>
         @foreach($dashboard->scenarios as $widget)
@@ -70,7 +70,7 @@
                     <form class="form-horizontal" method="post" action="{{url('/dashboard/addwidget/'.$dashboard->id)}}">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Nouveau widget</h4>
+                        <h4 class="modal-title">{{__('dashboard.new_widget')}}</h4>
                     </div>
                     <div class="modal-body">
                         {{csrf_field()}}
@@ -89,18 +89,18 @@
 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Nom</label>
+                                    <label class="col-md-4 control-label" for="name">{{__('common.name')}}</label>
                                     <div class="col-md-4">
-                                        <input id="name" name="name" type="text" placeholder="Mon widget" class="form-control input-md" required="">
-                                        <span class="help-block">Entrer le nom de votre widget</span>
+                                        <input id="name" name="name" type="text" placeholder="{{__('dashboard.my_widget')}}" class="form-control input-md" required="">
+                                        <span class="help-block">{{__('dashboard.my_widget_help')}}</span>
                                     </div>
                                 </div>
                             </fieldset>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('common.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('common.add')}}</button>
                     </div>
                 </div><!-- /.modal-content -->
                 </form>
@@ -113,14 +113,14 @@
                     <form class="form-horizontal" method="post" action="{{url('/dashboard/addScenario/'.$dashboard->id)}}">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Nouveau scénario</h4>
+                            <h4 class="modal-title">{{__('dashboard.new_scenario')}}</h4>
                         </div>
                         <div class="modal-body">
                             {{csrf_field()}}
                             <fieldset>
                                 <!-- Select Basic -->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="scenario">Scénario</label>
+                                    <label class="col-md-4 control-label" for="scenario">{{__('dashboard.scenario')}}</label>
                                     <div class="col-md-4">
                                         <select id="scenario" name="scenario" class="form-control">
                                             @foreach($scenarios as $scenario)
@@ -134,8 +134,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{{__('common.close')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('common.add')}}</button>
                         </div>
                 </div><!-- /.modal-content -->
                 </form>

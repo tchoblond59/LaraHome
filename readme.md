@@ -149,6 +149,17 @@ You can create many dashboard with different widgets.
 Documentation is not finished yet but if you want to make a plugin you can already look some ressources.
 The only thing you have to do is a Laravel Package.
 
+### Translation
+
+You can help me to translate LaraHome. Translation can be found in `ressources/lang/`.
+So to translate in french you have to copy the en directory to fr and change the translation.
+Then go to `config/app.php` and change the `locale` to fr. 
+
+If the translation hasn't be done yet: Find the view in `ressources/views` and replace the hardcoded text with `{{ __('messages.welcome') }}`
+and add the translation in the lang directory in `ressources/lang/en/messages.php`.
+[More information here](https://laravel.com/docs/5.4/localization)
+
+
 [Laravel Documentation](https://laravel.com/docs/5.4/packages)
 [Tutorial i use to do it](http://laraveldaily.com/how-to-create-a-laravel-5-package-in-10-easy-steps/)
 [A plugin who works](https://github.com/tchoblond59/SSRelay)

@@ -10,9 +10,9 @@
                         <div class="panel-heading">{{$dashboard->name}}</div>
                         <div class="panel-body">
                             <ul>
-                                <li>Nombre de widgets: {{$dashboard->widgets->count()}}</li>
+                                <li>{{__('dashboard.nb_widgets')}}: {{$dashboard->widgets->count()}}</li>
                             </ul>
-                            <a href="{{url('/dashboard/show/'.$dashboard->id)}}" class="btn btn-default pull-right"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrer</a>
+                            <a href="{{url('/dashboard/show/'.$dashboard->id)}}" class="btn btn-default pull-right"><i class="fa fa-sign-in" aria-hidden="true"></i> {{__('dashboard.go')}}</a>
                         </div>
                     </div>
                 </div>

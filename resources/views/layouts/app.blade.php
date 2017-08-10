@@ -61,13 +61,13 @@
                     <ul class="nav navbar-nav">
                         @if (!Auth::guest())
                             @can('list sensor')
-                            <li><a href="{{url('/sensors')}}">Mes capteurs</a></li>
+                            <li><a href="{{url('/sensors')}}">{{__('menu.my_sensors')}}</a></li>
                             @endcan
-                            <li><a href="{{url('/dashboard/create')}}">Ajouter un Tableau de bord</a></li>
+                            <li><a href="{{url('/dashboard/create')}}">{{__('menu.add_dashboard')}}</a></li>
                             @can('create sensor')
-                            <li><a href="{{url('/sensor/add')}}">Ajouter un capteur</a></li>
+                            <li><a href="{{url('/sensor/add')}}">{{__('menu.add_sensor')}}</a></li>
                             @endcan
-                            <li><a href="{{url('/config')}}">Configuration</a></li>
+                            <li><a href="{{url('/config')}}">{{__('menu.config')}}</a></li>
                         @endif
                     </ul>
 
@@ -84,11 +84,11 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{url('/user')}}">Paramètres utilisateur</a></li>
+                                    <li><a href="{{url('/user')}}">{{__('menu.user_settings')}}</a></li>
                                     @hasrole('admin')
-                                    <li><a href="{{url('/role')}}">Roles utilisateur</a></li>
-                                    <li><a href="{{url('/permission')}}">Permissions utilisateur</a></li>
-                                    <li><a href="{{url('/plugins')}}">Plugins</a></li>
+                                    <li><a href="{{url('/role')}}">{{__('menu.user_roles')}}</a></li>
+                                    <li><a href="{{url('/permission')}}">{{__('menu.user_permissions')}}</a></li>
+                                    <li><a href="{{url('/plugins')}}">{{__('common.plugins')}}</a></li>
                                     @endrole
                                     <li>
                                         <a href="{{ route('logout') }}"

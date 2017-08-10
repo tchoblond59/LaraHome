@@ -4,14 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Mes capteurs</h1><hr>
+                <h1></h1><hr>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Capteur</th>
-                        <th>Plugin</th>
-                        <th>Adresse du noeud</th>
-                        <th>Adresse du capteur</th>
+                        <th>{{__('common.sensor')}}</th>
+                        <th>{{__('common.plugin')}}</th>
+                        <th>{{__('sensor.node_address')}}</th>
+                        <th>{{__('sensor.sensor_address')}}</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -22,10 +22,10 @@
                             <td>{{$sensor->classname}}</td>
                             <td>{{$sensor->node_address}}</td>
                             <td>{{$sensor->sensor_address}}</td>
-                            <td><a href="{{url('/sensor/update/'.$sensor->id)}}" class="btn btn-default btn-sm">Configurer</a>
+                            <td><a href="{{url('/sensor/update/'.$sensor->id)}}" class="btn btn-default btn-sm">{{__('common.configure')}}</a>
                                 <form style="display:inline-block" method="post" action="{{url('/sensor/delete/'.$sensor->id)}}">
                                     {{csrf_field()}}
-                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">{{__('common.delete')}}</button>
                                 </form>
                             </td>
                         </tr>
