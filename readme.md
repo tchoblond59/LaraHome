@@ -89,6 +89,9 @@ version 1.3.0
 
 Server ready!
 ```
+
+Finally you have to run M2L (MQTT To LaraHome). [link](https://github.com/tchoblond59/M2L)
+
 At this point everything should be ok.
 
 ### Bonus
