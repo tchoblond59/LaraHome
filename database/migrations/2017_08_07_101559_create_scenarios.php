@@ -16,7 +16,7 @@ class CreateScenarios extends Migration
         Schema::create('scenarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('url');
+            $table->string('url')->nullable();
         });
     }
 

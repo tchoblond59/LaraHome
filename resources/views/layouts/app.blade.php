@@ -88,6 +88,7 @@
                                     @hasrole('admin')
                                     <li><a href="{{url('/role')}}">Roles utilisateur</a></li>
                                     <li><a href="{{url('/permission')}}">Permissions utilisateur</a></li>
+                                    <li><a href="{{url('/plugins')}}">Plugins</a></li>
                                     @endrole
                                     <li>
                                         <a href="{{ route('logout') }}"

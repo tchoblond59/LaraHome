@@ -27,13 +27,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*if(\Schema::hasTable('plugins'))
-        {
-            foreach (Plugin::where('enable', '=', '1')->get() as $plugin) {
-                $this->app->register($plugin->provider);
-            }
-        }*/
-
         parent::boot();
 
     }
