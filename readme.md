@@ -3,6 +3,8 @@
 LaraHome is a Web Controller for [MySensors](https://www.mysensors.org/) system. It is based on Laravel
 The main goal is to built my own controller for my new house so i can easily customize it.
 
+![LaraHome Dashboard](https://github.com/tchoblond59/LaraHome/raw/master/screenshots/dashboard_screen.png)
+
 ## Pre Requisite
 
 You need to have a MySensors MQTT gateway running. I use a raspberry to do this. MySensors provide a good tutorial [here](https://www.mysensors.org/build/raspberry)
