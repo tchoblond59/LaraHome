@@ -44,7 +44,7 @@ class ScenarioController extends Controller
         Scenario::findOrFail($id);
         $sc_command = new ScenarioMSCommand();
         $sc_command->scenario_id = $id;
-        $sc_command->mscommands_id = $request->mscommand;
+        $sc_command->mscommand_id = $request->mscommand;
         $sc_command->save();
         return redirect()->back();
     }
@@ -53,7 +53,7 @@ class ScenarioController extends Controller
     {
         $this->validate($request, ['mscommand' => 'required']);
         Scenario::findOrFail($id);
-        $sc_command = ScenarioMSCommand::where('scenario_id', '=', $id)->where('mscommands_id', '=', $request->mscommand)->first();
+        $sc_command = ScenarioMSCommand::where('scenario_id', '=', $id)->where('mscommand_id', '=', $request->mscommand)->first();
         if($sc_command!=null)
             $sc_command->delete();
         return redirect()->back();
