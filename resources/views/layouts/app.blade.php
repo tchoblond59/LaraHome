@@ -25,7 +25,7 @@
             {{--crossorigin="anonymous"></script>--}}
     <!-- Latest compiled and minified JavaScript -->
     {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>--}}
-    <script src="http://localhost:6001/socket.io/socket.io.js"></script>
+    <script src="{{url('/')}}:6001/socket.io/socket.io.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
