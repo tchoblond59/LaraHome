@@ -21,7 +21,7 @@ class Mscommands extends Migration
             $table->integer('ack')->unsigned();
             $table->integer('type')->unsigned();
             $table->string('payload');
-            $table->string('url');
+            $table->string('url')->nullable();
 
             $table->foreign('sensor_id')->references('id')->on('sensors');
         });

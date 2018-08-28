@@ -73,6 +73,10 @@ Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::post('/permission/delete/{id}', 'PermissionController@delete');
     Route::get('/permission/edit/{id}', 'PermissionController@edit');
     Route::post('/permission/update/{id}', 'PermissionController@update');
+
+    Route::get('/plugins', 'PluginController@index');
+    Route::get('/plugins/update', 'PluginController@update');
+    Route::post('/plugins/install', 'PluginController@install');
 });
 Route::middleware([])->group(function () {
     Route::get('/user', 'UserController@index');
