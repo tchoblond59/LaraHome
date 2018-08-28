@@ -53,10 +53,6 @@ Route::post('/scenario/play/{id}', 'ScenarioController@play');
 Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
 Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 
-Route::get('/plugins', 'PluginController@index');
-Route::get('/plugins/update', 'PluginController@update');
-Route::post('/plugins/install', 'PluginController@install');
-
 Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::get('/role', 'RoleController@index');
     Route::get('/role/create', 'RoleController@create');
