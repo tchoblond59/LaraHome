@@ -50,5 +50,8 @@ class SendMSCommands extends Command
             $ms_command->type);
         $message->setMessage($ms_command->payload);
         Mqtt\MqttSender::sendMessage($message);
+
+        \Log::useFiles(storage_path('/logs/mscommand.log'), 'info');
+        \Log::info('Command send to sensor: '.$ms_command->sensor->name);
     }
 }
