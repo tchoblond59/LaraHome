@@ -192,6 +192,8 @@
         padding: 5%;
         width: 90%;
     }
+
     .pricing-table .pricing-option:nth-child(even) {
         margin: 30px 0 !important;
     }
+}
