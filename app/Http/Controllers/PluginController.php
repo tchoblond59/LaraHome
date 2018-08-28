@@ -16,6 +16,32 @@ class PluginController extends Controller
         return view('plugins.index')->with(['plugins' => $plugins]);
     }
 
+    public function update()
+    {
+        $plugins = json_decode(file_get_contents('http://julien.groupemaurizi.com/larahome-package'), true);//
+        $nb_packages_discover = 0;
+        foreach ($plugins as $plugin)
+        {
+            if(!Plugin::where('composer_name', $plugin['composer_name'])->exists())//New Plugin
+            {
+                Plugin::create([
+                    'name' => $plugin['name'],
+                    'description' => $plugin['description'],
+                    'composer_name' => $plugin['composer_name'],
+                    'widget_class_name' => $plugin['widget_class_name'],
+                    'provider' => $plugin['provider'],
+                    'url' => $plugin['url'],
+                    'name' => $plugin['name'],
+                    'enable' => 0,
+                ]);
+                $nb_packages_discover++;
+            }
+        }
+        return view('plugins.update')->with([
+            'nb_packages_discover' => $nb_packages_discover,
+        ]);
+    }
+
     public function install(Request $request)
     {
         $plugin = Plugin::findOrFail($request->id);
