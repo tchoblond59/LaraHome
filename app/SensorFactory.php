@@ -16,7 +16,7 @@ class SensorFactory
         $classname = $sensorstring;
         $sensor = new $classname();
         if($id!=0)
-            $sensor->find($id);
+            $sensor = $sensor->find($id);
         return $sensor;
     }
 
