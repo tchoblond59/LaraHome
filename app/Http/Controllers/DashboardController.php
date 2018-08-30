@@ -35,7 +35,7 @@ class DashboardController extends Controller
         //Loading view with assets
         foreach ($dashboard->widgets as $widget)
         {
-            $sensor = SensorFactory::create($widget->sensor->classname);
+            $sensor = SensorFactory::create($widget->sensor->classname, $widget->sensor->id);
             $widgets[] = $sensor->getWidget($widget);
             foreach ($sensor->getCss() as $cs) {
                 $this->addCss($cs);
