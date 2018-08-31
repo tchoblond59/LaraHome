@@ -26,7 +26,23 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a href="{{$plugin->url}}" class="btn btn-primary">En savoir plus</a>
+                                        <form method="post" action="{{url('/plugins/enable')}}" id="form_enable_{{$plugin->id}}">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="plugin" value="{{$plugin->id}}">
+                                        </form>
+                                        <form method="post" action="{{url('/plugins/disable')}}" id="form_disable_{{$plugin->id}}">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="plugin" value="{{$plugin->id}}">
+                                        </form>
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            @if($plugin->enable)
+                                                <button type="submit" class="btn btn-danger" form="form_disable_{{$plugin->id}}">Desactiver</button>
+                                            @else
+                                                <button type="submit" class="btn btn-success" form="form_enable_{{$plugin->id}}">Activer</button>
+                                            @endif
+
+                                            <a href="{{$plugin->url}}" class="btn btn-primary">En savoir plus</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

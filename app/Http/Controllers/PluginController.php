@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\PluginsEvent;
 use App\Plugin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Process\Process;
 
@@ -61,5 +62,30 @@ class PluginController extends Controller
             }
         });
         return 'ok';
+    }
+
+    public function enable(Request $request)
+    {
+        $this->validate($request, [
+            'plugin' => 'required|exists:plugins,id',
+        ]);
+        $plugin = Plugin::findOrFail($request->plugin);
+        $plugin->enable = 1;
+        $plugin->save();
+        Artisan::call('package_event:install');
+        return redirect()->back();
+    }
+
+    public function disable(Request $request)
+    {
+        $this->validate($request, [
+            'plugin' => 'required|exists:plugins,id',
+        ]);
+        $plugin = Plugin::findOrFail($request->plugin);
+        $plugin->enable = 0;
+        $plugin->save();
+        $sensor = SensorFactory::create($plugin->widget_class_name);
+        $sensor->onDisable();
+        return redirect()->back();
     }
 }

@@ -27,4 +27,14 @@ class Sensor extends Model
     {
         return [];
     }
+
+    public function onEnable()
+    {
+
+    }
+
+    public function onDisable()
+    {
+
+    }
 }

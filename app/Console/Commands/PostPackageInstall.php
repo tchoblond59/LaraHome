@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\SensorFactory;
 use Illuminate\Console\Command;
 use App\Plugin;
 
@@ -39,12 +40,14 @@ class PostPackageInstall extends Command
     public function handle()
     {
         $plugin = Plugin::orderBy('updated_at', 'DESC')->first();
-        $plugin->enable = 1;
-        $plugin->save();
+        //$plugin->enable = 1;
+        //$plugin->save();
         $this->info('Activating plugin '.$plugin->name);
-        exec('composer dump-autoload -o');
-        $this->info('Composer dump-autoload -o completed');
+        //exec('composer dump-autoload -o');
+        //$this->info('Composer dump-autoload -o completed');
         \Artisan::call('migrate');
         \Artisan::call('vendor:publish',['--tag' => 'larahome-package']);
+        $sensor = SensorFactory::create($plugin->widget_class_name);
+        $sensor->onEnable();
     }
 }
