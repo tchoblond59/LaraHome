@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -184,7 +184,7 @@ return [
 	*/
 	Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     /*Dev plugin*/
-    Tchoblond59\LaraLight\LaraLightServiceProvider::class,
+    //Tchoblond59\LaraLight\LaraLightServiceProvider::class,
     Barryvdh\Debugbar\ServiceProvider::class,
     //Tchoblond59\SSRelay\SSRelayServiceProvider::class,
     ],

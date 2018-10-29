@@ -13,8 +13,11 @@
         "luzhuqun/laravel-mqtt-publish": "*@dev",
         "predis/predis": "^1.1",
         "spatie/laravel-permission": "^2.2",
+        "tchoblond59/laralight": "dev-master",
         "tchoblond59/sscompteur": "dev-master",
+        "tchoblond59/ssmotionsensor": "dev-master",
         "tchoblond59/ssrelay": "dev-master",
+        "tchoblond59/ssrollershutter": "dev-master",
         "tchoblond59/sstemp": "dev-master",
         "xzaero/netatmo-api": "dev-master"
     },
@@ -30,8 +33,7 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "Tchoblond59\\LaraLight\\": "packages/tchoblond59/laralight/src/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
