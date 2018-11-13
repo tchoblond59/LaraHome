@@ -26,7 +26,9 @@ Route::get('/dashboard/create', 'DashboardController@create');
 Route::post('/dashboard/create', 'DashboardController@store');
 Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
 Route::post('/dashboard/addwidget/{id}', 'DashboardController@addWidget');
+Route::post('/dashboard/deletewidget/{id}', 'DashboardController@deleteWidget');
 Route::post('/dashboard/addScenario/{id}', 'DashboardController@addScenario');
+Route::post('/dashboard/deleteScenario/{id}', 'DashboardController@deleteScenario');
 
 
 Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');

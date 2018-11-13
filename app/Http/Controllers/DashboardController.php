@@ -87,14 +87,65 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
+    public function deleteWidget($id, Request $request)
+    {
+        $this->validate($request, [
+            'widget' => 'required|exists:widgets,id']);
+        //dd($request->toArray());
+        //dd(Auth::id());
+
+        $widget= Widget::find($request->widget);
+        $dashboard = $widget->dashboard;
+        if ($dashboard->user_id==Auth::id())
+        {
+            Widget::destroy($request->widget);
+        }
+        else
+        {
+            return redirect()->back()->withErrors(["Error: you have no rights to delete this widget"]);
+        }
+        return redirect()->back();
+    }
+
     public function addScenario($id, Request $request)
     {
         $this->validate($request, ['scenario' => 'required|exists:scenarios,id']);
         $widget = new ScenarioWidget();
         $widget->scenario_id = $request->scenario;
         $widget->dashboard_id = $id;
-        $widget->save();
 
+
+        $nb_scenario_widget = ScenarioWidget::where('scenario_id', $request->scenario)
+            ->where('dashboard_id', $id)
+            ->count();
+
+        if($nb_scenario_widget>=1)
+        {
+            return redirect()->back()->withErrors(["Error: Scenario already exists in dashboard"]);
+        }
+        else
+        {
+            $widget->save();
+            return redirect()->back();
+        }
+    }
+    public function deleteScenario($id, Request $request)
+    {
+        $this->validate($request, [
+            'scenario' => 'required|exists:scenario_widgets,id']);
+        //dd($request->toArray());
+        //dd(Auth::id());
+
+        $scenario= ScenarioWidget::find($request->scenario);
+        $dashboard = $scenario->dashboard;
+        if ($dashboard->user_id==Auth::id())
+        {
+            ScenarioWidget::destroy($request->scenario);
+        }
+        else
+        {
+            return redirect()->back()->withErrors(["Error: you have no rights to delete this scenario"]);
+        }
         return redirect()->back();
     }
 

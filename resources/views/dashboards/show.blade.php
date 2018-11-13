@@ -14,7 +14,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>{{__('dashboard.dashboard')}}<a data-toggle="modal" data-target="#addWidgetModal" href="#addWidgetModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a></h2>
+            <h2>{{__('dashboard.dashboard')}}<a data-toggle="modal" data-target="#addWidgetModal" href="#addWidgetModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#deleteWidgetModal" href="#deleteWidgetModal"><i class="fa fa-minus-square-o pull-right" style="color: red" aria-hidden="true"></i></a></h2>
             <hr>
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -42,9 +42,11 @@
     @endforeach
         <div class="row">
             <div class="col-md-12">
-                <h4>{{__('dashboard.scenarios')}} <a data-toggle="modal" data-target="#addScenarioModal" href="#addScenarioModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a></h4><hr>
+                <h4>{{__('dashboard.scenarios')}} <a data-toggle="modal" data-target="#addScenarioModal" href="#addScenarioModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#deleteScenarioModal" href="#deleteScenarioModal"><i class="fa fa-minus-square-o pull-right" style="color: red" aria-hidden="true"></i></a></h4><hr>
             </div>
         </div>
+
+
         @foreach($dashboard->scenarios as $widget)
             @if($loop->first)
                 <div class="row">
@@ -71,10 +73,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form class="form-horizontal" method="post" action="{{url('/dashboard/addwidget/'.$dashboard->id)}}">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">{{__('dashboard.new_widget')}}</h4>
-                    </div>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{__('dashboard.new_widget')}}</h4>
+                        </div>
                     <div class="modal-body">
                         {{csrf_field()}}
                             <fieldset>
@@ -105,10 +107,47 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">{{__('common.close')}}</button>
                         <button type="submit" class="btn btn-primary">{{__('common.add')}}</button>
                     </div>
+                    </form>
                 </div><!-- /.modal-content -->
-                </form>
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
+                <div id="deleteWidgetModal" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form class="form-horizontal" method="post" action="{{url('/dashboard/deletewidget/'.$dashboard->id)}}">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">{{__('dashboard.delete_widget')}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{csrf_field()}}
+                                    <fieldset>
+                                        <!-- Select Basic -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="sensor">Sensor</label>
+                                            <div class="col-md-4">
+                                                <select name="widget" class="form-control">
+                                                    @foreach($dashboard->widgets as $widget)
+                                                        <option value="{{$widget->id}}">{{$widget->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <span class="help-block">{{__('dashboard.my_widget_help2')}}</span>
+                                            </div>
+                                        </div>
+
+
+                                    </fieldset>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">{{__('common.close')}}</button>
+                                    <button type="submit" class="btn btn-danger " >{{__('common.delete')}}</button>
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 
         <div id="addScenarioModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -130,6 +169,7 @@
                                                 <option value="{{$scenario->id}}">{{$scenario->name}}</option>
                                             @endforeach
                                         </select>
+
                                     </div>
                                 </div>
 
@@ -140,9 +180,48 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">{{__('common.close')}}</button>
                             <button type="submit" class="btn btn-primary">{{__('common.add')}}</button>
                         </div>
+                    </form>
                 </div><!-- /.modal-content -->
-                </form>
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
+
+                <div id="deleteScenarioModal" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form class="form-horizontal" method="post" action="{{url('/dashboard/deleteScenario/'.$dashboard->id)}}">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">{{__('dashboard.delete_scenario')}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{csrf_field()}}
+                                    <fieldset>
+                                        <!-- Select Basic -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="scenario">{{__('dashboard.scenario')}}</label>
+                                            <div class="col-md-4">
+                                                <select id="scenario" name="scenario" class="form-control">
+                                                    @foreach($dashboard->scenarioWidgets as $scenario_widget)
+                                                        <option value="{{$scenario_widget->id}}">{{$scenario_widget->scenario->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                    </fieldset>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">{{__('common.close')}}</button>
+                                    <button type="submit" class="btn btn-danger">{{__('common.delete')}}</button>
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
     </div>
 @endsection
