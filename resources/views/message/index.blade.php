@@ -18,98 +18,88 @@
             </div>
         </div>
         <div class="row" style="margin-left: 80%">
-                <form class="form-horizontal" method="get" action="{{url('/message')}}">
-            <div class="col" >
-
-                    <select name="sensor" class="form-control">
+            <form class="form-horizontal" method="get" action="{{url('/message')}}">
+                <div class="col" >
+                    <select name="sensor" class="form-control" autocomplete="off">
                             <option value="">--Sensors--</option>
-                            <option value="">All</option>
-                        @foreach($sensors as $sensor)
-                            <option value="{{$sensor->id}}">{{$sensor->name}}</option>
+                        @foreach($sensors as $one_sensor)
+                            @if($sensor == $one_sensor->id)
+                            <option value="{{$one_sensor->id}}" selected>{{$one_sensor->name}}</option>
+                            @else
+                            <option value="{{$one_sensor->id}}">{{$one_sensor->name}}</option>
+                            @endif
                         @endforeach
                     </select>
-            </div>
-            <div class="col">
-                    <select name="command" class="form-control">
+                </div>
+                <div class="col">
+                    <select name="command" class="form-control" autocomplete="off">
                             <option value="">--Command--</option>
-                            <option value="">All</option>
-                            <option value="0">Presentation: 0</option>
-                            <option value="1">Set: 1</option>
-                            <option value="2">Req: 2</option>
-                            <option value="3">Internal: 3</option>
-                            <option value="4">Stream: 4</option>
-
+                            @foreach($tab_commands as $key => $one_command)
+                                @if($command == $key && $command != null)
+                                    <option value="{{$key}}" selected>{{$one_command}}</option>
+                                @else
+                                    <option value="{{$key}}">{{$one_command}}</option>
+                                @endif
+                            @endforeach
                     </select>
-            </div>
-                    <div class="col">
-                        <select name="type" class="form-control">
-                            <option value="">--Type--</option>
-                            <option value="">All</option>
-                            <option value="0">V_TEMP</option>
-                            <option value="1">V_HUM</option>
-                            <option value="2">V_STATUS</option>
-                            <option value="3">V_PERCENTAGE</option>
-                            <option value="4">V_PRESSURE</option>
-                            <option value="5">V_FORECAST</option>
-                            <option value="6">V_RAIN</option>
-                            <option value="7">V_RAINRATE</option>
-                            <option value="8">V_WIND</option>
-                            <option value="9">V_GUST</option>
-                            <option value="10">V_DIRECTION</option>
-                            <option value="11">V_UV</option>
-                            <option value="12">V_WEIGHT</option>
-                            <option value="13">V_DISTANCE</option>
-                            <option value="14">V_IMPEDANCE</option>
-                            <option value="15">V_ARMED</option>
-                            <option value="16">V_TRIPPED</option>
-                            <option value="17">V_WATT</option>
-                            <option value="18">V_KWH</option>
-                            <option value="19">V_SCENE_ON</option>
-                            <option value="20">V_SCENE_OFF</option>
-                            <option value="21">V_HVAC_FLOW_STATE</option>
-                            <option value="22">V_HVAC_SPEED</option>
-                            <option value="23">V_LIGHT_LEVEL</option>
-                            <option value="24">V_VAR1</option>
-                            <option value="25">V_VAR2</option>
-                            <option value="26">V_VAR3</option>
-                            <option value="27">V_VAR4</option>
-                            <option value="28">V_VAR5</option>
-                            <option value="29">V_UP</option>
-                            <option value="30">V_DOWN</option>
-                            <option value="31">V_STOP</option>
-                            <option value="32">V_IR_SEND</option>
-                            <option value="33">V_IR_RECEIVE</option>
-                            <option value="34">V_FLOW</option>
-                            <option value="35">V_VOLUME</option>
-                            <option value="36">V_LOCK_STATUS</option>
-                            <option value="37">V_LEVEL</option>
-                            <option value="38">V_VOLTAGE</option>
-                            <option value="39">V_CURRENT</option>
-                            <option value="40">V_RGB</option>
-                            <option value="41">V_RGBW</option>
-                            <option value="42">V_ID</option>
-                            <option value="43">V_UNIT_PREFIX</option>
-                            <option value="44">V_HVAC_SETPOINT_COOL</option>
-                            <option value="45">V_HVAC_SETPOINT_HEAT</option>
-                            <option value="46">V_HVAC_FLOW_MODE</option>
-                            <option value="47">V_TEXT</option>
-                            <option value="48">V_CUSTOM</option>
-                            <option value="49">V_POSITION</option>
-                            <option value="50">V_IR_RECORD</option>
-                            <option value="51">V_PH</option>
-                            <option value="52">V_ORP</option>
-                            <option value="53">V_EC</option>
-                            <option value="54">V_VAR</option>
-                            <option value="55">V_VA</option>
-                            <option value="56">V_POWER_FACTOR</option>
+                </div>
+                <div class="col">
+                    <select name="type" class="form-control" autocomplete="off">
+                        <option value="">--Type--</option>
+                        @foreach($tab_types as $key => $one_type)
+                            @if($type == $key && $type!=null)
+                                <option value="{{$key}}" selected>{{$one_type}}</option>
+                            @else
+                                <option value="{{$key}}">{{$one_type}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="col" style="margin-left: 15px;margin-right: 15px">
+                    <div>Du :</div>
+                    <div class="form-group">
+                        <div class="input-group date" id="datetimepicker2">
+                            <input name="dateN" type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                 <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker2').datetimepicker({
+                            locale: 'fr'
+                        });
+                    });
+                </script>
+
+                <div class="col" style="margin-left: 15px;margin-right: 15px">
+                    <div>à :</div>
+                    <div class="form-group">
+                        <div class="input-group date" id="datetimepicker3">
+                            <input name="dateL" type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                     <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker3').datetimepicker({
+                            locale: 'fr'
+                        });
+                    });
+                </script>
 
 
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary " >{{__('message.valider')}}</button>
-                    </div>
-                </form>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary " >{{__('message.valider')}}</button>
+                </div>
+            </form>
         </div>
                 <div class="container">
 
@@ -130,7 +120,7 @@
                             <th scope="row">{{$message->id}}</th>
                             <td>{{$message->node_address}}/{{$message->sensor_address}}/{{$message->command}}/{{$message->ack}}/{{$message->type}}</td>
                             <td>{{$message->value}}</td>
-                            <td>{{$message->updated_at}}</td>
+                            <td>{{$message->updated_at->format('d/m/Y H:i:s')}}</td>
 
                         </tr>
                         @endforeach
