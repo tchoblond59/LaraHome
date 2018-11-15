@@ -8,4 +8,5 @@ return [
     'user_settings' => 'User settings',
     'user_roles' => 'User roles',
     'user_permissions' => 'User permissions',
+    'message' => 'Message',
 ];
