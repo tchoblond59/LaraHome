@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Message;
 use App\Sensor;
 use Carbon\Carbon;
@@ -18,10 +19,9 @@ class MessageController extends Controller
             'command' => 'nullable|exists:messages,command']);
         $sensor = Sensor::find($request->sensor);
         $sensors = Sensor::all();
-        //dd($request->date);
+       // dd($request->toArray());
 
-        $date_to = Carbon::createFromFormat('d/m/Y H:i', $request->dateL);
-        $dateN = Carbon:: createFromFormat('d/m/Y H:i', $request->dateN);
+
         $messages = new Message();
         if($request->exists('sensor') && $request->sensor != null)
         {
@@ -37,6 +37,8 @@ class MessageController extends Controller
         }
         if ($request->exists('dateL') && $request->dateL != null)
         {
+            $date_to = Carbon::createFromFormat('d/m/Y H:i', $request->dateL);
+            $dateN = Carbon:: createFromFormat('d/m/Y H:i', $request->dateN);
             $messages = $messages->wherebetween('created_at',array($date_to, $dateN));
         }
 
