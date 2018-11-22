@@ -17,7 +17,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
 //mix.copy('node_modules/bootstrap-slider/dist/bootstrap-slider.js', 'public/js/bootstrap-slider.js');
 //mix.copy('node_modules/bootstrap-slider/dist/css/bootstrap-slider.css', 'public/css/bootstrap-slider.css');
 
-mix.copy('node_modules/moment/moment.js', 'public/js/moment.js');
-mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js', 'public/js/bootstrap-datetimepicker.min.js');
-mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css', 'public/css/bootstrap-datetimepicker.css');
-mix.copy('node_modules/moment/locale', 'public/js/locale');
+//mix.copy('node_modules/moment/moment.js', 'public/js/moment.js');
+//mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js', 'public/js/bootstrap-datetimepicker.min.js');
+//mix.copy('node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css', 'public/css/bootstrap-datetimepicker.css');
+//mix.copy('node_modules/moment/locale', 'public/js/locale');
