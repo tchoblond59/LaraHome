@@ -146,6 +146,152 @@ You can create many dashboard with different widgets.
 
 ## Dev
 
+For created your personal widget , we need of this files :
+```
+LaraHome     
+│
+└───packages
+    │
+    └───name of your widget
+    |   │   
+    |   └───src   
+    |        |     
+    |        └───asset
+    |        |     └──js
+    |        |	       widget.js
+    |        |
+    |	     └───Controllers
+    |	     |   	WidgetControlleurs.php
+    |	     |
+    |	     └───EventListener
+    |	     |		WidgetEventListener.php
+    |	     |
+    |	     └───Events
+    |	     |	     WidgetEvent.php
+    |	     |
+    |	     └───migration
+    |	     |        ...
+    |	     |
+    |	     └───Models
+    |	     |	     Widget.php
+    |	     |
+    |	     └───views
+    |	     |	     widget.blade.php
+    |	     |
+    |	     
+    WidgetServiceProvider.php
+    routes.php
+    composer.json
+```
+
+
+
+### First
+You need to creat  3 directorys : 
+- packages
+- ex: lightcontrol
+- src
+
+Every package needs to have composer.json file, which contains not only potential dependancies, but also information about the package itself. So you go to your folder and run this command:
+
+
+    composer init
+In your composer.json 
+
+    {
+        "name": "name of your widget",
+        "description": "",
+        "authors": [
+            {
+                "name": "Your Name",
+                "email": "mail address"
+            }
+        ],
+        "autoload": {
+            "psr-4": {
+                "name of your widget\\": "src"
+            }
+        },
+    
+        "require": {},
+     
+    }
+    
+And then we run this command from main folder:
+
+    composer update
+**Creating a Service Provider**
+There’s an **Artisan** command to create a service provider:   
+
+     php artisan make:provider WidgetServiceProvider
+   From Laravel 5.5 there’s a great function called **auto-discovery**, so here’s what we need to add into our package’s **composer.json**:
+  
+
+     "extra": {
+            "laravel": {
+                "providers": [
+                    "name of your widget\\WidgetServiceProvider"
+                ]
+            }
+        }
+
+**Create a Controller**
+Our example package will have only one Controller, let’s call it **WidgetController** – and we create it in the same **src** folder of our package.
+
+  
+
+      namespace  name of your widget;
+      
+      use  App\Http\Controllers\Controller;
+        
+      class  WidgetController  extends  Controller
+      {
+	     public  function  index()
+	     {
+		 
+	     }
+      }
+**Create our Routes file**
+You are probably familiar with usual **routes/web.php** file, so we have to create our own similar file in our package folder. Again, it will be a simple one-liner:
+
+**packages\widget\src\routes.php**:
+
+     Route::group(['middleware' => ['web']], function () {
+	     Route::get('widget','widget\widgetController@index');
+	});
+Now, how does Laravel know about this **routes/web.php** file and our **Controller**? This is where our **Service Provider** comes in: we add these lines to its method **register()**:
+
+    class  TimezonesServiceProvider  extends  ServiceProvider
+    {
+	    public  function  register()
+	    {
+		   include  __DIR__.'/routes/web.php';
+		    $this->app->make('widget\WidgetController');
+	    }
+    
+    }
+**load URL in the browser!**
+
+    larahome.test/widget
+**Creat the view**
+
+**src/views/widget.blade.php**
+In this file it's simple html
+[Example](https://github.com/ugowarembourg/CompteurCycle/blob/master/src/views/compteur.blade.php)
+
+Now, let’s return to our **Service Provider** and this time we will use **boot()** method by adding a command, where to load our views from. The second parameter is our Namespace which we will use in the next step.
+
+
+        public  function  boot()
+	   {
+		    $this->loadViewsFrom(__DIR__.'/views',  'widget');
+	   }
+Next thing – we need to change our **Controller** to load this view with a parameter. Now, notice that we are loading the view with the specific namespace of our package that we just specified in Service Provider.
+
+    return view('widgets::widget');
+
+For an example of a finished widget click [here.](https://github.com/ugowarembourg/CompteurCycle)
+
 Documentation is not finished yet but if you want to make a plugin you can already look some ressources.
 The only thing you have to do is a Laravel Package.
 
