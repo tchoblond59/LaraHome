@@ -270,6 +270,7 @@ Now, how does Laravel know about this **routes/web.php** file and our **Controll
 	    }
     
     }
+    
 **load URL in the browser!**
 
     larahome.test/widget
@@ -286,6 +287,30 @@ Now, let’s return to our **Service Provider** and this time we will use **boot
 	   {
 		    $this->loadViewsFrom(__DIR__.'/views',  'widget');
 	   }
+	    
+You need to create the Widget.php file in the models folder with the getwidget function that extends the sensor function
+
+    namespace UgoWarembourg\Compteurcycle\Models;
+    
+    use App\Sensor;
+    
+    class Widgets extends Sensor
+    {
+        
+	    public function getWidget(\App\Widget $widget)
+	    {
+	        
+	        return view('widgets::widget');
+	    }
+	}
+
+For the JavaScript in the same file you need a function getJs():
+
+    public function getJs()
+    {
+        return ['js/widget/widget.js'];
+    }
+
 Next thing – we need to change our **Controller** to load this view with a parameter. Now, notice that we are loading the view with the specific namespace of our package that we just specified in Service Provider.
 
     return view('widgets::widget');
