@@ -22,7 +22,7 @@
                             <td>{{$sensor->classname}}</td>
                             <td>{{$sensor->node_address}}</td>
                             <td>{{$sensor->sensor_address}}</td>
-                            <td><a href="{{url('/sensor/update/'.$sensor->id)}}" class="btn btn-default btn-sm">{{__('common.configure')}}</a>
+                            <td><a href="{{url('/sensor/update/'.$sensor->id)}}" class="btn btn-secondary btn-sm">{{__('common.configure')}}</a>
                                 <form style="display:inline-block" method="post" action="{{url('/sensor/delete/'.$sensor->id)}}">
                                     {{csrf_field()}}
                                     <button type="submit" class="btn btn-danger btn-sm">{{__('common.delete')}}</button>

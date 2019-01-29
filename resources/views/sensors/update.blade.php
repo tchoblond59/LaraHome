@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 card p-3">
                 <form class="form-horizontal" method="post" action="{{url('/sensor/update/'.$sensor->id)}}">
                     {{csrf_field()}}
                     <fieldset>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <button class="btn btn-default pull-right">Modifier</button>
+                            <button class="btn btn-secondary pull-right">Modifier</button>
                         </div>
                     </fieldset>
                 </form>

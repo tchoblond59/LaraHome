@@ -14,7 +14,9 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>{{__('dashboard.dashboard')}}<a data-toggle="modal" data-target="#addWidgetModal" href="#addWidgetModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#deleteWidgetModal" href="#deleteWidgetModal"><i class="fa fa-minus-square-o pull-right" style="color: red" aria-hidden="true"></i></a></h2>
+            <div class="col-md-12">
+                <h2>{{__('dashboard.dashboard')}}<a data-toggle="modal" data-target="#addWidgetModal" href="#addWidgetModal"><i class="fa fa-plus-square-o pull-right" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#deleteWidgetModal" href="#deleteWidgetModal"><i class="fa fa-minus-square-o pull-right" style="color: red" aria-hidden="true"></i></a></h2>
+            </div>
             <hr>
             @if ($errors->any())
                 <div class="alert alert-danger">

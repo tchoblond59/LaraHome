@@ -19,7 +19,7 @@
                             <td>{{$command->sensor->name}}</td>
                             <td>{{$command->name}}</td>
                             @if($command->url)
-                                <td><a class="btn btn-default btn-sm" href="{{url('/sensor/mscommands/shortcut/'.$command->url)}}">Actionner</a></td>
+                                <td><a class="btn btn-secondary btn-sm" href="{{url('/sensor/mscommands/shortcut/'.$command->url)}}">Actionner</a></td>
                             @else
                                 <td>
                                     <form method="post" action="{{url('/config//mscommands/shortcut/create')}}">
@@ -54,7 +54,7 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row card">
             <form class="form-horizontal" method="post" action="{{url('/config/scheduled_task/create')}}">
                 <fieldset>
                 {{csrf_field()}}
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <button class="btn btn-default pull-right">Ajouter</button>
+                        <button class="btn btn-secondary pull-right">Ajouter</button>
                     </div>
                 </fieldset>
             </form>
