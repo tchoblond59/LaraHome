@@ -177,16 +177,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\LarahomePackageProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
-
-	/*
-	*Laravel IDE Helper
-	*/
-	Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-    /*Dev plugin*/
-    //Tchoblond59\LaraLight\LaraLightServiceProvider::class,
-    Barryvdh\Debugbar\ServiceProvider::class,
-    //Tchoblond59\SSRelay\SSRelayServiceProvider::class,
     ],
 
     /*
@@ -195,7 +185,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
+    | is started. However, feel free cto register as many as you wish as
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
