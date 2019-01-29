@@ -57,7 +57,7 @@
                             <div class="card-container">
                                 <div class="card-icon card-grey"><i class="fa fa-4x fa-play-circle-o text-center"></i></div>
                                 <div class="card-title text-center">
-                                    <button type="submit" class="btn btn-default text-center">Jouer</button>
+                                    <button type="submit" class="btn btn-primary text-center">Jouer</button>
                                 </div>
                                 <div class="card-figures">
                                     <span class="figures text-center">{{$widget->name}}</span>

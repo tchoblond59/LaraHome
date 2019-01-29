@@ -6,13 +6,13 @@
         <div class="row">
             @foreach($items as $dashboard)
                 <div class="col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">{{$dashboard->name}}</div>
-                        <div class="panel-body">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">{{$dashboard->name}}</div>
+                        <div class="card-body">
                             <ul>
                                 <li>{{__('dashboard.nb_widgets')}}: {{$dashboard->widgets->count()}}</li>
                             </ul>
-                            <a href="{{url('/dashboard/show/'.$dashboard->id)}}" class="btn btn-default pull-right"><i class="fa fa-sign-in" aria-hidden="true"></i> {{__('dashboard.go')}}</a>
+                            <a href="{{url('/dashboard/show/'.$dashboard->id)}}" class="btn btn-primary pull-right"><i class="fa fa-sign-in" aria-hidden="true"></i> {{__('dashboard.go')}}</a>
                         </div>
                     </div>
                 </div>
