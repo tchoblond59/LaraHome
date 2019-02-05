@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\PluginsEvent;
 use App\Plugin;
+use App\SensorFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
