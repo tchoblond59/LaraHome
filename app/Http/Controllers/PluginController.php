@@ -73,7 +73,7 @@ class PluginController extends Controller
         $plugin = Plugin::findOrFail($request->plugin);
         $plugin->enable = 1;
         $plugin->save();
-        Artisan::call('package_event:install', array('--force' => true));
+        Artisan::call('package_event:install');
         return redirect()->back();
     }
 
