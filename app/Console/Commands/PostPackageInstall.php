@@ -45,7 +45,7 @@ class PostPackageInstall extends Command
         $this->info('Activating plugin '.$plugin->name);
         //exec('composer dump-autoload -o');
         //$this->info('Composer dump-autoload -o completed');
-        $this->call('migrate', array('--force' => true));
+        $this->call('migrate', ['--force' => true]);
         $this->call('vendor:publish',['--tag' => 'larahome-package']);
         $sensor = SensorFactory::create($plugin->widget_class_name);
         $sensor->onEnable();
