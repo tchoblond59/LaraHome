@@ -639,16 +639,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.24",
+            "version": "v5.7.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "2ede55db4b8201ed0450fa7e7a4d7220aa29bc34"
+                "reference": "f8fb354878064b94a3ff09a6ffd48ee9a8d712cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/2ede55db4b8201ed0450fa7e7a4d7220aa29bc34",
-                "reference": "2ede55db4b8201ed0450fa7e7a4d7220aa29bc34",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f8fb354878064b94a3ff09a6ffd48ee9a8d712cf",
+                "reference": "f8fb354878064b94a3ff09a6ffd48ee9a8d712cf",
                 "shasum": ""
             },
             "require": {
@@ -781,7 +781,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-01-29T22:13:46+00:00"
+            "time": "2019-02-05T14:28:43+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
@@ -3172,15 +3172,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchoblond59/LaraLight.git",
-                "reference": "ca3242099b4f0bccc41c1df15bef036cdfb4a093"
+                "reference": "3d436d45ba9a206423b2e0b8f3c6789062931407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchoblond59/LaraLight/zipball/ca3242099b4f0bccc41c1df15bef036cdfb4a093",
-                "reference": "ca3242099b4f0bccc41c1df15bef036cdfb4a093",
+                "url": "https://api.github.com/repos/tchoblond59/LaraLight/zipball/3d436d45ba9a206423b2e0b8f3c6789062931407",
+                "reference": "3d436d45ba9a206423b2e0b8f3c6789062931407",
                 "shasum": ""
             },
             "type": "larahome",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tchoblond59\\LaraLight\\LaraLightServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Tchoblond59\\LaraLight\\": "src"
@@ -3197,7 +3204,7 @@
                 }
             ],
             "description": "Auto switch on light system for LaraHome",
-            "time": "2019-01-30T10:15:59+00:00"
+            "time": "2019-02-05T13:35:49+00:00"
         },
         {
             "name": "tchoblond59/sscompteur",
@@ -3205,24 +3212,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchoblond59/SSCompteur.git",
-                "reference": "8a5cef28ff60aa97cbbc34cb0c777ee0d0295810"
+                "reference": "09706a8b9c20fcbe3ba21593711ff06339e8916f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchoblond59/SSCompteur/zipball/8a5cef28ff60aa97cbbc34cb0c777ee0d0295810",
-                "reference": "8a5cef28ff60aa97cbbc34cb0c777ee0d0295810",
+                "url": "https://api.github.com/repos/tchoblond59/SSCompteur/zipball/09706a8b9c20fcbe3ba21593711ff06339e8916f",
+                "reference": "09706a8b9c20fcbe3ba21593711ff06339e8916f",
                 "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tchoblond59\\SSCompteur\\SSCompteurServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Tchoblond59\\SSCompteur\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GNU GPL"
-            ],
             "authors": [
                 {
                     "name": "Julien Lamandin",
@@ -3230,7 +3241,7 @@
                 }
             ],
             "description": "Power counter plugin for LaraHome",
-            "time": "2017-08-11T07:13:22+00:00"
+            "time": "2019-02-06T12:58:07+00:00"
         },
         {
             "name": "tchoblond59/ssmotionsensor",
@@ -3275,15 +3286,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchoblond59/SSRelay.git",
-                "reference": "91ad6947a097a5d7046039b9a76f5598118fa42b"
+                "reference": "2a1bf16d3faf1b63ab41438ec751ea54f8b70359"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchoblond59/SSRelay/zipball/91ad6947a097a5d7046039b9a76f5598118fa42b",
-                "reference": "91ad6947a097a5d7046039b9a76f5598118fa42b",
+                "url": "https://api.github.com/repos/tchoblond59/SSRelay/zipball/2a1bf16d3faf1b63ab41438ec751ea54f8b70359",
+                "reference": "2a1bf16d3faf1b63ab41438ec751ea54f8b70359",
                 "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tchoblond59\\SSRelay\\SSRelayServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Tchoblond59\\SSRelay\\": "src"
@@ -3300,7 +3318,7 @@
                 }
             ],
             "description": "Relay Plugin for LaraHome",
-            "time": "2019-01-30T10:02:57+00:00"
+            "time": "2019-02-06T12:59:02+00:00"
         },
         {
             "name": "tchoblond59/ssrollershutter",
@@ -3345,24 +3363,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchoblond59/SSTemp.git",
-                "reference": "6175eede1bcf68711af1305ee484320dfb86b84f"
+                "reference": "258669a9e339e336c3e83cb5225bdaf42b6bad65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchoblond59/SSTemp/zipball/6175eede1bcf68711af1305ee484320dfb86b84f",
-                "reference": "6175eede1bcf68711af1305ee484320dfb86b84f",
+                "url": "https://api.github.com/repos/tchoblond59/SSTemp/zipball/258669a9e339e336c3e83cb5225bdaf42b6bad65",
+                "reference": "258669a9e339e336c3e83cb5225bdaf42b6bad65",
                 "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tchoblond59\\SSTemp\\SSTempServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Tchoblond59\\SSTemp\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GNU GPL"
-            ],
             "authors": [
                 {
                     "name": "Julien Lamandin",
@@ -3370,7 +3392,7 @@
                 }
             ],
             "description": "Temperature and humidity sensor plugin for LaraHome",
-            "time": "2017-08-11T07:25:35+00:00"
+            "time": "2019-02-06T12:59:37+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -3618,16 +3640,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "9d5caf43c5f3a3aea2178942f281054805872e7c"
+                "reference": "ba046deba51f3899963c7d09840bf623c4ebf5ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/9d5caf43c5f3a3aea2178942f281054805872e7c",
-                "reference": "9d5caf43c5f3a3aea2178942f281054805872e7c",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/ba046deba51f3899963c7d09840bf623c4ebf5ed",
+                "reference": "ba046deba51f3899963c7d09840bf623c4ebf5ed",
                 "shasum": ""
             },
             "require": {
@@ -3682,7 +3704,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2018-11-09T08:37:55+00:00"
+            "time": "2019-02-04T10:23:43+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
