@@ -18,6 +18,7 @@
         "tchoblond59/ssmotionsensor": "dev-master",
         "tchoblond59/ssrelay": "dev-master",
         "tchoblond59/ssrollershutter": "dev-master",
+        "tchoblond59/sstemp": "dev-master",
         "ugowarembourg/compteurcycle": "dev-master",
         "xzaero/netatmo-api": "dev-master"
     },
