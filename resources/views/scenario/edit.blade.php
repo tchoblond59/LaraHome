@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <button type="submit" class="btn btn-default pull-right">Ajouter</button>
+                            <button type="submit" class="btn btn-primary pull-right">Ajouter</button>
                         </div>
                     </fieldset>
                 </form>
