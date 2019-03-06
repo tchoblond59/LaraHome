@@ -79,6 +79,7 @@ Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::post('/plugins/install', 'PluginController@install');
     Route::post('/plugins/enable', 'PluginController@enable');
     Route::post('/plugins/disable', 'PluginController@disable');
+    Route::get('/plugins/export', 'PluginController@export');
 });
 Route::middleware([])->group(function () {
     Route::get('/user', 'UserController@index');

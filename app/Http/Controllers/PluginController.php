@@ -89,4 +89,9 @@ class PluginController extends Controller
         $sensor->onDisable();
         return redirect()->back();
     }
+
+    public function export()
+    {
+        return Plugin::export()->toJSON();
+    }
 }
