@@ -101,10 +101,10 @@ class SpotifyController extends Controller
 
 
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($request->session()->get('access_token'));
+        $spotify_config = SpotifyConfig::first();
+        $api->setAccessToken($spotify_config->access_token);
         $reponse = $api->getMyDevices();
         $devices = $reponse->devices;
-        $spotify_config = SpotifyConfig::first();
         //$api->play($spotify_config->device_id, ['uris' => [$spotify_config->track_id]]);
         $recent_tracks = $api->getMyRecentTracks()->items;
         $playlist = $api->getMyPlaylists();
