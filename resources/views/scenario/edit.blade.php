@@ -22,14 +22,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($scenario->mscommands as $mscommand)
+                    @foreach($scenario->commands as $command)
                         <tr>
                             <td>{{$loop->index+1}}</td>
-                            <td>{{$mscommand->name}}</td>
+                            <td>{{$command->name}}</td>
                             <td>
-                                <form style="display:inline-block" method="post" action="{{url('/scenario/mscommand/delete/'.$scenario->id)}}">
+                                <form style="display:inline-block" method="post" action="{{url('/scenario/command/delete/'.$scenario->id)}}">
                                     {{csrf_field()}}
-                                    <input type="hidden" name="mscommand" value="{{$mscommand->id}}">
+                                    <input type="hidden" name="command" value="{{$command->id}}">
                                     <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                                 </form>
                             </td>
@@ -38,7 +38,7 @@
                     </tbody>
                 </table>
                 <hr>
-                <form class="form-horizontal" method="post" action="{{url('/scenario/mscommand/add/'.$scenario->id)}}">
+                <form class="form-horizontal" method="post" action="{{url('/scenario/command/add/'.$scenario->id)}}">
                     <fieldset>
 
                         <!-- Form Name -->
@@ -55,10 +55,10 @@
                         {{csrf_field()}}
                         <!-- Select Basic -->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="mscommand">Commande</label>
+                            <label class="col-md-4 control-label" for="command">Commande</label>
                             <div class="col-md-4">
-                                <select id="mscommand" name="mscommand" class="form-control">
-                                    @foreach($mscommands as $command)
+                                <select id="command" name="command" class="form-control">
+                                    @foreach($commands as $command)
                                         <option value="{{$command->id}}">{{$command->name}}</option>
                                     @endforeach
                                 </select>

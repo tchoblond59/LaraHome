@@ -10,18 +10,25 @@
                     @endforeach
                 </p>
                 <div>
-                    <div class="pretty p-switch p-slim">
-                        @if($spotify_config && $spotify_config->track_id == $track->uri)
-                            <input type="radio" name="spotify_track_id" value="{{$track->uri}}"
-                                   checked autocomplete="off"/>
-                        @else
-                            <input type="radio" name="spotify_track_id" value="{{$track->uri}}"
-                                   autocomplete="off"/>
-                        @endif
-                        <div class="state">
-                            <label>par défaut</label>
-                        </div>
-                    </div>
+                    {{--<div class="pretty p-switch p-slim">--}}
+                        {{--@if($spotify_config && $spotify_config->track_id == $track->uri)--}}
+                            {{--<input type="radio" name="spotify_track_id" value="{{$track->uri}}"--}}
+                                   {{--checked autocomplete="off"/>--}}
+                        {{--@else--}}
+                            {{--<input type="radio" name="spotify_track_id" value="{{$track->uri}}"--}}
+                                   {{--autocomplete="off"/>--}}
+                        {{--@endif--}}
+                        {{--<div class="state">--}}
+                            {{--<label>par défaut</label>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    <form method="post" action="{{url('spotify/command/create')}}">
+                        {{csrf_field()}}
+                        <input type="hidden" name="type" value="track">
+                        <input type="hidden" name="uri" value="{{$track->uri}}">
+                        <input type="hidden" name="name" value="{{$track->name}}">
+                        <button class="btn btn-sm btn-secondary" type="submit">Créer l'action</button>
+                    </form>
                 </div>
             </div>
         </div>

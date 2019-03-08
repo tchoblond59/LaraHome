@@ -2,10 +2,11 @@
 
 namespace App;
 
+use App\Interfaces\CommandInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Artisan;
 
-class MSCommand extends Model
+class MSCommand extends Model implements CommandInterface
 {
     protected $table = 'mscommands';
 
@@ -24,5 +25,15 @@ class MSCommand extends Model
     public function scheduledMSCommands()
     {
         return $this->hasMany('App\ScheduledMSCommands', 'mscommand_id');
+    }
+
+    public function commande()
+    {
+        return $this->morphOne(Command::class, 'commandable');
+    }
+
+    public function play()
+    {
+        $this->send();
     }
 }

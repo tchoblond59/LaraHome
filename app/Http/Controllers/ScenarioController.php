@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Command;
 use App\MSCommand;
+use App\ScenarioCommand;
 use App\ScenarioMSCommand;
 use App\ScenarioWidget;
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class ScenarioController extends Controller
     public function index()
     {
         $scenarios = Scenario::all();
-        return view('scenario.create')->with(['scenarios' => $scenarios]);
+        return view('scenario.index')->with(['scenarios' => $scenarios]);
     }
 
     public function create(Request $request)
@@ -33,27 +35,27 @@ class ScenarioController extends Controller
     public function edit($id)
     {
         $scenario = Scenario::findOrFail($id);
-        $mscommands=  MSCommand::all();
+        $commands =  Command::all();
         return view('scenario.edit')->with(['scenario' => $scenario,
-        'mscommands' => $mscommands]);
+        'commands' => $commands]);
     }
 
     public function addCommand($id, Request $request)
     {
-        $this->validate($request, ['mscommand' => 'required']);
+        $this->validate($request, ['command' => 'required']);
         Scenario::findOrFail($id);
-        $sc_command = new ScenarioMSCommand();
+        $sc_command = new ScenarioCommand();
         $sc_command->scenario_id = $id;
-        $sc_command->mscommand_id = $request->mscommand;
+        $sc_command->command_id = $request->command;
         $sc_command->save();
         return redirect()->back();
     }
 
     public function deleteCommand($id, Request $request)
     {
-        $this->validate($request, ['mscommand' => 'required']);
+        $this->validate($request, ['command' => 'required']);
         Scenario::findOrFail($id);
-        $sc_command = ScenarioMSCommand::where('scenario_id', '=', $id)->where('mscommand_id', '=', $request->mscommand)->first();
+        $sc_command = ScenarioCommand::where('scenario_id', '=', $id)->where('command_id', '=', $request->command)->first();
         if($sc_command!=null)
             $sc_command->delete();
         return redirect()->back();
@@ -62,7 +64,7 @@ class ScenarioController extends Controller
     public function delete($id, Request $request)
     {
         $scenario = Scenario::findOrFail($id);
-        ScenarioMSCommand::where('scenario_id', '=', $id)->delete();
+        ScenarioCommand::where('scenario_id', '=', $id)->delete();
         ScenarioWidget::where('scenario_id', '=', $id)->delete();
         $scenario->delete();
         return redirect()->back();

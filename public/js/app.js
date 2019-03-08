@@ -37691,12 +37691,20 @@ $(function () {
   bindChangeForm($('input[name=spotify_device_id]'));
   bindChangeForm($('input[name=spotify_track_id]'));
   bindButtonForm($('#btn_search_track'), traiteResultSearchTracks);
+  bindButtonForm($('#btn_search_playlist'), traiteResultSearchPlaylists);
+  bindButtonForm($('.play_command_btn'));
 });
 
 function traiteResultSearchTracks(reponse) {
   $('#div_tracks_result').empty();
   $('#div_tracks_result').append(reponse.html);
   bindChangeForm($('input[name=spotify_track_id]'));
+}
+
+function traiteResultSearchPlaylists(reponse) {
+  $('#div_playlist_result').empty();
+  $('#div_playlist_result').append(reponse.html);
+  bindChangeForm($('input[name=spotify_playlist_id]'));
 }
 
 function bindChangeForm(selector, callback, errorCallback) {

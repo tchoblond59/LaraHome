@@ -29,7 +29,7 @@
                                 @if(empty($scenario->url))
                                 <form style="display:inline-block" method="post" action="{{url('/scenario/shortcut/create/'.$scenario->id)}}">
                                     {{csrf_field()}}
-                                    <button type="submit" class="btn btn-default btn-sm">Créer raccourci</button>
+                                    <button type="submit" class="btn btn-secondary btn-sm">Créer raccourci</button>
                                 </form>
                                 @endif
                                 <a class="btn btn-sm btn-primary" href="{{url('/scenario/update/'.$scenario->id)}}">Editer</a>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <button class="btn btn-default pull-right" type="submit">Créer</button>
+                        <button class="btn btn-secondary pull-right" type="submit">Créer</button>
                     </div>
                 </fieldset>
             </form>

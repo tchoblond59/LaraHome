@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Command;
 use Illuminate\Http\Request;
 use App\MSCommand;
 use App\ScheduledMSCommands;
@@ -19,7 +20,7 @@ class ConfigController extends Controller
             ->join('sensors', 'mscommands.sensor_id', '=', 'sensors.id')
             ->select('sensors.name as sensor_name', 'mscommands.name', 'scheduled_mscommands.cron')->get();
         //dd($commands);
-        return view('config.index')->with(['mscommands' => MSCommand::all(), "scheduled_commands" => $commands]);
+        return view('config.index')->with(['commands' => Command::all(), "scheduled_commands" => $commands]);
     }
 
     public function createScheduledTask(Request $request)

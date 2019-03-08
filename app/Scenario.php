@@ -10,21 +10,21 @@ class Scenario extends Model
 
     public $timestamps = false;
     
-    public function mscommands()
+    public function commands()
     {
-        return $this->belongsToMany('App\MSCommand', 'scenarios_mscommands', 'scenario_id','mscommand_id');
+        return $this->belongsToMany('App\Command', 'scenario_command');
     }
 
-    public function scenarioMSCommand()
+    public function scenarioCommand()
     {
-        return $this->hasMany('App\ScenarioMSCommand');
+        return $this->hasMany('App\ScenarioCommand');
     }
 
     public function play()
     {
-        foreach ($this->mscommands as $mscommand)
+        foreach ($this->commands as $command)
         {
-            $mscommand->send();
+            $command->play();
         }
     }
     
