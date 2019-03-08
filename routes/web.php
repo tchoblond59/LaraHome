@@ -57,6 +57,14 @@ Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut'
 
 Route::get('/message', 'MessageController@index');
 
+Route::get('/spotify', 'SpotifyController@index')->name('spotify');
+Route::get('/spotify/ok', 'SpotifyController@spotifyok')->name('spotify_ok');
+Route::get('/spotify/test', 'SpotifyController@test');
+Route::get('/spotify/config', 'SpotifyController@config')->name('spotify_config');
+Route::post('/spotify/updateDefaultDevice', 'SpotifyController@updateDefaultDevice');
+Route::post('/spotify/updateDefaultTrack', 'SpotifyController@updateDefaultTrack');
+Route::post('/spotify/search/track', 'SpotifyController@searchTrack');
+
 Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::get('/role', 'RoleController@index');
     Route::get('/role/create', 'RoleController@create');

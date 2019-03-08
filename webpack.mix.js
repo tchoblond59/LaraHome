@@ -12,7 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+    .copy('node_modules/bootstrap-notify/bootstrap-notify.js', 'public/js');
 
 //mix.copy('node_modules/bootstrap-slider/dist/bootstrap-slider.js', 'public/js/bootstrap-slider.js');
 //mix.copy('node_modules/bootstrap-slider/dist/css/bootstrap-slider.css', 'public/css/bootstrap-slider.css');

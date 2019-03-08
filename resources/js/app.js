@@ -11,7 +11,7 @@ import Echo from 'laravel-echo'
 
 window.e = new Echo({
     broadcaster: 'socket.io',
-    host: window.location.hostname + ':6001'
+    host: window.location.hostname + ':6001',
 })
 
 /****************Plugin****************/
@@ -52,5 +52,69 @@ $(function() {
                 $('.bootbox-body').html($.parseHTML(data));
             }
         });
-    })
+    });
+
+    bindChangeForm($('input[name=spotify_device_id]'));
+    bindChangeForm($('input[name=spotify_track_id]'));
+    bindButtonForm($('#btn_search_track'), traiteResultSearchTracks);
 })
+
+function traiteResultSearchTracks(reponse)
+{
+    $('#div_tracks_result').empty();
+    $('#div_tracks_result').append(reponse.html);
+    bindChangeForm($('input[name=spotify_track_id]'));
+}
+
+function bindChangeForm(selector, callback, errorCallback)
+{
+    $(selector).unbind();
+    $(selector).change(function(e){
+        var form = $(this).closest('form');
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            dataType: 'json',
+            success: callback,
+            error: onError,
+        });
+    });
+}
+
+function bindButtonForm(selector, callback)
+{
+    $(selector).unbind();
+    $(selector).click(function(e){
+        e.preventDefault();
+        console.log('auto form');
+        var form = $(this).attr('form');
+        form = $('#'+form);
+        console.log(form);
+        $.ajax({
+            type: form.attr('method'),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: form.attr('action'),
+            data: form.serialize(),
+            dataType: 'json',
+            success: callback,
+            error: onError,
+        });
+    });
+}
+
+function onError(reponse)
+{
+    var parsedJson = reponse.responseJSON;
+    $.each( parsedJson.errors, function( key, value) {
+        $.notify({
+            // options
+            message: value
+        },{
+            // settings
+            type: 'danger'
+        });
+    });
+}
