@@ -34,14 +34,17 @@
             @endif
         </div>
         @foreach($widgets as $widget)
-            @if($loop->first || $loop->iteration%5 == 0)
+            @if($loop->first)
                 <div class="row mb-3">
-                    @endif
-                    <div class="col-md-3">
-                        {!!$widget!!}
-                    </div>
-                    @if($loop->iteration%4==0 || $loop->last)
+            @endif
+            <div class="col-md-3">
+                {!!$widget!!}
+            </div>
+            @if($loop->iteration%4==0 || $loop->last)
                 </div>
+            @endif
+            @if($loop->iteration%4==0 && !$loop->last)
+                <div class="row mb-3">
             @endif
         @endforeach
         <div class="row">
