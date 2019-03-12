@@ -1,5 +1,0 @@
-{
-    "name": "websocket",
-    "script": "laravel-echo-server",
-    "args": "start"
-}
