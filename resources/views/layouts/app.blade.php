@@ -41,6 +41,7 @@
     <script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/bootstrap-notify.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap-slider.js') }}" defer></script>
 
 
     @yield('js')
