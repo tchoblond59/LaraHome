@@ -28,7 +28,14 @@ class HomeController extends Controller
     public function index()
     {
         $dashboards = Dashboard::where('user_id', '=', Auth::id())->get();
-        return view('home')->with(['dashboards' => $dashboards]);
+        if($dashboards->count() == 1)
+        {
+            return redirect()->route('dashboard',['id' => $dashboards->first()->id]);
+        }
+        else
+        {
+            return view('home')->with(['dashboards' => $dashboards]);
+        }
     }
 
     public function api($api_id, Request $request)
