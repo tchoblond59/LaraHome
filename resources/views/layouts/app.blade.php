@@ -19,6 +19,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link href="{{asset('css/bootstrap-datetimepicker.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap-slider.css')}}" rel="stylesheet">
 {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />--}}
 @yield('css')
 <!-- Scripts -->
