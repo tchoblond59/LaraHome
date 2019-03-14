@@ -14,13 +14,17 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2>{{__('dashboard.dashboard')}}<a data-toggle="modal" data-target="#addWidgetModal"
-                                                    href="#addWidgetModal"><i class="fa fa-plus-square-o pull-right"
-                                                                              aria-hidden="true"></i></a><a
-                            data-toggle="modal" data-target="#deleteWidgetModal" href="#deleteWidgetModal"><i
-                                class="fa fa-minus-square-o pull-right" style="color: red" aria-hidden="true"></i></a>
-                </h2>
+            <div class="d-flex justify-content-between align-items-baseline col-12">
+                <div class="">
+                    <h2>{{__('dashboard.dashboard')}}</h2>
+                </div>
+                <div class="">
+                    <a data-toggle="modal" data-target="#addWidgetModal" href="#addWidgetModal">
+                        <i class="fas fa-plus fa-lg"aria-hidden="true"></i></a>
+                    <a data-toggle="modal" data-target="#deleteWidgetModal" href="#deleteWidgetModal">
+                        <i class="fas fa-minus fa-lg" style="color: red" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
             <hr>
             @if ($errors->any())
@@ -49,12 +53,19 @@
         @endforeach
         <div class="row">
             <div class="col-md-12">
-                <h4>{{__('dashboard.scenarios')}} <a data-toggle="modal" data-target="#addScenarioModal"
-                                                     href="#addScenarioModal"><i class="fa fa-plus-square-o pull-right"
-                                                                                 aria-hidden="true"></i></a><a
-                            data-toggle="modal" data-target="#deleteScenarioModal" href="#deleteScenarioModal"><i
-                                class="fa fa-minus-square-o pull-right" style="color: red" aria-hidden="true"></i></a>
-                </h4>
+                <div class="d-flex justify-content-between align-items-baseline col-12">
+                    <div>
+                        <h4>{{__('dashboard.scenarios')}}</h4>
+                    </div>
+                    <div>
+                        <a data-toggle="modal" data-target="#addScenarioModal" href="#addScenarioModal">
+                            <i class="fas fa-plus fa-lg" aria-hidden="true"></i>
+                        </a>
+                        <a data-toggle="modal" data-target="#deleteScenarioModal" href="#deleteScenarioModal">
+                            <i class="fas fa-minus fa-lg" style="color: red" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
                 <hr>
             </div>
         </div>

@@ -12,7 +12,7 @@
                             <ul>
                                 <li>{{__('dashboard.nb_widgets')}}: {{$dashboard->widgets->count()}}</li>
                             </ul>
-                            <a href="{{url('/dashboard/show/'.$dashboard->id)}}" class="btn btn-primary pull-right"><i class="fa fa-sign-in" aria-hidden="true"></i> {{__('dashboard.go')}}</a>
+                            <a href="{{url('/dashboard/show/'.$dashboard->id)}}" class="btn btn-primary float-right"><i class="fas fa-sign-in-alt" aria-hidden="true"></i> {{__('dashboard.go')}}</a>
                         </div>
                     </div>
                 </div>
