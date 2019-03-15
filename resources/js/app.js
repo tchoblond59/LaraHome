@@ -11,7 +11,7 @@ import Echo from 'laravel-echo'
 
 window.e = new Echo({
     broadcaster: 'socket.io',
-    host: window.location.hostname + ':6001',
+    host: window.location.hostname,
 })
 
 /****************Plugin****************/
