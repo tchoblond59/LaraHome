@@ -17,83 +17,87 @@
                 @endif
             </div>
         </div>
-        <div class="row" style="margin-left: 80%">
+        <div class="row" style="margin-left: 0%">
             <form class="form-horizontal" method="get" action="{{url('/message')}}">
                 <div class="col" >
-                    <select name="sensor" class="form-control" autocomplete="off">
-                            <option value="">--Sensors--</option>
-                        @foreach($sensors as $one_sensor)
-                            @if($sensor == $one_sensor->id)
-                            <option value="{{$one_sensor->id}}" selected>{{$one_sensor->name}}</option>
-                            @else
-                            <option value="{{$one_sensor->id}}">{{$one_sensor->name}}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col">
-                    <select name="command" class="form-control" autocomplete="off">
-                            <option value="">--Command--</option>
-                            @foreach($tab_commands as $key => $one_command)
-                                @if($command == $key && $command != null)
-                                    <option value="{{$key}}" selected>{{$one_command}}</option>
+                        <div class="col">
+                        <select name="sensor" class="form-control" autocomplete="off">
+                                <option value="">--Sensors--</option>
+                            @foreach($sensors as $one_sensor)
+                                @if($sensor == $one_sensor->id)
+                                <option value="{{$one_sensor->id}}" selected>{{$one_sensor->name}}</option>
                                 @else
-                                    <option value="{{$key}}">{{$one_command}}</option>
+                                <option value="{{$one_sensor->id}}">{{$one_sensor->name}}</option>
                                 @endif
                             @endforeach
-                    </select>
-                </div>
-                <div class="col">
-                    <select name="type" class="form-control" autocomplete="off">
-                        <option value="">--Type--</option>
-                        @foreach($tab_types as $key => $one_type)
-                            @if($type == $key && $type!=null)
-                                <option value="{{$key}}" selected>{{$one_type}}</option>
-                            @else
-                                <option value="{{$key}}">{{$one_type}}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="col" style="margin-left: 15px;margin-right: 15px">
-                    <div>Du :</div>
-                    <div class="form-group">
-                        <div class="input-group date" id="datetimepicker2">
-                            <input name="dateN" type="text" class="form-control" />
-                            <span class="input-group-addon">
-                                 <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        </select>
                         </div>
+
+                    <div class="col">
+                        <select name="command" class="form-control" autocomplete="off">
+                                <option value="">--Command--</option>
+                                @foreach($tab_commands as $key => $one_command)
+                                    @if($command == $key && $command != null)
+                                        <option value="{{$key}}" selected>{{$one_command}}</option>
+                                    @else
+                                        <option value="{{$key}}">{{$one_command}}</option>
+                                    @endif
+                                @endforeach
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name="type" class="form-control" autocomplete="off">
+                            <option value="">--Type--</option>
+                            @foreach($tab_types as $key => $one_type)
+                                @if($type == $key && $type!=null)
+                                    <option value="{{$key}}" selected>{{$one_type}}</option>
+                                @else
+                                    <option value="{{$key}}">{{$one_type}}</option>
+                                @endif
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker2').datetimepicker({
-                            locale: 'fr'
-                        });
-                    });
-                </script>
+                <div class="row">
+                    <div class="col" style="margin-left: 15px;margin-right: 15px">
+                        <div>Du :</div>
 
-                <div class="col" style="margin-left: 15px;margin-right: 15px">
-                    <div>à :</div>
-                    <div class="form-group">
-                        <div class="input-group date" id="datetimepicker3">
-                            <input name="dateL" type="text" class="form-control" />
-                            <span class="input-group-addon">
-                                     <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                    <input name="dateL" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker2').datetimepicker({
+                                    locale: 'fr'
+                                });
+                            });
+                        </script>
+                    </div>
+
+                    <div class="col" style="margin-left: 15px;margin-right: 15px">
+                        <div>A :</div>
+                            <div class="form-group">
+                            <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                <input name="dateN" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3"/>
+                                <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
                         </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker3').datetimepicker({
+                                    locale: 'fr'
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker3').datetimepicker({
-                            locale: 'fr'
-                        });
-                    });
-                </script>
-
 
 
                 <div class="modal-footer">
