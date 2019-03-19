@@ -18,7 +18,7 @@
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <link href="{{asset('css/bootstrap-datetimepicker.css')}}" rel="stylesheet">
+    <link href="{{asset('css/tempusdominus-bootstrap-4.css')}}" rel="stylesheet">
     <link href="{{asset('css/bootstrap-slider.css')}}" rel="stylesheet">
 {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />--}}
 @yield('css')
@@ -38,7 +38,7 @@
             integrity="sha256-wMQrtOX6Wcd+W3fOZ8JG6NGYqoZfAKZ6yH+DHd+yGwg=" crossorigin="anonymous"></script>
     <script src="{{asset('js/moment.js')}}"></script>
     <script src="{{asset('js/locale/fr.js')}}"></script>
-    <script src="{{asset('js/bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{asset('js/tempusdominus-bootstrap-4.js')}}"></script>
     <script src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/bootstrap-notify.js') }}" defer></script>
