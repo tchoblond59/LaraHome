@@ -25,6 +25,16 @@ e.channel('plugin-channel')
 e.channel('msmessage-out')
     .listen('MSMessageEvent', function (e) {
         console.log('MSMessageEvent', e)
+        var ligne = '<tr>\n' +
+            '\n' +
+            '                            <th scope="row">'+e.id+'</th>\n' +
+            '                            <td>'+e.node_address+'/'+e.sensor_adress+'/'+e.commande+'/'+e.ack+'/'+e.type+'</td>\n' +
+            '                            <td>'+e.valeur+'</td>\n' +
+            '                            <td>'+e.date+'</td>\n' +
+            '\n' +
+            '                        </tr>';
+        //document.getElementById("message_id").prepend(ligne);
+        $('#tbody_id').prepend(ligne);
     })
 /*************************************************/
 

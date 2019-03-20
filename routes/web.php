@@ -17,60 +17,61 @@ Route::get('/error/{code}', function($code){
     return view('errors.'.$code);
 });
 
-Route::get('/', 'HomeController@index')->name('home');
-//Route::get('/api/{api_id}', 'HomeController@api');
-Route::post('/api/{api_id}', 'HomeController@api');
+    Route::get('/', 'HomeController@index')->name('home');
+    //Route::get('/api/{api_id}', 'HomeController@api');
+    Route::post('/api/{api_id}', 'HomeController@api');
+    Route::get('/dashboard/show/{id}', 'DashboardController@show')->name('dashboard');
 
-Route::get('/dashboard/show/{id}', 'DashboardController@show')->name('dashboard');
-Route::get('/dashboard/create', 'DashboardController@create');
-Route::post('/dashboard/create', 'DashboardController@store');
-Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
-Route::post('/dashboard/addwidget/{id}', 'DashboardController@addWidget');
-Route::post('/dashboard/deletewidget/{id}', 'DashboardController@deleteWidget');
-Route::post('/dashboard/addScenario/{id}', 'DashboardController@addScenario');
-Route::post('/dashboard/deleteScenario/{id}', 'DashboardController@deleteScenario');
+    Route::get('/dashboard/create', 'DashboardController@create');
+    Route::post('/dashboard/create', 'DashboardController@store');
+    Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
+    Route::post('/dashboard/addwidget/{id}', 'DashboardController@addWidget');
+    Route::post('/dashboard/deletewidget/{id}', 'DashboardController@deleteWidget');
+    Route::post('/dashboard/addScenario/{id}', 'DashboardController@addScenario');
+    Route::post('/dashboard/deleteScenario/{id}', 'DashboardController@deleteScenario');
 
 
-Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');
+    Route::get('/widget/SSTemp/{id}', 'SSTempController@configureWidget');
 
-Route::get('/sensors', 'SensorController@index');
-Route::get('/sensor/add', 'SensorController@create');
-Route::get('/sensor/mscommands/shortcut/{random}', 'SensorController@triggerShortcut');
-Route::post('/sensor/add', 'SensorController@store');
-Route::get('/sensor/update/{id}', 'SensorController@update');
-Route::post('/sensor/update/{id}', 'SensorController@upgrade');
-Route::post('/sensor/delete/{id}', 'SensorController@delete');
+    Route::get('/sensors', 'SensorController@index');
+    Route::get('/sensor/add', 'SensorController@create');
+    Route::get('/sensor/mscommands/shortcut/{random}', 'SensorController@triggerShortcut');
+    Route::post('/sensor/add', 'SensorController@store');
+    Route::get('/sensor/update/{id}', 'SensorController@update');
+    Route::post('/sensor/update/{id}', 'SensorController@upgrade');
+    Route::post('/sensor/delete/{id}', 'SensorController@delete');
 
-Route::get('/config', 'ConfigController@show');
-Route::post('/config/scheduler_task/create', 'ConfigController@createScheduledTask');
-Route::post('/config//mscommands/shortcut/create', 'ConfigController@CreateMSCommandShortcut');
+    Route::get('/config', 'ConfigController@show');
+    Route::post('/config/scheduler_task/create', 'ConfigController@createScheduledTask');
+    Route::post('/config//mscommands/shortcut/create', 'ConfigController@CreateMSCommandShortcut');
 
-Route::get('/commands', 'CommandController@index');
-Route::post('/command/play/{id}', 'CommandController@play');
-Route::post('/command/shortcut/create', 'CommandController@createShortcut');
-Route::get('/command/shortcut/{id}', 'CommandController@playShortcut');
+    Route::get('/commands', 'CommandController@index');
+    Route::post('/command/play/{id}', 'CommandController@play');
+    Route::post('/command/shortcut/create', 'CommandController@createShortcut');
+    Route::get('/command/shortcut/{id}', 'CommandController@playShortcut');
 
-Route::get('/scenarios', 'ScenarioController@index');
-Route::get('/scenario/update/{id}', 'ScenarioController@edit');
-Route::post('/scenario/create', 'ScenarioController@create');
-Route::post('/scenario/command/add/{id}', 'ScenarioController@addCommand');
-Route::post('/scenario/command/delete/{id}', 'ScenarioController@deleteCommand');
-Route::post('/scenario/delete/{id}', 'ScenarioController@delete');
-Route::post('/scenario/play/{id}', 'ScenarioController@play');
-Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
-Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
+    Route::get('/scenarios', 'ScenarioController@index');
+    Route::get('/scenario/update/{id}', 'ScenarioController@edit');
+    Route::post('/scenario/create', 'ScenarioController@create');
+    Route::post('/scenario/command/add/{id}', 'ScenarioController@addCommand');
+    Route::post('/scenario/command/delete/{id}', 'ScenarioController@deleteCommand');
+    Route::post('/scenario/delete/{id}', 'ScenarioController@delete');
+    Route::post('/scenario/play/{id}', 'ScenarioController@play');
+    Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
+    Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 
-Route::get('/message', 'MessageController@index');
-
-Route::get('/spotify', 'SpotifyController@index')->name('spotify');
-Route::get('/spotify/ok', 'SpotifyController@spotifyok')->name('spotify_ok');
-Route::get('/spotify/test', 'SpotifyController@test');
-Route::get('/spotify/config', 'SpotifyController@config')->name('spotify_config');
-Route::post('/spotify/updateDefaultDevice', 'SpotifyController@updateDefaultDevice');
-Route::post('/spotify/updateDefaultTrack', 'SpotifyController@updateDefaultTrack');
-Route::post('/spotify/search/track', 'SpotifyController@searchTrack');
-Route::post('/spotify/search/playlist', 'SpotifyController@searchPlaylist');
-Route::post('/spotify/command/create', 'SpotifyController@createAction');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/message', 'MessageController@index');
+});
+    Route::get('/spotify', 'SpotifyController@index')->name('spotify');
+    Route::get('/spotify/ok', 'SpotifyController@spotifyok')->name('spotify_ok');
+    Route::get('/spotify/test', 'SpotifyController@test');
+    Route::get('/spotify/config', 'SpotifyController@config')->name('spotify_config');
+    Route::post('/spotify/updateDefaultDevice', 'SpotifyController@updateDefaultDevice');
+    Route::post('/spotify/updateDefaultTrack', 'SpotifyController@updateDefaultTrack');
+    Route::post('/spotify/search/track', 'SpotifyController@searchTrack');
+    Route::post('/spotify/search/playlist', 'SpotifyController@searchPlaylist');
+    Route::post('/spotify/command/create', 'SpotifyController@createAction');
 
 Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::get('/role', 'RoleController@index');

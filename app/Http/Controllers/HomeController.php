@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\MSMessageEvent;
 use App\Message;
 use App\Mqtt\MSMessage;
+use DebugBar\DebugBar;
 use Illuminate\Http\Request;
 use App\Dashboard;
 use Auth;
@@ -57,7 +58,7 @@ class HomeController extends Controller
 
                     //Dispatch the event to the subscribers
                     $MsMessage = new MSMessage($message->id);
-                    event(new MSMessageEvent($MsMessage));
+                    event(new MSMessageEvent($MsMessage, $message->id));
             }
         }
         return json_encode($reponse);

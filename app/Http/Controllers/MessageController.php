@@ -12,11 +12,13 @@ use Illuminate\Support\Facades\Input;
 
 class MessageController extends Controller
 {
+
     public function index(Request $request)
     {
         $this->validate($request, [
             'sensor' => 'nullable|exists:sensors,id',
-            'command' => 'nullable|exists:messages,command']);
+            'command' => 'nullable|exists:messages,command'
+        ]);
         $sensor = Sensor::find($request->sensor);
         $sensors = Sensor::all();
        // dd($request->toArray());

@@ -117,7 +117,7 @@
 
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody_id">
                         @foreach($messages as $message)
                         <tr>
 
