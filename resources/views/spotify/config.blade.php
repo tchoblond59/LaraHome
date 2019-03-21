@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto">
+                @include('errors.form_errors')
+            </div>
+        </div>
         <form method="post" action="{{url('spotify/updateDefaultDevice')}}">
             {{csrf_field()}}
             <div class="row justify-content-around">
@@ -57,7 +62,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form method="post" action="{{url('spotify/updateDefaultTrack')}}">
+                        <form method="post" action="{{url('spotify/command/create')}}">
                             {{csrf_field()}}
                             <div class="row mt-4" id="div_tracks_result">
                                 @include('spotify.tracks_recent', ['tracks' => $recent_tracks])
