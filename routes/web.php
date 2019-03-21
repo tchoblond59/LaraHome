@@ -47,6 +47,7 @@ Route::get('/error/{code}', function($code){
 
     Route::get('/commands', 'CommandController@index');
     Route::post('/command/play/{id}', 'CommandController@play');
+    Route::post('/command/delete/{id}', 'CommandController@delete');
     Route::post('/command/shortcut/create', 'CommandController@createShortcut');
     Route::get('/command/shortcut/{id}', 'CommandController@playShortcut');
 

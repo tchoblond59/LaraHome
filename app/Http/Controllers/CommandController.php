@@ -39,4 +39,12 @@ class CommandController extends Controller
         }
         return json_encode('ok');
     }
+
+    public function delete($id, Request $request)
+    {
+        $command = Command::findOrFail($id);
+        $command->commandable->delete();
+        $command->delete();
+        return redirect()->back();
+    }
 }

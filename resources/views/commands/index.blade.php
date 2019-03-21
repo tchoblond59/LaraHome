@@ -33,6 +33,10 @@
                                                 form="form_create_command_shortcut_{{$command->id}}">Créer raccourci
                                         </button>
                                     @endif
+                                    <button class="btn btn-danger btn-sm" type="submit"
+                                            form="form_delete_command_{{$command->id}}">
+                                        <i class="fas fa-trash"></i> &nbsp;Supprimer
+                                    </button>
                                 </div>
                                 <form method="post" action="{{url('/command/shortcut/create')}}"
                                       id="form_create_command_shortcut_{{$command->id}}">
@@ -41,6 +45,11 @@
                                 </form>
                                 <form method="post" action="{{url('/command/play/'.$command->id)}}"
                                       id="play_command_{{$command->id}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="id" value="{{$command->id}}">
+                                </form>
+                                <form method="post" action="{{url('/command/delete/'.$command->id)}}"
+                                      id="form_delete_command_{{$command->id}}">
                                     {{csrf_field()}}
                                     <input type="hidden" name="id" value="{{$command->id}}">
                                 </form>
