@@ -41,10 +41,6 @@ Route::get('/error/{code}', function($code){
     Route::post('/sensor/update/{id}', 'SensorController@upgrade');
     Route::post('/sensor/delete/{id}', 'SensorController@delete');
 
-    Route::get('/config', 'ConfigController@show');
-    Route::post('/config/scheduler_task/create', 'ConfigController@createScheduledTask');
-    Route::post('/config//mscommands/shortcut/create', 'ConfigController@CreateMSCommandShortcut');
-
     Route::get('/commands', 'CommandController@index');
     Route::post('/command/play/{id}', 'CommandController@play');
     Route::post('/command/delete/{id}', 'CommandController@delete');

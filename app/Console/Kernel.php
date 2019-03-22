@@ -2,10 +2,10 @@
 
 namespace App\Console;
 
-use App\Console\Commands\SendMSCommands;
+use App\Command;
+use App\Console\Commands\PlayCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\ScheduledMSCommands;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -14,9 +14,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\SendMSCommands::class,
+        Commands\PlayCommand::class,
+        Commands\LarahomeCommand::class,
         Commands\PostPackageInstall::class,
-        Commands\LarahomeCommand::class
     ];
 
     /**
@@ -27,11 +27,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        if(\Schema::hasTable('scheduled_mscommands') && \Schema::hasTable('scenario_mscommands') && \Schema::hasTable('plugins'))
+        foreach (\App\Command::whereNotNull('cron')->get() as $command)
         {
-            foreach (ScheduledMSCommands::all() as $command) {
-                $schedule->command(SendMSCommands::class, [$command->mscommand->id])->cron($command->cron);
-            }
+            \Log::info('Schedule command '.$command->name);
+            $schedule->command(PlayCommand::class, [$command->id])->cron($command->cron)->withoutOverlapping();
         }
     }
 
