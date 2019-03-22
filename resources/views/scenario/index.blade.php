@@ -10,6 +10,7 @@
                     <th>Nom</th>
                     <th>Raccourci</th>
                     <th>#</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -17,7 +18,7 @@
                     <tr>
                         <td>{{$scenario->name}}</td>
                         @if($scenario->url)
-                            <td><a class="btn btn-default btn-sm" href="{{url('/scenario/shortcut/play/'.$scenario->url)}}">Actionner</a></td>
+                            <td><a class="btn btn-secondary btn-sm" href="{{url('/scenario/shortcut/play/'.$scenario->url)}}">Actionner</a></td>
                         @else
                             <td>Pas de raccourci</td>
                         @endif
@@ -38,6 +39,24 @@
                                     <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                                 </form>
                             </td>
+                        <td>
+                            <form method="post" action="{{url('/scenario/enable/'.$scenario->id)}}"
+                                  id="form_enable_command_{{$scenario->id}}">
+                                {{csrf_field()}}
+                                <input type="hidden" name="id" value="{{$scenario->id}}">
+                                <!-- add class p-switch -->
+                                <div class="pretty p-switch p-fill">
+                                    @if($scenario->enable)
+                                        <input type="checkbox" name="enable_scenario" autocomplete="off" checked/>
+                                    @else
+                                        <input type="checkbox" name="enable_scenario" autocomplete="off"/>
+                                    @endif
+                                    <div class="state">
+                                        <label></label>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

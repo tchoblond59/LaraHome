@@ -11,6 +11,7 @@
                         <th>Commande</th>
                         <th>Cron</th>
                         <th>Action</th>
+                        <th>Etat</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,24 @@
                                       id="form_delete_command_{{$command->id}}">
                                     {{csrf_field()}}
                                     <input type="hidden" name="id" value="{{$command->id}}">
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{url('/command/enable/'.$command->id)}}"
+                                      id="form_enable_command_{{$command->id}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="id" value="{{$command->id}}">
+                                    <!-- add class p-switch -->
+                                    <div class="pretty p-switch p-fill">
+                                        @if($command->enable)
+                                            <input type="checkbox" name="enable_command" autocomplete="off" checked/>
+                                        @else
+                                            <input type="checkbox" name="enable_command" autocomplete="off"/>
+                                        @endif
+                                            <div class="state">
+                                            <label></label>
+                                        </div>
+                                    </div>
                                 </form>
                             </td>
                         </tr>

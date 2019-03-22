@@ -47,4 +47,12 @@ class CommandController extends Controller
         $command->delete();
         return redirect()->back();
     }
+
+    public function enable($id, Request $request)
+    {
+        $command = Command::findOrFail($id);
+        $command->enable = $request->has('enable_command');
+        $command->save();
+        return json_encode('ok');
+    }
 }

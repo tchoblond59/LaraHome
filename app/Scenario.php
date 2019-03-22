@@ -22,9 +22,12 @@ class Scenario extends Model
 
     public function play()
     {
-        foreach ($this->commands as $command)
+        if($this->enable)
         {
-            $command->play();
+            foreach ($this->commands as $command)
+            {
+                $command->play();
+            }
         }
     }
     

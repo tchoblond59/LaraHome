@@ -37648,7 +37648,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.e = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'socket.io',
-  host: window.location.hostname + ':6001'
+  host: window.location.hostname
 });
 /****************Plugin****************/
 
@@ -37661,6 +37661,9 @@ e.channel('plugin-channel').listen('PluginsEvent', function (e) {
 
 e.channel('msmessage-out').listen('MSMessageEvent', function (e) {
   console.log('MSMessageEvent', e);
+  var ligne = '<tr>\n' + '\n' + '                            <th scope="row">' + e.id + '</th>\n' + '                            <td>' + e.node_address + '/' + e.sensor_adress + '/' + e.commande + '/' + e.ack + '/' + e.type + '</td>\n' + '                            <td>' + e.valeur + '</td>\n' + '                            <td>' + e.date + '</td>\n' + '\n' + '                        </tr>'; //document.getElementById("message_id").prepend(ligne);
+
+  $('#tbody_id').prepend(ligne);
 });
 /*************************************************/
 
@@ -37693,6 +37696,8 @@ $(function () {
   bindButtonForm($('#btn_search_track'), traiteResultSearchTracks);
   bindButtonForm($('#btn_search_playlist'), traiteResultSearchPlaylists);
   bindButtonForm($('.play_command_btn'));
+  bindChangeForm('input[name=enable_command]');
+  bindChangeForm('input[name=enable_scenario]');
 });
 
 function traiteResultSearchTracks(reponse) {

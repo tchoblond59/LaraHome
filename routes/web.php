@@ -48,6 +48,7 @@ Route::get('/error/{code}', function($code){
     Route::get('/commands', 'CommandController@index');
     Route::post('/command/play/{id}', 'CommandController@play');
     Route::post('/command/delete/{id}', 'CommandController@delete');
+    Route::post('/command/enable/{id}', 'CommandController@enable');
     Route::post('/command/shortcut/create', 'CommandController@createShortcut');
     Route::get('/command/shortcut/{id}', 'CommandController@playShortcut');
 
@@ -58,6 +59,7 @@ Route::get('/error/{code}', function($code){
     Route::post('/scenario/command/delete/{id}', 'ScenarioController@deleteCommand');
     Route::post('/scenario/delete/{id}', 'ScenarioController@delete');
     Route::post('/scenario/play/{id}', 'ScenarioController@play');
+    Route::post('/scenario/enable/{id}', 'ScenarioController@enable');
     Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
     Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 

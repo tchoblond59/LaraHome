@@ -95,4 +95,12 @@ class ScenarioController extends Controller
         }
         return ('nok');
     }
+
+    public function enable($id, Request $request)
+    {
+        $scenario = Scenario::findOrFail($id);
+        $scenario->enable = $request->has('enable_scenario');
+        $scenario->save();
+        return json_encode('ok');
+    }
 }

@@ -69,6 +69,8 @@ $(function() {
     bindButtonForm($('#btn_search_track'), traiteResultSearchTracks);
     bindButtonForm($('#btn_search_playlist'), traiteResultSearchPlaylists);
     bindButtonForm($('.play_command_btn'));
+    bindChangeForm('input[name=enable_command]');
+    bindChangeForm('input[name=enable_scenario]');
 })
 
 function traiteResultSearchTracks(reponse)

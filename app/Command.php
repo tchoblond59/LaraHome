@@ -15,7 +15,7 @@ class Command extends Model
     public function play()
     {
         $command = $this->commandable;
-        if($command instanceof CommandInterface)
+        if($command instanceof CommandInterface && $this->enable)
         {
             $command->play();
         }
