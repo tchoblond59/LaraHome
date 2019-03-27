@@ -17,6 +17,7 @@ class Command extends Model
         $command = $this->commandable;
         if($command instanceof CommandInterface && $this->enable)
         {
+            \Log::info('Play command '.$command->name);
             $command->play();
         }
         else

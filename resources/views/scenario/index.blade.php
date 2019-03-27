@@ -8,6 +8,7 @@
                 <thead>
                 <tr>
                     <th>Nom</th>
+                    <th>Cron</th>
                     <th>Raccourci</th>
                     <th>#</th>
                     <th></th>
@@ -17,6 +18,7 @@
                 @foreach($scenarios as $scenario)
                     <tr>
                         <td>{{$scenario->name}}</td>
+                        <td>{{$scenario->cron}}</td>
                         @if($scenario->url)
                             <td><a class="btn btn-secondary btn-sm" href="{{url('/scenario/shortcut/play/'.$scenario->url)}}">Actionner</a></td>
                         @else

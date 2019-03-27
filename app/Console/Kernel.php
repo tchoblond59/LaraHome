@@ -4,6 +4,8 @@ namespace App\Console;
 
 use App\Command;
 use App\Console\Commands\PlayCommand;
+use App\Console\Commands\PlayScenario;
+use App\Scenario;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
@@ -15,6 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\PlayCommand::class,
+        Commands\PlayScenario::class,
         Commands\LarahomeCommand::class,
         Commands\PostPackageInstall::class,
     ];
@@ -27,10 +30,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        \Log::info('Schedule call');
         foreach (\App\Command::whereNotNull('cron')->get() as $command)
         {
-            \Log::info('Schedule command '.$command->name);
             $schedule->command(PlayCommand::class, [$command->id])->cron($command->cron)->withoutOverlapping();
+        }
+
+        foreach (Scenario::whereNotNull('cron')->get() as $scenario)
+        {
+            $schedule->command(PlayScenario::class, [$scenario->id])->cron($scenario->cron)->withoutOverlapping();
         }
     }
 

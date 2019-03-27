@@ -57,6 +57,7 @@ Route::get('/error/{code}', function($code){
     Route::post('/scenario/play/{id}', 'ScenarioController@play');
     Route::post('/scenario/enable/{id}', 'ScenarioController@enable');
     Route::post('/scenario/shortcut/create/{id}', 'ScenarioController@createShortcut');
+    Route::post('/scenario/cron/edit/{id}', 'ScenarioController@cron');
     Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 
 Route::middleware(['auth'])->group(function () {

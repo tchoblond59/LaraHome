@@ -72,7 +72,9 @@ class ScenarioController extends Controller
 
     public function play($id)
     {
-        Scenario::findOrFail($id)->play();
+        $scenario = Scenario::findOrFail($id);
+        if($scenario->enable)
+            $scenario->play();
         return redirect()->back();
     }
 
@@ -102,5 +104,13 @@ class ScenarioController extends Controller
         $scenario->enable = $request->has('enable_scenario');
         $scenario->save();
         return json_encode('ok');
+    }
+
+    public function cron($id, Request $request)
+    {
+        $scenario = Scenario::findOrFail($id);
+        $scenario->cron = $request->cron;
+        $scenario->save();
+        return redirect()->back();
     }
 }

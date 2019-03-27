@@ -24,6 +24,7 @@ class Scenario extends Model
     {
         if($this->enable)
         {
+            \Log::info('Playing scenario '.$this->name);
             foreach ($this->commands as $command)
             {
                 $command->play();
