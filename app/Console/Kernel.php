@@ -8,6 +8,8 @@ use App\Console\Commands\PlayScenario;
 use App\Scenario;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Schema;
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -31,14 +33,19 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         \Log::info('Schedule call');
-        foreach (\App\Command::whereNotNull('cron')->get() as $command)
+        if(Schema::table('commands')->hasColumn('cron'))
         {
-            $schedule->command(PlayCommand::class, [$command->id])->cron($command->cron)->withoutOverlapping();
+            foreach (\App\Command::whereNotNull('cron')->get() as $command)
+            {
+                $schedule->command(PlayCommand::class, [$command->id])->cron($command->cron)->withoutOverlapping();
+            }
         }
-
-        foreach (Scenario::whereNotNull('cron')->get() as $scenario)
+        if(Schema::table('scenarios')->hasColumn('cron'))
         {
-            $schedule->command(PlayScenario::class, [$scenario->id])->cron($scenario->cron)->withoutOverlapping();
+            foreach (Scenario::whereNotNull('cron')->get() as $scenario)
+            {
+                $schedule->command(PlayScenario::class, [$scenario->id])->cron($scenario->cron)->withoutOverlapping();
+            }
         }
     }
 
