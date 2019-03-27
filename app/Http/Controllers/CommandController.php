@@ -55,4 +55,27 @@ class CommandController extends Controller
         $command->save();
         return json_encode('ok');
     }
+
+    public function edit($id)
+    {
+        $command = Command::findOrFail($id);
+        return view('commands.edit')->with([
+            'command' => $command,
+        ]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:1|max:255',
+        ]);
+        $command = Command::findOrFail($id);
+        if($request->has('cron') && $request->cron != null)
+        {
+            $command->cron = $request->cron;
+        }
+        $command->name = $request->name;
+        $command->save();
+        return redirect()->back();
+    }
 }

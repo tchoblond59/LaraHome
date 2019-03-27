@@ -38,6 +38,9 @@
                                             form="form_delete_command_{{$command->id}}">
                                         <i class="fas fa-trash"></i> &nbsp;Supprimer
                                     </button>
+                                    <a class="btn btn-secondary btn-sm"
+                                       href="{{url('command/edit/'.$command->id)}}"><i
+                                                class="fas fa-edit"></i> Editer</a>
                                 </div>
                                 <form method="post" action="{{url('/command/shortcut/create')}}"
                                       id="form_create_command_shortcut_{{$command->id}}">

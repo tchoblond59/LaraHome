@@ -47,6 +47,8 @@ Route::get('/error/{code}', function($code){
     Route::post('/command/enable/{id}', 'CommandController@enable');
     Route::post('/command/shortcut/create', 'CommandController@createShortcut');
     Route::get('/command/shortcut/{id}', 'CommandController@playShortcut');
+    Route::get('/command/edit/{id}', 'CommandController@edit');
+    Route::post('/command/update/{id}', 'CommandController@update');
 
     Route::get('/scenarios', 'ScenarioController@index');
     Route::get('/scenario/update/{id}', 'ScenarioController@edit');
