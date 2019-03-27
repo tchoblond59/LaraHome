@@ -33,14 +33,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         \Log::info('Schedule call');
-        if(Schema::table('commands')->hasColumn('cron'))
+        if(Schema::connection(env('DB_CONNECTION'))->hasColumn('commands', 'cron'))
         {
             foreach (\App\Command::whereNotNull('cron')->get() as $command)
             {
                 $schedule->command(PlayCommand::class, [$command->id])->cron($command->cron)->withoutOverlapping();
             }
         }
-        if(Schema::table('scenarios')->hasColumn('cron'))
+        if(Schema::connection(env('DB_CONNECTION'))->hasColumn('scenarios', 'cron'))
         {
             foreach (Scenario::whereNotNull('cron')->get() as $scenario)
             {
