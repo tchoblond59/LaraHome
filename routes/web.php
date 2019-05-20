@@ -62,6 +62,9 @@ Route::get('/error/{code}', function($code){
     Route::post('/scenario/cron/edit/{id}', 'ScenarioController@cron');
     Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 
+    Route::get('/widget/edit/{id}', 'WidgetController@edit');
+    Route::post('/widget/update/{id}', 'WidgetController@update');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/message', 'MessageController@index');
 });
