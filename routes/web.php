@@ -62,12 +62,10 @@ Route::get('/error/{code}', function($code){
     Route::post('/scenario/cron/edit/{id}', 'ScenarioController@cron');
     Route::get('/scenario/shortcut/play/{random}', 'ScenarioController@playShortcut');
 
-    Route::get('/widget/edit/{id}', 'WidgetController@edit');
-    Route::post('/widget/update/{id}', 'WidgetController@update');
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/message', 'MessageController@index');
-});
+    Route::get('/widget/edit/{id}', 'WidgetController@edit');
+    Route::post('/widget/update/{id}', 'WidgetController@update');
     Route::get('/spotify', 'SpotifyController@index')->name('spotify');
     Route::get('/spotify/ok', 'SpotifyController@spotifyok')->name('spotify_ok');
     Route::get('/spotify/test', 'SpotifyController@test');
@@ -77,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/spotify/search/track', 'SpotifyController@searchTrack');
     Route::post('/spotify/search/playlist', 'SpotifyController@searchPlaylist');
     Route::post('/spotify/command/create', 'SpotifyController@createAction');
+});
 
 Route::middleware(['role:admin,update sensor'])->group(function () {
     Route::get('/role', 'RoleController@index');

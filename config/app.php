@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\LarahomePackageProvider::class,
+        Snowfire\Beautymail\BeautymailServiceProvider::class,
+//        \Tchoblond59\SSRollerShutter\SSRollerShutterServiceProvider::class,
+//        \Tchoblond59\LaraLight\LaraLightServiceProvider::class,
+//        \Tchoblond59\SSRelay\SSRelayServiceProvider::class,
+//        \Tchoblond59\SSTemp\SSTempServiceProvider::class,
     ],
 
     /*
