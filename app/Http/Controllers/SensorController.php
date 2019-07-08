@@ -48,7 +48,7 @@ class SensorController extends Controller
     public function index()
     {
         $this->authorize('index', Sensor::class);
-        $sensors = Sensor::all();
+        $sensors = Sensor::orderBy('node_address')->get();
         return view('sensors.index')->with(['sensors' => $sensors]);
     }
 
