@@ -177,11 +177,11 @@ class SpotifyController extends Controller
         $this->validate($request, [
             'search_track' => 'required',
         ]);
+        $spotify_config = SpotifyConfig::first();
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($request->session()->get('access_token'));
+        $api->setAccessToken($spotify_config->access_token);
         $search = $api->search($request->search_track, ['type' => 'track']);
         $tracks = $search->tracks->items;
-        $spotify_config = SpotifyConfig::first();
         $view = view('spotify.tracks_result')->with(['tracks' => $tracks, 'spotify_config' => $spotify_config])->render();
         return response()->json(['html' => $view]);
     }
@@ -191,11 +191,11 @@ class SpotifyController extends Controller
         $this->validate($request, [
             'search_playlist' => 'required',
         ]);
+        $spotify_config = SpotifyConfig::first();
         $api = new \SpotifyWebAPI\SpotifyWebAPI();
-        $api->setAccessToken($request->session()->get('access_token'));
+        $api->setAccessToken($spotify_config->access_token);
         $search = $api->search($request->search_playlist, ['type' => 'playlist']);
         $playlist = $search->playlists;
-        $spotify_config = SpotifyConfig::first();
         $view = view('spotify.playlists_result')->with(['playlists' => $playlist->items, 'spotify_config' => $spotify_config])->render();
         return response()->json(['html' => $view]);
     }
