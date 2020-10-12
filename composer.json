@@ -13,7 +13,7 @@
         "laravel/tinker": "~1.0",
         "luzhuqun/laravel-mqtt-publish": "*@dev",
         "predis/predis": "^1.1",
-        "snowfire/beautymail": "*@stable",
+        "snowfire/beautymail": "dev-master",
         "spatie/laravel-permission": "^2.2",
         "tchoblond59/sscompteur": "dev-master",
         "tchoblond59/ssmotionsensor": "dev-master",
@@ -21,6 +21,7 @@
         "tchoblond59/sstemp": "dev-master",
         "tchoblond59/ssrollershutter": "dev-master",
         "tchoblond59/laralight": "dev-master",
+        "ugowarembourg/compteurcycle": "dev-master",
         "xzaero/netatmo-api": "dev-master"
     },
     "require-dev": {
