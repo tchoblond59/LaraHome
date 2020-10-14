@@ -50,6 +50,7 @@ class ScenarioController extends Controller
         $sc_command = new ScenarioCommand();
         $sc_command->scenario_id = $id;
         $sc_command->command_id = $request->command;
+        $sc_command->ordre = 1;
         $sc_command->save();
         return redirect()->back();
     }
@@ -117,4 +118,23 @@ class ScenarioController extends Controller
         $scenario->save();
         return redirect()->back();
     }
+
+    public function moveUpCommand(Request $request)
+    {
+        $this->validate($request, [
+            'scenario_command' => 'exists:scenario_command,id',
+        ]);
+        ScenarioCommand::find($request->scenario_command)->moveOrderUp();
+        return redirect()->back();
+    }
+
+    public function moveDownCommand(Request $request)
+    {
+        $this->validate($request, [
+            'scenario_command' => 'exists:scenario_command,id',
+        ]);
+        ScenarioCommand::find($request->scenario_command)->moveOrderDown();
+        return redirect()->back();
+    }
+
 }

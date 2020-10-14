@@ -54,5 +54,10 @@ class Scenario extends Model implements CommandInterface
     {
         $this->command()->delete();
     }
+
+    public function deleteCommand()
+    {
+        $this->removeCommand();
+    }
     
 }

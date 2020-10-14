@@ -22,7 +22,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($scenario->commands as $command)
+                    @foreach($scenario->commands()->withPivot('id')->orderBy('ordre')->get() as $command)
                         <tr>
                             <td>{{$loop->index+1}}</td>
                             <td>{{$command->name}}</td>
@@ -31,6 +31,18 @@
                                     {{csrf_field()}}
                                     <input type="hidden" name="command" value="{{$command->id}}">
                                     <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                </form>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="submit" class="btn btn-sm btn-secondary" form="cmdMoveUp_{{$command->pivot->id}}"><i class="fa fa-arrow-up"></i></button>
+                                    <button type="submit" class="btn btn-sm btn-secondary" form="cmdMoveDown_{{$command->pivot->id}}"><i class="fa fa-arrow-down"></i></button>
+                                </div>
+                                <form method="post" action="{{url('/scenario/command/moveUp/'.$scenario->id)}}" id="cmdMoveUp_{{$command->pivot->id}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="scenario_command" value="{{$command->pivot->id}}">
+                                </form>
+                                <form method="post" action="{{url('/scenario/command/moveDown/'.$scenario->id)}}" id="cmdMoveDown_{{$command->pivot->id}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="scenario_command" value="{{$command->pivot->id}}">
                                 </form>
                             </td>
                         </tr>

@@ -54,6 +54,8 @@ Route::get('/error/{code}', function($code){
     Route::get('/scenario/update/{id}', 'ScenarioController@edit');
     Route::post('/scenario/create', 'ScenarioController@create');
     Route::post('/scenario/command/add/{id}', 'ScenarioController@addCommand');
+    Route::post('/scenario/command/moveDown/{id}', 'ScenarioController@moveDownCommand');
+    Route::post('/scenario/command/moveUp/{id}', 'ScenarioController@moveUpCommand');
     Route::post('/scenario/command/delete/{id}', 'ScenarioController@deleteCommand');
     Route::post('/scenario/delete/{id}', 'ScenarioController@delete');
     Route::post('/scenario/play/{id}', 'ScenarioController@play');
