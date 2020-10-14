@@ -181,23 +181,23 @@
         },
         {
             "name": "dragonmantank/cron-expression",
-            "version": "v2.3.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dragonmantank/cron-expression.git",
-                "reference": "72b6fbf76adb3cf5bc0db68559b33d41219aba27"
+                "reference": "65b2d8ee1f10915efb3b55597da3404f096acba2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/72b6fbf76adb3cf5bc0db68559b33d41219aba27",
-                "reference": "72b6fbf76adb3cf5bc0db68559b33d41219aba27",
+                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/65b2d8ee1f10915efb3b55597da3404f096acba2",
+                "reference": "65b2d8ee1f10915efb3b55597da3404f096acba2",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": "^7.0|^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.4|^7.0"
+                "phpunit/phpunit": "^6.4|^7.0|^8.0|^9.0"
             },
             "type": "library",
             "extra": {
@@ -231,7 +231,7 @@
                 "cron",
                 "schedule"
             ],
-            "time": "2019-03-31T00:38:28+00:00"
+            "time": "2020-10-13T00:52:37+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -4314,12 +4314,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchoblond59/LaraLight.git",
-                "reference": "e84d64bcdd5d8f36de8020ed9dab4951221bc8e3"
+                "reference": "cb6ee0a4daa3d51a440c1b80ccc8087d7716cb03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchoblond59/LaraLight/zipball/e84d64bcdd5d8f36de8020ed9dab4951221bc8e3",
-                "reference": "e84d64bcdd5d8f36de8020ed9dab4951221bc8e3",
+                "url": "https://api.github.com/repos/tchoblond59/LaraLight/zipball/cb6ee0a4daa3d51a440c1b80ccc8087d7716cb03",
+                "reference": "cb6ee0a4daa3d51a440c1b80ccc8087d7716cb03",
                 "shasum": ""
             },
             "type": "larahome",
@@ -4346,7 +4346,7 @@
                 }
             ],
             "description": "Auto switch on light system for LaraHome",
-            "time": "2020-10-12T15:05:36+00:00"
+            "time": "2020-10-12T19:39:43+00:00"
         },
         {
             "name": "tchoblond59/sscompteur",
@@ -5047,16 +5047,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.10.13",
+            "version": "1.10.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "47c841ba3b2d3fc0b4b13282cf029ea18b66d78b"
+                "reference": "547c9ee73fe26c77af09a0ea16419176b1cdbd12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/47c841ba3b2d3fc0b4b13282cf029ea18b66d78b",
-                "reference": "47c841ba3b2d3fc0b4b13282cf029ea18b66d78b",
+                "url": "https://api.github.com/repos/composer/composer/zipball/547c9ee73fe26c77af09a0ea16419176b1cdbd12",
+                "reference": "547c9ee73fe26c77af09a0ea16419176b1cdbd12",
                 "shasum": ""
             },
             "require": {
@@ -5123,7 +5123,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2020-09-09T09:46:34+00:00"
+            "time": "2020-10-13T13:59:09+00:00"
         },
         {
             "name": "composer/semver",
@@ -6557,7 +6557,6 @@
             "keywords": [
                 "tokenizer"
             ],
-            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
