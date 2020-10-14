@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Interfaces\CommandInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class Scenario extends Model
+class Scenario extends Model implements CommandInterface
 {
     protected $table= 'scenarios';
 
