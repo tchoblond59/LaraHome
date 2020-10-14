@@ -32,5 +32,27 @@ class Scenario extends Model implements CommandInterface
             }
         }
     }
+
+    public function command()
+    {
+        return $this->morphOne('App\Command', 'commandable');
+    }
+
+    /*Create scenario as command so we can call scenario form another one*/
+    public function generateCommand()
+    {
+        Command::create([
+            'name' => $this->name,
+            'commandable_type' => self::class,
+            'commandable_id' => $this->id,
+            'enable' => 1
+        ]);
+    }
+
+    /*Remove scenarion from commands table*/
+    public function removeCommand()
+    {
+        $this->command()->delete();
+    }
     
 }

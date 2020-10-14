@@ -29,14 +29,17 @@ class ScenarioController extends Controller
         $scenario = new Scenario();
         $scenario->name = $request->name;
         $scenario->save();
+        $scenario->generateCommand();
         return redirect('/scenario/update/'.$scenario->id);
     }
 
     public function edit($id)
     {
+        $scenarios = Scenario::all();
         $scenario = Scenario::findOrFail($id);
         $commands =  Command::all();
         return view('scenario.edit')->with(['scenario' => $scenario,
+        'scenarios' => $scenarios,
         'commands' => $commands]);
     }
 
@@ -66,6 +69,7 @@ class ScenarioController extends Controller
         $scenario = Scenario::findOrFail($id);
         ScenarioCommand::where('scenario_id', '=', $id)->delete();
         ScenarioWidget::where('scenario_id', '=', $id)->delete();
+        $scenario->deleteCommand();
         $scenario->delete();
         return redirect()->back();
     }
