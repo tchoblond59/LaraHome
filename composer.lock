@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c7324f78a716d178f10589577546614e",
+    "content-hash": "e43211819203185f172dfb989ca1f1d0",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3112,16 +3112,16 @@
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "v2.2.0",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "3a5d0fe7908daaa23e3dbf4cee3ba4bfbb19fdd3"
+                "reference": "41db680a15018f9c1d4b23516059633ce280ca33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/3a5d0fe7908daaa23e3dbf4cee3ba4bfbb19fdd3",
-                "reference": "3a5d0fe7908daaa23e3dbf4cee3ba4bfbb19fdd3",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/41db680a15018f9c1d4b23516059633ce280ca33",
+                "reference": "41db680a15018f9c1d4b23516059633ce280ca33",
                 "shasum": ""
             },
             "require": {
@@ -3132,8 +3132,9 @@
             },
             "type": "library",
             "extra": {
+                "branch-version": "2.3",
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-main": "2.3-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -3169,7 +3170,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-09-07T11:33:47+00:00"
+            "time": "2020-10-14T17:08:19+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -4364,12 +4365,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchoblond59/LaraLight.git",
-                "reference": "cb6ee0a4daa3d51a440c1b80ccc8087d7716cb03"
+                "reference": "40263bdc5a2d62ac6a8c5f3adeccd692ce88288c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchoblond59/LaraLight/zipball/cb6ee0a4daa3d51a440c1b80ccc8087d7716cb03",
-                "reference": "cb6ee0a4daa3d51a440c1b80ccc8087d7716cb03",
+                "url": "https://api.github.com/repos/tchoblond59/LaraLight/zipball/40263bdc5a2d62ac6a8c5f3adeccd692ce88288c",
+                "reference": "40263bdc5a2d62ac6a8c5f3adeccd692ce88288c",
                 "shasum": ""
             },
             "type": "larahome",
@@ -4396,7 +4397,7 @@
                 }
             ],
             "description": "Auto switch on light system for LaraHome",
-            "time": "2020-10-12T19:39:43+00:00"
+            "time": "2020-10-16T16:16:42+00:00"
         },
         {
             "name": "tchoblond59/sscompteur",
