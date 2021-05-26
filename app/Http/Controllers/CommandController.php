@@ -70,7 +70,7 @@ class CommandController extends Controller
             'name' => 'required|min:1|max:255',
         ]);
         $command = Command::findOrFail($id);
-        if($request->has('cron') && $request->cron != null)
+        if($request->has('cron'))
         {
             $command->cron = $request->cron;
         }

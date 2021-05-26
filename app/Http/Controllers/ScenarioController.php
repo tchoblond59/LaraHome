@@ -113,6 +113,9 @@ class ScenarioController extends Controller
 
     public function cron($id, Request $request)
     {
+        $this->validate($request, [
+            'cron' => 'string|nullable'
+        ]);
         $scenario = Scenario::findOrFail($id);
         $scenario->cron = $request->cron;
         $scenario->save();
