@@ -49,5 +49,6 @@ class PostPackageInstall extends Command
         $this->call('vendor:publish',['--tag' => 'larahome-package']);
         $sensor = SensorFactory::create($plugin->widget_class_name);
         $sensor->onEnable();
+        return 0;
     }
 }

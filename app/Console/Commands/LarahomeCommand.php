@@ -63,5 +63,6 @@ class LarahomeCommand extends Command
         {
             $this->info('Nothing to do, there is already a user in database');
         }
+        return 0;
     }
 }

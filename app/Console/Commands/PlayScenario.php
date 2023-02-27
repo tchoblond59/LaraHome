@@ -41,5 +41,6 @@ class PlayScenario extends Command
         $id = $this->argument('id');
         $scenario = Scenario::findOrFail($id);
         $scenario->play();
+        return 0;
     }
 }

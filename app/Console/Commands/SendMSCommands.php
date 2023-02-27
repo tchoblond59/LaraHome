@@ -53,5 +53,6 @@ class SendMSCommands extends Command
 
         //\Log::useFiles(storage_path('/logs/mscommand.log'), 'info');
         \Log::info('Command send to sensor: '.$ms_command->sensor->name);
+        return 0;
     }
 }

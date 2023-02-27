@@ -40,5 +40,6 @@ class PlayCommand extends Command
         $command_id = $this->argument('id');
         $command = \App\Command::findOrFail($command_id);
         $command->play();
+        return 0;
     }
 }
