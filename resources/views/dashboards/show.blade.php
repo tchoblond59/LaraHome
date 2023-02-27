@@ -69,13 +69,9 @@
                 <hr>
             </div>
         </div>
-
-
+        <div class="row">
         @foreach($dashboard->scenarios as $widget)
-            @if($loop->first)
-                <div class="row">
-                    @endif
-                    <div class="col-md-3">
+                    <div class="col-md-3 mb-2">
                         <form method="post" action="{{url('/scenario/play/'.$widget->id)}}">
                             {{csrf_field()}}
                             <div class="card-container">
@@ -90,10 +86,8 @@
                             </div>
                         </form>
                     </div>
-                    @if($loop->iteration%3==0 || $loop->last)
-                </div>
-            @endif
         @endforeach
+        </div>
         <div id="addWidgetModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
